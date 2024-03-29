@@ -1,0 +1,8 @@
+@use 'reset';
+@use 'variables' as v;
+
+body {
+  margin: 0;
+  font-family: v.$font-family;
+  background: v.$background-color;
+}
