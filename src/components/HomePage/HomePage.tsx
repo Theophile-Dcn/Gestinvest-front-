@@ -6,7 +6,7 @@ import deco from '../../assets/HomePage.png';
 function HomePage() {
   return (
     <main>
-      <section className="homePage-information-center">
+      <section className="homepage-information-center">
         <div className="side-left-homepage">
           <h1 className="slogan">
             Suivez le rythme.
@@ -18,7 +18,7 @@ function HomePage() {
               GestInvest vous offre une plateforme complète pour suivre vos
               actifs et analyser leur performance. GestInvest vous donne les
               moyens de réaliser vos ambitions financières. Explorez de
-              nouvelles opportunités dès aujourd&aposhui avec GestInvest.
+              nouvelles opportunités dès aujourd&apos;hui avec GestInvest.
             </p>
           </div>
           <div>
