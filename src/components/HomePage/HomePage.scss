@@ -1,0 +1,57 @@
+// HomePage.scss
+@use '../../styles/variables' as v;
+
+.homepage-information-center {
+  font-family: v.$font-family;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.side-left-homepage,
+.side-right-homepage {
+  flex: 1;
+}
+
+.side-left-homepage {
+  padding-left: 150px;
+}
+
+.slogan {
+  color: #86a4ef;
+  font-size: v.$font-size-title;
+  font-weight: 800;
+  letter-spacing: 3.52px;
+  margin-bottom: 10px;
+}
+.description p {
+  color: v.$color;
+  font-size: v.$font-size-cummun;
+  font-weight: 300;
+  letter-spacing: 2.64px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.side-left-homepage button {
+  border-radius: 10px;
+  color: v.$color;
+  cursor: pointer;
+  background-color: v.$color-button;
+  padding: 5px;
+}
+
+.side-left-homepage button:hover {
+  background-color: v.$hover-button;
+  color: v.$hover-text-color-button;
+}
+
+.side-right-homepage img {
+  width: 900px;
+  height: 700px;
+  position: absolute;
+  top: 250px;
+  left: 880px;
+}
