@@ -1,3 +1,4 @@
+import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 
 import './App.scss';
@@ -5,6 +6,7 @@ import './App.scss';
 function App() {
   return (
     <div className="app">
+      <Header />
       <HomePage />
     </div>
   );
