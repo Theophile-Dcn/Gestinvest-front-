@@ -1,0 +1,51 @@
+// ModalLogin.scss
+@use '../../styles/variables' as v;
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #371b4b;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  height: 500px;
+}
+
+.right-element {
+  text-align: right;
+}
+
+.center-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-element label {
+  color: v.$color;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tabs-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.tabs-title div {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tabs-title div.active {
+  border-bottom: 2px solid white;
+}

@@ -27,9 +27,9 @@ function HomePage({ openModal }: ModalLoginOpenProps) {
           </button>{' '}
         </div>
       </div>
-      <div className="side-right-homepage">
+      {/* <div className="side-right-homepage">
         <img src={deco} alt="Illustration du site web" />
-      </div>
+      </div> */}
     </section>
   );
 }
