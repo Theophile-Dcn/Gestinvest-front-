@@ -50,9 +50,12 @@
 }
 
 .side-right-homepage img {
-  width: 900px;
+  width: 700px;
   height: 700px;
-  position: absolute;
-  top: 250px;
-  left: 880px;
+  // les 2 facons fonctionne
+  margin-top: 250px;
+  margin-left: 100px;
+  // position: absolute;
+  // top: 230px;
+  // left: 880px;
 }
