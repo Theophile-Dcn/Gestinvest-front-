@@ -17,35 +17,55 @@
   text-align: right;
 }
 
-.center-element {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.center-element label {
-  color: v.$color;
-  display: block;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .tabs-title {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.tabs-title div {
-  color: white;
-  font-size: 24px;
-  font-weight: 800;
+.tabs-title button {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
+  color: v.$color;
+  font-size: v.$font-size-title;
 }
 
-.tabs-title div.active {
+.tabs-title button.active {
   border-bottom: 2px solid white;
+}
+
+.center-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+.center-element label {
+  color: v.$color;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: v.$font-size-cummun;
+}
+
+.center-element input {
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.modal .valid-button {
+  padding: 10px;
+  text-align: center;
+  background-color: v.$color-button;
+  border-radius: 5px;
+  color: v.$color;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+  // margin-left: auto;
+  // margin-right: auto;
 }

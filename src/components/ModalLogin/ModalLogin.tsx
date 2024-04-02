@@ -1,3 +1,4 @@
+// ModalLogin.jsx
 import { useState } from 'react';
 import { ModalLoginCloseProps } from '../../type/types';
 import './ModalLogin.scss';
@@ -28,9 +29,10 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
           Connexion
         </button>
       </div>
-      <div className="center-element">
-        {activeTab === 'register' && (
-          <form action="" className="register">
+
+      {activeTab === 'register' && (
+        <form action="" className="register">
+          <div className="center-element">
             <label htmlFor="email">E-mail</label>
             <input
               type="email"
@@ -41,7 +43,13 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
             />
 
             <label htmlFor="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Veuillez entrer le mot de passe"
+              required
+            />
 
             <label htmlFor="confirm-password">
               Confirmation du mot de passe
@@ -50,14 +58,20 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
               type="password"
               id="confirm-password"
               name="confirm-password"
+              placeholder="Veuillez confirmer le mot de passe"
               required
             />
-            <button type="submit">S&apos;inscrire</button>
-          </form>
-        )}
 
-        {activeTab === 'login' && (
-          <form action="" className="login">
+            <button className="valid-button" type="submit">
+              S&apos;inscrire
+            </button>
+          </div>
+        </form>
+      )}
+
+      {activeTab === 'login' && (
+        <form action="" className="login">
+          <div className="center-element">
             <label htmlFor="login-email">E-mail</label>
             <input
               type="email"
@@ -72,13 +86,16 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
               type="password"
               id="login-password"
               name="login-password"
+              placeholder="Veuillez entrer le mot de passe"
               required
             />
 
-            <button type="submit">Se connecter</button>
-          </form>
-        )}
-      </div>
+            <button className="valid-button" type="submit">
+              Se connecter
+            </button>
+          </div>
+        </form>
+      )}
     </dialog>
   );
 }

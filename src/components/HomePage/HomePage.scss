@@ -9,7 +9,6 @@
   height: 100vh;
   width: 100vw;
   padding: 20px;
-  overflow: hidden;
 }
 
 .side-left-homepage,
@@ -51,8 +50,9 @@
 }
 
 .side-right-homepage img {
+  width: 900px;
+  height: 700px;
   position: absolute;
-  top: 50%;
-  right: -10%;
-  max-width: 100%;
+  top: 250px;
+  left: 880px;
 }
