@@ -3,8 +3,13 @@
 import './HomePage.scss';
 import deco from '../../assets/HomePage.png';
 
-function HomePage() {
+type HomePageProps = {
+  isConnected: boolean;
+};
+
+function HomePage({ isConnected }: HomePageProps) {
   return (
+    // Affichage du bouton "Connexion" si l'utilisateur n'est pas connecté (!isConnected)
     <main>
       <section className="homepage-information-center">
         <div className="side-left-homepage">
@@ -21,9 +26,7 @@ function HomePage() {
               nouvelles opportunités dès aujourd&apos;hui avec GestInvest.
             </p>
           </div>
-          <div>
-            <button type="button">connexion</button>
-          </div>
+          <div>{!isConnected && <button type="button">Connexion</button>}</div>
         </div>
         <div className="side-right-homepage">
           <img src={deco} alt="Illustration du site web" />

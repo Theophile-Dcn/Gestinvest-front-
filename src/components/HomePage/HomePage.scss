@@ -36,11 +36,12 @@
 }
 
 .side-left-homepage button {
-  border-radius: 10px;
+  border-radius: 50px;
   color: v.$color;
   cursor: pointer;
   background-color: v.$color-button;
-  padding: 5px;
+  padding: 5px 10px;
+  border: solid 1px black;
 }
 
 .side-left-homepage button:hover {
