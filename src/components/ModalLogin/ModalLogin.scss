@@ -64,7 +64,7 @@
 // Styles pour les champs de saisie (inputs)
 .center-element input {
   padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 // Styles pour le bouton de validation
@@ -76,7 +76,12 @@
   color: v.$color;
   border: none;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 10px;
   // margin-left: auto;
   // margin-right: auto;
+}
+
+.modal .error-message {
+  color: red;
+  text-align: center;
 }
