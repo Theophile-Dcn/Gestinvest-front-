@@ -1,6 +1,9 @@
 // ModalLogin.scss
+
+// Utilisation des variables de style
 @use '../../styles/variables' as v;
 
+// Styles pour la modal
 .modal {
   position: fixed;
   top: 50%;
@@ -13,10 +16,12 @@
   height: 500px;
 }
 
+// Styles pour l'élément de droite (bouton de fermeture)
 .right-element {
   text-align: right;
 }
 
+// Styles pour les titres d'onglets
 .tabs-title {
   display: flex;
   justify-content: space-around;
@@ -26,6 +31,7 @@
   margin-bottom: 10px;
 }
 
+// Styles pour les boutons d'onglets
 .tabs-title button {
   background-color: transparent;
   border: none;
@@ -34,10 +40,12 @@
   font-size: v.$font-size-title;
 }
 
+// Styles pour l'onglet actif
 .tabs-title button.active {
   border-bottom: 2px solid white;
 }
 
+// Styles pour les éléments du centre
 .center-element {
   display: flex;
   flex-direction: column;
@@ -45,6 +53,7 @@
   padding: 5px;
 }
 
+// Styles pour les étiquettes (labels)
 .center-element label {
   color: v.$color;
   padding-top: 5px;
@@ -52,11 +61,13 @@
   font-size: v.$font-size-cummun;
 }
 
+// Styles pour les champs de saisie (inputs)
 .center-element input {
   padding: 5px;
   margin-bottom: 20px;
 }
 
+// Styles pour le bouton de validation
 .modal .valid-button {
   padding: 10px;
   text-align: center;

@@ -1,18 +1,22 @@
 // ModalLogin.jsx
+// liste des importations
 import { useState } from 'react';
 import { ModalLoginCloseProps } from '../../type/types';
 import './ModalLogin.scss';
 
 function ModalLogin({ closeModal }: ModalLoginCloseProps) {
+  // Variable d'état pour gérer l'onglet actif (inscription ou connexion)
   const [activeTab, setActiveTab] = useState('register');
 
   return (
     <dialog open className="modal">
       <div className="right-element">
+        {/* gestion de la fermeture de la modal */}
         <button type="button" className="close" onClick={closeModal}>
           X
         </button>
       </div>
+      {/* Boutons d'onglets pour passer entre l'inscription et la connexion */}
       <div className="tabs-title">
         <button
           type="button"
@@ -29,7 +33,7 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
           Connexion
         </button>
       </div>
-
+      {/* Formulaire d'inscription */}
       {activeTab === 'register' && (
         <form action="" className="register">
           <div className="center-element">
@@ -68,7 +72,7 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
           </div>
         </form>
       )}
-
+      {/* Formulaire de connexion */}
       {activeTab === 'login' && (
         <form action="" className="login">
           <div className="center-element">
