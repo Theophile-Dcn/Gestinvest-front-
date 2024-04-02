@@ -24,7 +24,7 @@ function HomePage({ openModal }: ModalLoginOpenProps) {
         <div>
           <button type="button" onClick={openModal}>
             connexion
-          </button>{' '}
+          </button>
         </div>
       </div>
       {/* <div className="side-right-homepage">

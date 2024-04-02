@@ -8,18 +8,20 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
   return (
     <dialog open className="modal">
       <div className="right-element">
-        <button className="close" onClick={closeModal}>
+        <button type="button" className="close" onClick={closeModal}>
           X
         </button>
       </div>
       <div className="tabs-title">
         <button
+          type="button"
           className={activeTab === 'register' ? 'active' : ''}
           onClick={() => setActiveTab('register')}
         >
           Inscription
         </button>
         <button
+          type="button"
           className={activeTab === 'login' ? 'active' : ''}
           onClick={() => setActiveTab('login')}
         >
@@ -50,7 +52,7 @@ function ModalLogin({ closeModal }: ModalLoginCloseProps) {
               name="confirm-password"
               required
             />
-            <button type="submit">S'inscrire</button>
+            <button type="submit">S&apos;inscrire</button>
           </form>
         )}
 
