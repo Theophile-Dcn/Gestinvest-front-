@@ -1,0 +1,48 @@
+@use "../../styles/variables" as v;
+
+.menu {
+    color: #fff;
+    height: 10vh;
+    background-color: #141314;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6em;
+    position:fixed;
+    width: 100%;
+     
+
+    &-nav {
+        display: flex;
+        gap: 5em;
+    }
+
+    &-link {
+        text-decoration: none;
+        color: v.$color;
+        letter-spacing: 3px;        
+    }
+
+    &-link:hover {
+        text-decoration: underline;
+    }
+
+    &-btn {
+        color: v.$color;
+        background-color: v.$color-button;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 50px;
+        border: solid 1px black;
+    }
+
+    &-btn:hover {
+        color: v.$hover-text-color-button;
+        background-color: v.$hover-button;
+    }
+}
+
+.logo {
+    width: 100px;
+}
+
