@@ -1,7 +1,5 @@
-
 // app.tsx
 import React, { useState } from 'react';
-
 
 import Header from '../Header/Header';
 
@@ -11,8 +9,7 @@ import './App.scss';
 import ModalLogin from '../ModalLogin/ModalLogin';
 
 function App() {
-
- const [isConnected, setIsConnected] = useState(true);
+  const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Fonction pour ouvrir la modal
   const openModal = () => {
@@ -25,14 +22,13 @@ function App() {
 
   return (
     <div className="app">
-        <Header isConnected={isConnected} />
+      <Header isConnected={isConnected} />
       <main>
         {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
-        <HomePage openModal={openModal} isConnected={isConnected}/>
+        <HomePage openModal={openModal} isConnected={isConnected} />
       </main>
       {/* Conditionnellement afficher la modal */}
       {isModalOpen && <ModalLogin closeModal={closeModal} />}
-
     </div>
   );
 }
