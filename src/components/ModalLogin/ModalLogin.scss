@@ -1,0 +1,87 @@
+// ModalLogin.scss
+
+// Utilisation des variables de style
+@use '../../styles/variables' as v;
+
+// Styles pour la modal
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #371b4b;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  height: 500px;
+}
+
+// Styles pour l'élément de droite (bouton de fermeture)
+.right-element {
+  text-align: right;
+}
+
+// Styles pour les titres d'onglets
+.tabs-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+// Styles pour les boutons d'onglets
+.tabs-title button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: v.$color;
+  font-size: v.$font-size-title;
+}
+
+// Styles pour l'onglet actif
+.tabs-title button.active {
+  border-bottom: 2px solid white;
+}
+
+// Styles pour les éléments du centre
+.center-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+// Styles pour les étiquettes (labels)
+.center-element label {
+  color: v.$color;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: v.$font-size-cummun;
+}
+
+// Styles pour les champs de saisie (inputs)
+.center-element input {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+// Styles pour le bouton de validation
+.modal .valid-button {
+  padding: 10px;
+  text-align: center;
+  background-color: v.$color-button;
+  border-radius: 5px;
+  color: v.$color;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+.modal .error-message {
+  color: red;
+  text-align: center;
+}

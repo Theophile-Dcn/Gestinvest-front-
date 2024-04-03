@@ -1,13 +1,18 @@
 // HomePage.tsx
-// Liste des importations
+import React from 'react';
 import './HomePage.scss';
 import deco from '../../assets/HomePage.png';
+import { ModalLoginOpenProps } from '../../type/types';
+
 
 type HomePageProps = {
   isConnected: boolean;
+closeModal: () => void;
+openModal: () => void;
+
 };
 
-function HomePage({ isConnected }: HomePageProps) {
+function HomePage({ isConnected, openModal }: HomePageProps) {
   return (
     // Affichage du bouton "Connexion" si l'utilisateur n'est pas connecté (!isConnected)
     <main>
@@ -26,13 +31,14 @@ function HomePage({ isConnected }: HomePageProps) {
               nouvelles opportunités dès aujourd&apos;hui avec GestInvest.
             </p>
           </div>
-          <div>{!isConnected && <button type="button">Connexion</button>}</div>
+          <div>{!isConnected && <button type="button" onClick={openModal}>Connexion</button>}</div>
+
         </div>
-        <div className="side-right-homepage">
-          <img src={deco} alt="Illustration du site web" />
-        </div>
-      </section>
-    </main>
+  
+      <div className="side-right-homepage">
+        <img src={deco} alt="Illustration du site web" />
+      </div>
+    </section>
   );
 }
 
