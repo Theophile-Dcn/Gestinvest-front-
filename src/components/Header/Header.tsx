@@ -17,6 +17,14 @@ function Header({ isConnected, openModal }: HeaderProps) {
     setShowLinks(!showLinks);
   };
 
+  // Fonction déconnexion au click sur le bouton "Déconnexion" (visible uniquement si l'utilisateur est connecté)
+  const handleLogout = () => {
+    // Suppression du token dans le localStorage
+    localStorage.removeItem('token');
+    // Redirection de l'utilisateur vers la page Accueil
+    window.location.href = '/';
+  };
+
   return (
     // Affichage des liens "Tableau de bord" et "Mon compte" si l'utilisateur est connecté (isConnected)
     // Affichage de "Connexion" ou "Déconnexion" du bouton en fonction de la connexion de l'utilisateur
@@ -57,7 +65,7 @@ function Header({ isConnected, openModal }: HeaderProps) {
           </button>
         )}
         {isConnected && (
-          <button type="button" className="menu-log">
+          <button type="button" className="menu-log" onClick={handleLogout}>
             Déconnexion
           </button>
         )}
