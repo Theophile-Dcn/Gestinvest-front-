@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header isConnected={isConnected} />
+      <Header openModal={openModal} isConnected={isConnected} />
       <main>
         {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
         <HomePage openModal={openModal} isConnected={isConnected} />
