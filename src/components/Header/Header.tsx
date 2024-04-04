@@ -6,9 +6,10 @@ import logo from '../../assets/logo-gestinvest.svg';
 
 type HeaderProps = {
   isConnected: boolean;
+  openModal: () => void;
 };
 
-function Header({ isConnected }: HeaderProps) {
+function Header({ isConnected, openModal }: HeaderProps) {
   // State utilisé avec le bouton burger menu pour ouvrir ou fermer les liens de navigation (par défaut showLinks est false, liens non visibles)
   const [showLinks, setShowLinks] = useState(false);
   // Fonction permettant de changer l'état de showLinks (true/false) au click sur le burger button
@@ -51,7 +52,7 @@ function Header({ isConnected }: HeaderProps) {
       </nav>
       <div className={`"menu-buttons" ${showLinks ? 'show-nav' : ''}`}>
         {!isConnected && (
-          <button type="button" className="menu-log">
+          <button type="button" className="menu-log" onClick={openModal}>
             Connexion
           </button>
         )}
@@ -65,7 +66,7 @@ function Header({ isConnected }: HeaderProps) {
           className="navbar-burger"
           onClick={handleShowlinks}
         >
-          <span className="burger-bar"></span>
+          <span className="burger-bar" />
         </button>
       </div>
     </header>
