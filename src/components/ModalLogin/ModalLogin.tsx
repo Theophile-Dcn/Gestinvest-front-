@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ModalLogin.scss';
 import Register from './modalsubcomponent/Register';
+import Login from './modalsubcomponent/Login';
 
 interface ModalProps {
   closeModal: () => void;
@@ -27,13 +28,13 @@ function ModalLogin({ closeModal }: ModalProps) {
         >
           Inscription
         </button>
-        {/* <button
+        <button
           type="button"
           className={activeTab === 'login' ? 'active' : ''}
           onClick={() => setActiveTab('login')}
         >
           Connexion
-        </button> */}
+        </button>
       </div>
 
       {/* Formulaire d'inscription */}
@@ -45,6 +46,8 @@ function ModalLogin({ closeModal }: ModalProps) {
           error={null}
         />
       )}
+      {/* Formulaire de connexion */}
+      {activeTab === 'login' && <Login closeModal={closeModal} />}
     </dialog>
   );
 }
