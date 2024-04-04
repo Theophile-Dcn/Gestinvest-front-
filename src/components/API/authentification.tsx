@@ -1,6 +1,6 @@
 // Authentication.tsx
 
-const BaseURL = 'http://localhost:8080/api/authRouter';
+const BaseURL = 'http://localhost:3000/api/auth';
 
 export const register = async (
   email: string,

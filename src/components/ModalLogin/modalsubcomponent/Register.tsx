@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { register } from '../../API/authentification'; // Importer la fonction d'authentification
 import '../ModalLogin.scss';
 
 interface RegisterProps {
   email: string;
   password: string;
-  error: string | null;
   closeModal: () => void;
 }
 
-function Register({ email, password, error, closeModal }: RegisterProps) {
+function Register({ email, password, closeModal }: RegisterProps) {
   const [registerPassword, setRegisterPassword] = useState(password || '');
   const [inputconfirmation, setInputconfirmation] = useState('');
   const [registerEmail, setRegisterEmail] = useState(email || '');
@@ -17,7 +16,6 @@ function Register({ email, password, error, closeModal }: RegisterProps) {
   const [confirmPasswordError, setConfirmPasswordError] = useState<
     string | null
   >(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   // Fonction de validation du mot de passe par rapport à la regex
@@ -28,31 +26,32 @@ function Register({ email, password, error, closeModal }: RegisterProps) {
   }
 
   // Valider le mot de passe lors de la saisie
-  const handlePasswordChange = (password: string) => {
+  const handlePasswordChange = useCallback((password: string) => {
     const isValid = validatePasswordRegex(password);
     setPasswordError(
       isValid
         ? null
         : 'Votre mot de passe doit contenir au moins 8 caractères, dont au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial.'
     );
-  };
+  }, []);
 
   // Valider la correspondance des mots de passe lors de la saisie
-  const handleConfirmPasswordChange = (confirmPassword: string) => {
-    const isMatch = registerPassword === confirmPassword;
-    setConfirmPasswordError(
-      isMatch ? null : 'Les mots de passe ne correspondent pas.'
-    );
-  };
+  const handleConfirmPasswordChange = useCallback(
+    (confirmPassword: string) => {
+      const isMatch = registerPassword === confirmPassword;
+      setConfirmPasswordError(
+        isMatch ? null : 'Les mots de passe ne correspondent pas.'
+      );
+    },
+    [registerPassword]
+  );
 
   // Fonction pour activer le bouton de soumission si les conditions sont remplies
-  const enableSubmitButton = () => {
-    if (passwordError === null || confirmPasswordError === null) {
-      setIsSubmitDisabled(false); // Si l'une des erreurs est null, activer le bouton
-    } else {
-      setIsSubmitDisabled(true); // Sinon, désactiver le bouton
-    }
-  };
+  const enableSubmitButton = useCallback(() => {
+    setIsSubmitDisabled(
+      passwordError !== null || confirmPasswordError !== null
+    );
+  }, [passwordError, confirmPasswordError]);
 
   // Appeler la fonction enableSubmitButton chaque fois que les erreurs changent
   useEffect(() => {
@@ -71,11 +70,8 @@ function Register({ email, password, error, closeModal }: RegisterProps) {
       setRegisterEmail('');
       setRegisterPassword('');
       setInputconfirmation('');
-      setErrorMessage(null);
-      setIsSubmitDisabled(true);
     } catch (error) {
       console.error("Erreur lors de l'inscription:", error);
-      setErrorMessage(error.message);
     }
   };
 
@@ -128,9 +124,8 @@ function Register({ email, password, error, closeModal }: RegisterProps) {
           className="valid-button"
           type="submit"
           disabled={isSubmitDisabled}
-          onClick={enableSubmitButton}
         >
-          S'inscrire
+          S&apos;inscrire
         </button>
       </div>
     </form>
