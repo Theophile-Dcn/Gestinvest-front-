@@ -9,7 +9,7 @@ import './App.scss';
 import ModalLogin from '../ModalLogin/ModalLogin';
 
 function App() {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Fonction pour ouvrir la modal
   const openModal = () => {

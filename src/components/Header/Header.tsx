@@ -1,5 +1,6 @@
 // import du fichier de style Header.scss spécifique au Header
 import './Header.scss';
+import { useState } from 'react';
 // import de l'image du logo à partir du dossier assets
 import logo from '../../assets/logo-gestinvest.svg';
 
@@ -8,32 +9,65 @@ type HeaderProps = {
 };
 
 function Header({ isConnected }: HeaderProps) {
+  // State utilisé avec le bouton burger menu pour ouvrir ou fermer les liens de navigation (par défaut showLinks est false, liens non visibles)
+  const [showLinks, setShowLinks] = useState(false);
+  // Fonction permettant de changer l'état de showLinks (true/false) au click sur le burger button
+  const handleShowlinks = () => {
+    setShowLinks(!showLinks);
+  };
+
   return (
-    // Affichage des liens "Tableau de bord" et "Mon compte" si l'utilisateur est connécté (isConnected)
-    // Affichage de "Connexion" ou Déconnexe du bouton en fonction de la connexion de l'utilisateur
+    // Affichage des liens "Tableau de bord" et "Mon compte" si l'utilisateur est connecté (isConnected)
+    // Affichage de "Connexion" ou "Déconnexion" du bouton en fonction de la connexion de l'utilisateur
     <header className="menu" id="header">
       <img className="logo" src={logo} alt="logo Gestinvest" />
-      <nav className="menu-nav">
-        {isConnected && (
-          <a className="menu-link" href="#header">
-            Tableau de bord
-          </a>
-        )}
-        <a className="menu-link" href="#header">
-          Accueil
-        </a>
-        <a className="menu-link" href="#header">
-          Tendances
-        </a>
-        {isConnected && (
-          <a className="menu-link" href="#header">
-            Mon compte
-          </a>
-        )}
+      <nav className={`"navbar" ${showLinks ? 'show-nav' : ''}`}>
+        <ul className="navbar-links">
+          <li className="navbar-item">
+            <a className="navbar-link" href="#header">
+              Accueil
+            </a>
+          </li>
+          <li className="navbar-item">
+            <a className="navbar-link" href="#header">
+              Tendances
+            </a>
+          </li>
+          {isConnected && (
+            <li className="navbar-item">
+              <a className="navbar-link" href="#header">
+                Tableau de bord
+              </a>
+            </li>
+          )}
+          {isConnected && (
+            <li className="navbar-item">
+              <a className="navbar-link" href="#header">
+                Mon compte
+              </a>
+            </li>
+          )}
+        </ul>
       </nav>
-      <button className="menu-btn" type="button">
-        {isConnected ? 'Déconnexion' : 'Connexion'}
-      </button>
+      <div className={`"menu-buttons" ${showLinks ? 'show-nav' : ''}`}>
+        {!isConnected && (
+          <button type="button" className="menu-log">
+            Connexion
+          </button>
+        )}
+        {isConnected && (
+          <button type="button" className="menu-log">
+            Déconnexion
+          </button>
+        )}
+        <button
+          type="button"
+          className="navbar-burger"
+          onClick={handleShowlinks}
+        >
+          <span className="burger-bar"></span>
+        </button>
+      </div>
     </header>
   );
 }

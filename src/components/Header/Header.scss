@@ -1,48 +1,150 @@
 @use "../../styles/variables" as v;
 
 .menu {
-    color: #fff;
-    height: 10vh;
+    color: v.$color;
     background-color: #141314;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 0 6em;
-    position:fixed;
-    width: 100%;
-     
-
-    &-nav {
-        display: flex;
-        gap: 5em;
-    }
-
-    &-link {
-        text-decoration: none;
-        color: v.$color;
-        letter-spacing: 3px;        
-    }
-
-    &-link:hover {
-        text-decoration: underline;
-    }
-
-    &-btn {
-        color: v.$color;
-        background-color: v.$color-button;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 50px;
-        border: solid 1px black;
-    }
-
-    &-btn:hover {
-        color: v.$hover-text-color-button;
-        background-color: v.$hover-button;
-    }
+    justify-content: space-between;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    min-height: 75px;
+    padding: 1rem 6rem;
 }
 
 .logo {
-    width: 100px;
+    width: 6rem;
 }
 
+.navbar-links {
+    display: flex;
+    gap: 5rem;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 0.2rem;
+}
+
+.navbar-link:hover {
+    text-decoration: underline;
+}
+
+.navbar-burger {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    display: none;
+}
+
+.menu-log {
+    color: v.$color;
+    background-color: v.$color-button;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: solid 1px black;
+}
+
+.menu-log:hover {
+    color: v.$hover-text-color-button;
+    background-color: v.$hover-button;
+}
+
+@media screen and (max-width: 1215px) {
+    .navbar-links {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right: -100vw;
+        bottom: 0;
+        width: 0;
+        height: 100vh;
+        padding: 2rem;
+        visibility: hidden;
+        background-color: #141314;
+        gap: 0;
+        transition: all 0.7s ease-out;
+
+    }
+
+    .show-nav .navbar-links {
+        width: 100vw;
+        right: 0;
+        visibility: visible;
+    }
+
+    .navbar-item::after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        width: 3vw;
+        height: 1px;
+        background: #fff;
+    }
+    .navbar-item:last-child::after {
+        display: none;
+    }
+
+    .navbar-link {
+        display: block;
+        font-size: 5vw;
+        padding: 2rem;
+    }
+
+    .navbar-burger {
+        display: block;
+        position: fixed;
+        top: 1.3rem;
+        right: 1.3rem;
+    }
+
+    .navbar-burger:hover {
+        cursor: pointer;
+    }
+
+    .burger-bar,
+    .burger-bar::before,
+    .burger-bar::after {
+        display: block;
+        width: 40px;
+        height: 3px;
+        position: relative;
+        border-radius: 3px;
+        background: #fff;
+        transition: all .5s ease-in-out;
+
+    }
+
+    .burger-bar::before,
+    .burger-bar::after {
+        content:"";
+        position: absolute;
+        left: 0;
+    }
+    
+    .burger-bar::before {
+        transform: translateY(-12px);
+    }
+    .burger-bar::after {
+        transform: translateY(12px);
+    }
+
+    .show-nav .burger-bar {
+        width: 0;
+        background: transparent;
+    }
+    
+    .show-nav .burger-bar::before {
+        transform: rotate(45deg);
+    }
+    .show-nav .burger-bar::after {
+        transform: rotate(-45deg);
+    }
+}
