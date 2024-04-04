@@ -1,7 +1,6 @@
 // Authentication.tsx
 
 const BaseURL = 'http://localhost:8080/api/authRouter';
-// route a corriger en fonction de l'api
 
 export const register = async (
   email: string,
@@ -17,9 +16,16 @@ export const register = async (
       body: JSON.stringify({ email, password, confirmation }),
     });
     const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.errorMessage);
+    }
+    // Afficher une alerte pour le succès de l'inscription
+    alert(data.successMessage);
     return data;
   } catch (error) {
     console.error('Error registering:', error);
+    // Afficher une alerte pour l'erreur lors de l'inscription
+    alert(error.message);
     throw error;
   }
 };
@@ -33,14 +39,17 @@ export const login = async (email: string, password: string) => {
       },
       body: JSON.stringify({ email, password }),
     });
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.errorMessage);
-    }
     const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.errorMessage);
+    }
+    // Afficher une alerte pour le succès de la connexion
+    alert('Login successful');
     return data;
   } catch (error) {
     console.error('Error logging in:', error);
+    // Afficher une alerte pour l'erreur lors de la connexion
+    alert(error.message);
     throw error;
   }
 };
