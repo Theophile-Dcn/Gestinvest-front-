@@ -12,7 +12,7 @@
 
   height: 85vh;
 
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .side-left-homepage,
@@ -21,31 +21,31 @@
 }
 
 .side-left-homepage {
-  padding-left: 150px;
+  padding-left: 9rem;
 }
 
 .slogan {
   color: #86a4ef;
   font-size: v.$font-size-title;
   font-weight: 800;
-  letter-spacing: 3.52px;
-  margin-bottom: 10px;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0.6rem;
 }
 .description p {
   color: v.$color;
   font-size: v.$font-size-cummun;
   font-weight: 300;
-  letter-spacing: 2.64px;
+  letter-spacing: 0.16rem;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .side-left-homepage button {
-  border-radius: 50px;
+  border-radius: 3.125rem;
   color: v.$color;
   cursor: pointer;
   background-color: v.$color-button;
-  padding: 5px 10px;
+  padding: 0.3rem 0.6rem;
   border: solid 1px black;
 }
 
@@ -55,11 +55,11 @@
 }
 
 .side-right-homepage img {
-  width: 700px;
-  height: 700px;
+  width: 43.75rem;
+  height: 43.75rem;
   // les 2 facons fonctionne
-  margin-top: 250px;
-  margin-left: 100px;
+  margin-top: 15.625rem;
+  margin-left: 6.25rem;
   // position: absolute;
   // top: 230px;
   // left: 880px;
