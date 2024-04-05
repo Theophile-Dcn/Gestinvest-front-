@@ -5,7 +5,6 @@ import deco from '../../assets/HomePage.png';
 
 type HomePageProps = {
   isConnected: boolean;
-
   openModal: () => void;
 };
 
