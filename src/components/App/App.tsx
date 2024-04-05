@@ -7,6 +7,10 @@ import HomePage from '../HomePage/HomePage';
 
 import './App.scss';
 import ModalLogin from '../ModalLogin/ModalLogin';
+import Account from '../Account/Account';
+import AssetDetail from '../AssetDetail/AssetDetail';
+import Dashboard from '../Dashboard/Dashboard';
+import Footer from '../Footer/Footer';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
