@@ -1,6 +1,6 @@
 // Authentication.tsx
 
-const BaseURL = 'http://localhost:3000/api/auth';
+const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/auth';
 
 export const register = async (
   email: string,
@@ -45,7 +45,8 @@ export const login = async (email: string, password: string) => {
     }
 
     // Stocker le token JWT dans le localStorage
-    localStorage.setItem('token', data);
+    localStorage.setItem('token', data.token);
+
     console.log(localStorage.getItem('token'));
 
     // Afficher une alerte pour le succès de la connexion
