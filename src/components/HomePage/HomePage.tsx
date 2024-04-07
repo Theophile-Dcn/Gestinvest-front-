@@ -1,7 +1,6 @@
 // HomePage.tsx
-import React from 'react';
+import deco from '../../assets/homePage.png';
 import './HomePage.scss';
-import deco from '../../assets/HomePage.png';
 
 type HomePageProps = {
   isConnected: boolean;
@@ -38,7 +37,11 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
       </div>
 
       <div className="side-right-homepage">
-        <img src={deco} alt="Illustration du site web" />
+        <img
+          className="img-absolute"
+          src={deco}
+          alt="Illustration du site web"
+        />
       </div>
     </section>
   );

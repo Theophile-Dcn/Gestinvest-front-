@@ -6,8 +6,8 @@
   font-family: v.$font-family;
   font-size: v.$font-size-cummun;
   display: flex;
-  width: 100vw;
-  height: 85vh;
+  width: 100%;
+  height: 90vh;
   align-items: center;
   flex-direction: row;
 }
@@ -48,15 +48,18 @@
   background-color: v.$hover-button;
   color: v.$hover-text-color-button;
 }
-
 .side-right-homepage {
-  
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.side-right-homepage img {
-  margin: auto;
-  padding-right: 2rem;
+.img-absolute {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 1215px) {
