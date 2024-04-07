@@ -1,5 +1,8 @@
 import React from 'react';
 
+import './AssetDetail.scss';
+
+
 function AssetDetail() {
   return (
     <div id="assetDetail">

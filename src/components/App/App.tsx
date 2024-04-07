@@ -5,10 +5,13 @@ import './App.scss';
 import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
+
 import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
 import Page404 from '../Page404/Page404';
 import Account from '../Account/Account';
+import Footer from '../Footer/Footer';
+
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -65,6 +68,7 @@ function App() {
   return (
     <div className="app">
       <Header openModal={openModal} isConnected={isConnected} />
+
       <main>
         <Routes>
           {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
@@ -102,6 +106,7 @@ function App() {
           {/* fin des route a proteger */}
           <Route path="*" element={<Page404 />} />
         </Routes>
+
       </main>
       {/* Conditionnellement afficher la modal */}
       {isModalOpen && <ModalLogin closeModal={closeModal} />}

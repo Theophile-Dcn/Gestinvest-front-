@@ -7,11 +7,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
     width: 100vw;
     height: 10vh;
-    min-height: 75px;
+    min-height: 4.7rem;
     padding: 1rem 6rem;
+    position: sticky;
+    top: 0;
 }
 
 .logo {
@@ -34,8 +35,8 @@
 }
 
 .navbar-burger {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     background: transparent;
     border: none;
     color: inherit;
@@ -45,9 +46,9 @@
 .menu-log {
     color: v.$color;
     background-color: v.$color-button;
-    padding: 5px 10px;
+    padding: 0.3rem 0.6rem;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 3rem;
     border: solid 1px black;
 }
 
@@ -57,6 +58,10 @@
 }
 
 @media screen and (max-width: 1215px) {
+    .menu {
+        padding: 1rem 4rem 1rem 2rem;
+    }
+
     .navbar-links {
         flex-direction: column;
         justify-content: center;
@@ -113,10 +118,10 @@
     .burger-bar::before,
     .burger-bar::after {
         display: block;
-        width: 40px;
-        height: 3px;
+        width: 2.5rem;
+        height: 0.2rem;
         position: relative;
-        border-radius: 3px;
+        border-radius: 0.2rem;
         background: #fff;
         transition: all .5s ease-in-out;
 
@@ -130,10 +135,10 @@
     }
     
     .burger-bar::before {
-        transform: translateY(-12px);
+        transform: translateY(-0.75rem);
     }
     .burger-bar::after {
-        transform: translateY(12px);
+        transform: translateY(0.75rem);
     }
 
     .show-nav .burger-bar {
