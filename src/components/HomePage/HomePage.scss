@@ -2,28 +2,24 @@
 @use '../../styles/variables' as v;
 
 .homepage-information-center {
+  color: v.$color;
   font-family: v.$font-family;
+  font-size: v.$font-size-cummun;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-
   width: 100vw;
-
   height: 85vh;
-
-  padding: 1.25rem;
+  align-items: center;
+  flex-direction: row;
 }
 
 .side-left-homepage,
 .side-right-homepage {
-  flex: 1;
+  flex-basis: 50%;
 }
 
 .side-left-homepage {
   padding-left: 9rem;
 }
-
 .slogan {
   color: #86a4ef;
   font-size: v.$font-size-title;
@@ -37,9 +33,9 @@
   font-weight: 300;
   letter-spacing: 0.16rem;
   line-height: 1.5;
+  text-align: justify;
   margin-bottom: 1.25rem;
 }
-
 .side-left-homepage button {
   border-radius: 3.125rem;
   color: v.$color;
@@ -48,19 +44,28 @@
   padding: 0.3rem 0.6rem;
   border: solid 1px black;
 }
-
 .side-left-homepage button:hover {
   background-color: v.$hover-button;
   color: v.$hover-text-color-button;
 }
 
+.side-right-homepage {
+  
+}
+
 .side-right-homepage img {
-  width: 43.75rem;
-  height: 43.75rem;
-  // les 2 facons fonctionne
-  margin-top: 15.625rem;
-  margin-left: 6.25rem;
-  // position: absolute;
-  // top: 230px;
-  // left: 880px;
+  margin: auto;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 1215px) {
+  .homepage-information-center {
+    flex-direction: column;
+  }
+  .side-left-homepage {
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
