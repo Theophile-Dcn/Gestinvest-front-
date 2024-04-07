@@ -4,7 +4,6 @@ import './HomePage.scss';
 
 type HomePageProps = {
   isConnected: boolean;
-
   openModal: () => void;
 };
 
