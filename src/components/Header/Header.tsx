@@ -33,25 +33,25 @@ function Header({ isConnected, openModal }: HeaderProps) {
       <nav className={`"navbar" ${showLinks ? 'show-nav' : ''}`}>
         <ul className="navbar-links">
           <li className="navbar-item">
-            <a className="navbar-link" href="#header">
+            <a className="navbar-link" href="/">
               Accueil
             </a>
           </li>
           <li className="navbar-item">
-            <a className="navbar-link" href="#header">
+            <a className="navbar-link" href="Tendances">
               Tendances
             </a>
           </li>
           {isConnected && (
             <li className="navbar-item">
-              <a className="navbar-link" href="#header">
+              <a className="navbar-link" href="/Dasboard">
                 Tableau de bord
               </a>
             </li>
           )}
           {isConnected && (
             <li className="navbar-item">
-              <a className="navbar-link" href="#header">
+              <a className="navbar-link" href="/Account">
                 Mon compte
               </a>
             </li>
