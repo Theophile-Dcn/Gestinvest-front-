@@ -60,7 +60,7 @@ function Header({ isConnected, openModal }: HeaderProps) {
       </nav>
       <div className={`"menu-buttons" ${showLinks ? 'show-nav' : ''}`}>
         {!isConnected && (
-          <button type="button" className="menu-log" onClick={openModal}>
+          <button type="button" className="button menu-log" onClick={openModal}>
             Connexion
           </button>
         )}

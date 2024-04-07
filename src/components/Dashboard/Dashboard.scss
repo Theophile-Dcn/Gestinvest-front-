@@ -1,0 +1,83 @@
+@use '../../styles/variables' as v;
+
+.dashboard {
+  letter-spacing: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 60vw;
+  
+}
+
+h2 {
+  font-family: v.$font-family;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 0.2rem;
+}
+
+// couleur verte ou rouge appliquée aux prix en fonction de leur classe conditionnelle 
+.greenPrice {
+  color: v.$green-price-color;
+}
+.redPrice {
+  color: v.$red-price-color;
+}
+
+.summary {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.summary h2 {
+  margin-bottom: 1.5rem;
+}
+.summary__parts {
+  display: flex;
+  align-items: center;
+}
+.summary__part {
+  flex-basis: 50%;
+}
+
+.addorsell {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.addorsell button {
+  font-size: 0.9rem;
+  padding: 0.1rem 0.6rem;
+  cursor: pointer;
+}
+
+.assetlist {
+  margin-top: 3rem;
+}
+
+.assetlist__title,
+.assetlist__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 2rem;
+}
+.assetlist__title {
+  margin: 1.5rem 0 1.5rem 2rem;
+}
+.assetlist__item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+.assetlist__title p,
+.assetlist__item p {
+  width: 18%;
+  text-align: center;
+}

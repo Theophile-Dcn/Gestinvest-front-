@@ -30,7 +30,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
         </div>
         <div>
           {!isConnected && (
-            <button type="button" onClick={openModal}>
+            <button className="button" type="button" onClick={openModal}>
               Connexion
             </button>
           )}
