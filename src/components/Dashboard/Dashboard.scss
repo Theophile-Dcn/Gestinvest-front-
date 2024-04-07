@@ -1,6 +1,7 @@
 @use '../../styles/variables' as v;
 
 .dashboard {
+  color: v.$color;
   letter-spacing: 0.2rem;
   display: flex;
   flex-direction: column;
