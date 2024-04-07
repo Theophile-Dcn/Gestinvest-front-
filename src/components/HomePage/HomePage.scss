@@ -36,18 +36,7 @@
   text-align: justify;
   margin-bottom: 1.25rem;
 }
-.side-left-homepage button {
-  border-radius: 3.125rem;
-  color: v.$color;
-  cursor: pointer;
-  background-color: v.$color-button;
-  padding: 0.3rem 0.6rem;
-  border: solid 1px black;
-}
-.side-left-homepage button:hover {
-  background-color: v.$hover-button;
-  color: v.$hover-text-color-button;
-}
+
 .side-right-homepage {
   position: relative;
   width: 100%;
