@@ -1,5 +1,5 @@
 // HomePage.tsx
-import deco from '../../assets/homePage.png';
+import deco from '../../assets/HomePage.png';
 import './HomePage.scss';
 
 type HomePageProps = {
