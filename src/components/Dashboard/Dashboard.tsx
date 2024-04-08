@@ -1,16 +1,6 @@
-import React, { useEffect } from 'react';
 import './Dashboard.scss';
-import { GetDashboard } from '../API/dashboardAPI';
 
-type DashboardProps = {
-  uuid: string;
-};
-
-function Dashboard({ uuid }: DashboardProps) {
-  // Appel de la function api GET DAshboard a l'ouverture du composant
-  useEffect(() => {
-    GetDashboard(uuid);
-  }, [uuid]);
+function Dashboard() {
   return (
     <div className="dashboard" id="dashboard">
       <section className="summary">

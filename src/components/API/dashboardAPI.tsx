@@ -1,31 +1,24 @@
 import { useParams } from 'react-router-dom';
+import { BaseURL, header } from './API-info';
 
-const uuid = useParams();
-
-export const headers = {
-  'Content-Type': 'application/json',
-};
-
-export const GetDashboard = async (uuid) => {
+const GetDashboard = async () => {
+  const { uuid } = useParams();
   try {
-    // Récupérer le token à l'intérieur de la fonction GetDashboard
-    const token = localStorage.getItem('token');
-    // Ajouter le token aux en-têtes
-    headers.Authorization = `Bearer ${token}`;
-
-    const response = await fetch(`${BaseURLDashboard}dashboard/user/${uuid}`, {
+    const response = await fetch(`${BaseURL}dashboard/user/${uuid}`, {
       method: 'GET',
-      headers: headers,
+      headers: header,
     });
 
-    const data = await response.json();
+    const dataGetdashboard = await response.json();
     if (!response.ok) {
-      throw new Error(data.errorMessage);
+      throw new Error(dataGetdashboard.errorMessage);
     }
 
-    return data;
+    return dataGetdashboard;
   } catch (error) {
     console.error('Error fetching dashboard:', error);
     throw error;
   }
 };
+
+export default GetDashboard;
