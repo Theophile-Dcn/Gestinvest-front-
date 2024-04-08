@@ -1,6 +1,6 @@
 // import du fichier de style Header.scss spécifique au Header
-import './Header.scss';
 import { useState } from 'react';
+import './Header.scss';
 // import de l'image du logo à partir du dossier assets
 import logo from '../../assets/logo-gestinvest.svg';
 
@@ -44,7 +44,7 @@ function Header({ isConnected, openModal }: HeaderProps) {
           </li>
           {isConnected && (
             <li className="navbar-item">
-              <a className="navbar-link" href="/Dasboard">
+              <a className="navbar-link" href="/Dashboard">
                 Tableau de bord
               </a>
             </li>
