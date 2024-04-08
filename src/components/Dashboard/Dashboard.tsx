@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Dashboard.scss';
+import { GetDashboard } from '../API/dashboardAPI';
 
+type DashboardProps = {
+  uuid: string;
+};
 
-function Dashboard() {
+function Dashboard({ uuid }: DashboardProps) {
+  // Appel de la function api GET DAshboard a l'ouverture du composant
+  useEffect(() => {
+    GetDashboard(uuid);
+  }, [uuid]);
   return (
     <div className="dashboard" id="dashboard">
       <section className="summary">
@@ -13,7 +21,7 @@ function Dashboard() {
             <p>Total investi : 1975€</p>
             <p>Variation : +25% flèche+-</p>
           </div>
-        <div className="summary__part">GRAPH</div>
+          <div className="summary__part">GRAPH</div>
         </div>
       </section>
       <section className="addorsell">
