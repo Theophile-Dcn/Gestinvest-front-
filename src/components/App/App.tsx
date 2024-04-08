@@ -106,7 +106,6 @@ function App() {
           {/* fin des route a proteger */}
           <Route path="*" element={<Page404 />} />
         </Routes>
-
       </main>
       {/* Conditionnellement afficher la modal */}
       {isModalOpen && <ModalLogin closeModal={closeModal} />}

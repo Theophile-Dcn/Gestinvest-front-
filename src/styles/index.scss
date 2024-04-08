@@ -1,6 +1,10 @@
 @use 'reset';
 @use 'variables' as v;
 
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 body {
   color: v.$color;
   font-family: v.$font-family;

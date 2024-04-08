@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.scss';
-
+import AssetModal from '../AssetModal/AssetModal';
 
 function Dashboard() {
+  const [showModal, setShowModal] = useState(false);
+  const [switchModalForm, setSwitchModalForm] = useState(false);
+
+  const closeAssetModal = () => {
+    setShowModal(false);
+    setSwitchModalForm(false);
+  };
+
   return (
     <div className="dashboard" id="dashboard">
-      <section className="summary">
+      <section className="summary ">
         <h2>Portefeuille : Bourso</h2>
         <div className="summary__parts">
           <div className="summary__part">
@@ -13,16 +21,40 @@ function Dashboard() {
             <p>Total investi : 1975€</p>
             <p>Variation : +25% flèche+-</p>
           </div>
-        <div className="summary__part">GRAPH</div>
+          <div className="summary__part">GRAPH</div>
         </div>
       </section>
-      <section className="addorsell">
-        <button type="button" className="button">
-          Ajouter un actif
-        </button>
-        <button type="button" className="button">
-          Vendre un actif
-        </button>
+      <section className="assetModal">
+        <div>
+          <button
+            type="button"
+            className="button"
+            onClick={() => {
+              setShowModal(true);
+              setSwitchModalForm(true);
+            }}
+          >
+            Ajouter un actif
+          </button>
+          <button
+            type="button"
+            className="button"
+            onClick={() => {
+              setShowModal(true);
+              setSwitchModalForm(false);
+            }}
+          >
+            Vendre un actif
+          </button>
+          {showModal && (
+            <div>
+              <AssetModal
+                closeAssetModal={closeAssetModal}
+                switchModalForm={switchModalForm}
+              />
+            </div>
+          )}
+        </div>
       </section>
       <section className="assetlist">
         <h2>MES CRYPTO-MONNAIES</h2>
