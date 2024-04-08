@@ -46,8 +46,11 @@ export const login = async (email: string, password: string) => {
 
     // Stocker le token JWT dans le localStorage
     localStorage.setItem('token', data.token);
+    // stocker le uuid dans le localstorage
+    localStorage.setItem('user', data.user);
 
-    console.log(localStorage.getItem('token'));
+    console.log(`je suis le code token : ${data.token}`);
+    console.log(`je suis le code user : ${data.user}`);
 
     // Afficher une alerte pour le succès de la connexion
     alert('Login successful');

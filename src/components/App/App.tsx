@@ -12,10 +12,11 @@ import Page404 from '../Page404/Page404';
 import Account from '../Account/Account';
 import Footer from '../Footer/Footer';
 
-
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uuid, setUuid] = useState<string | null>(null);
+
   // Fonction pour ouvrir la modal
   const openModal = () => {
     setIsModalOpen(true);
@@ -39,6 +40,8 @@ function App() {
     } else {
       // Si le jeton n'existe pas, mettre isConnected à false
       setIsConnected(false);
+      // et suppression du uuid
+      localStorage.removeItem('user');
       console.log('User is not connected');
     }
   };
@@ -46,6 +49,14 @@ function App() {
   // Appel de checkToken au chargement initial de l'application
   useEffect(() => {
     checkToken();
+  }, []);
+
+  // function pour recupérer l'id utilisateur
+  useEffect(() => {
+    const storedUuid = localStorage.getItem('user');
+    if (storedUuid) {
+      setUuid(storedUuid);
+    }
   }, []);
 
   // function pour proteger
@@ -67,7 +78,7 @@ function App() {
   };
   return (
     <div className="app">
-      <Header openModal={openModal} isConnected={isConnected} />
+      <Header openModal={openModal} isConnected={isConnected} uuid={uuid} />
 
       <main>
         <Routes>
@@ -80,7 +91,7 @@ function App() {
           />
           {/* route a proteger */}
           <Route
-            path="/Account"
+            path="/Account/:uuid"
             element={
               <PrivateRoute>
                 <Account />
@@ -88,7 +99,7 @@ function App() {
             }
           />
           <Route
-            path="/AssetDetail"
+            path="/AssetDetail/:uuid"
             element={
               <PrivateRoute>
                 <AssetDetail />
@@ -96,7 +107,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard"
+            path="/Dashboard/:uuid"
             element={
               <PrivateRoute>
                 <Dashboard />
@@ -106,7 +117,6 @@ function App() {
           {/* fin des route a proteger */}
           <Route path="*" element={<Page404 />} />
         </Routes>
-
       </main>
       {/* Conditionnellement afficher la modal */}
       {isModalOpen && <ModalLogin closeModal={closeModal} />}
