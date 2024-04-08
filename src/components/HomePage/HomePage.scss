@@ -8,7 +8,6 @@
   display: flex;
   width: 100%;
   height: 90vh;
-  align-items: center;
   flex-direction: row;
 }
 
@@ -18,14 +17,23 @@
 }
 
 .side-left-homepage {
-  padding-left: 9rem;
+  padding-left: 6rem;
+  margin-top: 8rem;
 }
 .slogan {
-  color: #86a4ef;
+  // color: #86a4ef;
   font-size: v.$font-size-title;
   font-weight: 800;
-  letter-spacing: 0.2rem;
-  margin-bottom: 0.6rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(
+    to right,
+    #2c70ca,
+    #ec31e3
+  ); /* Dégradé de rouge à bleu */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 48px;
 }
 .description p {
   color: v.$color;
@@ -35,6 +43,7 @@
   line-height: 1.5;
   text-align: justify;
   margin-bottom: 1.25rem;
+  width: 89%;
 }
 
 .side-right-homepage {
@@ -48,7 +57,7 @@
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 
 @media screen and (max-width: 1215px) {
