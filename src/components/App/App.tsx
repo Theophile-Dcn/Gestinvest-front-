@@ -10,8 +10,6 @@ import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
 import Page404 from '../Page404/Page404';
 import Account from '../Account/Account';
-import Footer from '../Footer/Footer';
-
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);

@@ -23,9 +23,11 @@ export const register = async (
     alert(data.successMessage);
     return data;
   } catch (error) {
-    console.error('Error registering:', error);
-    // Afficher une alerte pour l'erreur lors de l'inscription
-    alert(error.message);
+    if (error instanceof Error) {
+      console.error(error.message);
+      // Afficher une alerte pour l'erreur lors de la connexion
+      alert(error.message);
+    }
     throw error;
   }
 };
@@ -53,9 +55,12 @@ export const login = async (email: string, password: string) => {
     alert('Login successful');
     return data;
   } catch (error) {
-    console.error('Error logging in:', error);
-    // Afficher une alerte pour l'erreur lors de la connexion
-    alert(error.message);
+    if (error instanceof Error) {
+      console.error(error.message);
+      // Afficher une alerte pour l'erreur lors de la connexion
+      alert(error.message);
+    }
+
     throw error;
   }
 };

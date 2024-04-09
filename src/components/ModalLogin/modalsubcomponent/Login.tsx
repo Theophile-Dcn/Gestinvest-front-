@@ -18,9 +18,11 @@ const Login = ({ closeModal }: LoginFormProps) => {
       closeModal();
       window.location.href = '/';
     } catch (error) {
-      console.error('Erreur lors de la connexion:', error);
-      // Gérer les erreurs de connexion
-      setErrorMessage(error.message); // Mettre à jour l'état avec le message d'erreur de l'API
+      if (error instanceof Error) {
+        console.error('Erreur lors de la connexion:', error);
+        // Gérer les erreurs de connexion
+        setErrorMessage(error.message); // Mettre à jour l'état avec le message d'erreur de l'API
+      }
     }
   };
 
