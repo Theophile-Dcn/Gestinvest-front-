@@ -43,7 +43,6 @@ function ModalLogin({ closeModal }: ModalProps) {
           closeModal={closeModal} // Passer la fonction de fermeture de la modal
           email=""
           password=""
-          error={null}
         />
       )}
       {/* Formulaire de connexion */}

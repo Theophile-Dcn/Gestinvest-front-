@@ -68,7 +68,7 @@ function Header({ isConnected, uuid, openModal }: HeaderProps) {
           className="navbar-burger button"
           onClick={handleShowLinks}
         >
-          <span className="burger-bar" />
+          <span className="burger-bar">{}</span>
         </button>
       </div>
     </header>

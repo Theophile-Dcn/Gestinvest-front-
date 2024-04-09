@@ -1,5 +1,5 @@
 // app.tsx
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Header from '../Header/Header';
@@ -10,7 +10,6 @@ import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
 import Page404 from '../Page404/Page404';
 import Account from '../Account/Account';
-import Footer from '../Footer/Footer';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);

@@ -7,5 +7,7 @@ export const header = {
   // Placer le token dans les autorisations
   Authorization: `Bearer ${token}`,
 };
+// Test sur local BDD
+export const BaseURL = 'http://localhost:3000/api/';
 
-export const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/';
+// 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/'
