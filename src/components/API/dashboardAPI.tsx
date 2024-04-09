@@ -1,10 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { BaseURL, header } from './API-info';
 
-const GetDashboard = async () => {
-  const { uuid } = useParams();
+const GetDashboard = async (uuid: string) => {
   try {
-    const response = await fetch(`${BaseURL}dashboard/user/${uuid}`, {
+    const response = await fetch(`${BaseURL}/dashboard/${uuid}`, {
       method: 'GET',
       headers: header,
     });
@@ -13,7 +12,7 @@ const GetDashboard = async () => {
     if (!response.ok) {
       throw new Error(dataGetdashboard.errorMessage);
     }
-
+    console.log(dataGetdashboard);
     return dataGetdashboard;
   } catch (error) {
     console.error('Error fetching dashboard:', error);

@@ -35,7 +35,7 @@ export const register = async (
 
 export const login = async (email: string, password: string) => {
   try {
-    const response = await fetch(`${BaseURL}auth/login`, {
+    const response = await fetch(`${BaseURL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,9 +51,6 @@ export const login = async (email: string, password: string) => {
     localStorage.setItem('token', data.token);
     // stocker le uuid dans le localstorage
     localStorage.setItem('user', data.user);
-
-    console.log(`je suis le code token : ${data.token}`);
-    console.log(`je suis le code user : ${data.user}`);
 
     // Afficher une alerte pour le succès de la connexion
     alert('Login successful');
