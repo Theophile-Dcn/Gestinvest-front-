@@ -3,9 +3,17 @@ import './Dashboard.scss';
 import AssetModal from '../AssetModal/AssetModal';
 
 function Dashboard() {
+  // State showModal utilisé pour ouvrir ou fermer la modale achat/vente
+  // L'état du state change au click sur un des boutons "ajouter" ou "vendre un actif" du Dashboard
+  // Le state est remis à false au click sur le bouton de fermeture de la modale par la fonction closeAssetModal
   const [showModal, setShowModal] = useState(false);
+  // State switchModalForm utilisé pour afficher le formulaire "achat" ou "vente" de la modale
+  // en fonction du bouton clické sur le Dashboard ou à l'intérieur de la modale
+  // Le state est remis à false au click sur le bouton de fermeture de la modale par la fonction closeAssetModal
   const [switchModalForm, setSwitchModalForm] = useState(false);
 
+  // Fonction closeAssetModal utilisée pour remettre les states showModal et switchModalForm à leur état initial
+  // au click sur le bouton fermeture de la modale (voir composant AssetModal)
   const closeAssetModal = () => {
     setShowModal(false);
     setSwitchModalForm(false);
@@ -30,8 +38,8 @@ function Dashboard() {
             type="button"
             className="button"
             onClick={() => {
-              setShowModal(true);
-              setSwitchModalForm(true);
+              setShowModal(true); // showModal = true ouvre la modale AssetModal
+              setSwitchModalForm(true); // switchModalForm = true affiche la vue "achat" de la modale
             }}
           >
             Ajouter un actif
@@ -40,8 +48,8 @@ function Dashboard() {
             type="button"
             className="button"
             onClick={() => {
-              setShowModal(true);
-              setSwitchModalForm(false);
+              setShowModal(true); // showModal = true ouvre la modale AssetModal
+              setSwitchModalForm(false); // switchModalForm = false affiche la vue "vente" de la modale
             }}
           >
             Vendre un actif

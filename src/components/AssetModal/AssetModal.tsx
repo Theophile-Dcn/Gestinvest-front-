@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
+// Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
   switchModalForm: boolean;
   closeAssetModal: () => void;
 };
 
 function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
+  // State switchForm utilisé pour changer de formulaire à l'intérieur de la modale
+  // sa valeur initiale est celle du switchModalForm fonction du choix de l'utilisateur dans le Dashboard (achat ou vente)
+  // switchForm = true affichage du formulaire "achat" ; switchForm = false affichage du formulaire "vente"
+  // Etat du state switchForm changé au click sur les boutons "achat" ou "vente"
   const [switchForm, setSwitchForm] = useState(switchModalForm);
 
   return (
@@ -20,7 +25,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         <button type="button" onClick={() => setSwitchForm(false)}>
           Vente
         </button>
-        {switchForm && (
+        {switchForm && ( // switchForm=true affichage du formulaire "achat"
           <form action="">
             <div>
               <label htmlFor="name">Nom de l&apos;actif : </label>
@@ -51,7 +56,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
             </div>
           </form>
         )}
-        {!switchForm && (
+        {!switchForm && ( // switchForm=false affichage du formulaire "vente"
           <form action="">
             <div>
               <label htmlFor="name">Nom de l&apos;actif : </label>
