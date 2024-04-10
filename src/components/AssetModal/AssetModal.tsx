@@ -35,7 +35,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitBuy(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch(`${BaseURL}/dashboard/buy`, {
+    await fetch(`${BaseURL}dashboard/buy`, {
       method: 'POST',
       headers: header,
 
