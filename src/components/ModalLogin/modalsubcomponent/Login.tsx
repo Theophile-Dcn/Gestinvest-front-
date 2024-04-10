@@ -16,7 +16,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
     try {
       await login(loginEmail, inputPassword);
       closeModal();
-      window.location.href = '/';
+      window.location.href = '/dashboard';
     } catch (error) {
       if (error instanceof Error) {
         console.error('Erreur lors de la connexion:', error);
