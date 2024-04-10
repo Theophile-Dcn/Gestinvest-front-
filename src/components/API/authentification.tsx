@@ -1,6 +1,6 @@
 // Authentication.tsx
 
-const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/auth';
+import { BaseURL } from './API-info';
 
 export const register = async (
   email: string,
@@ -8,7 +8,7 @@ export const register = async (
   confirmation: string
 ) => {
   try {
-    const response = await fetch(`${BaseURL}/signup`, {
+    const response = await fetch(`${BaseURL}auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const register = async (
 
 export const login = async (email: string, password: string) => {
   try {
-    const response = await fetch(`${BaseURL}/login`, {
+    const response = await fetch(`${BaseURL}auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
