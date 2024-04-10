@@ -2,7 +2,7 @@ import { BaseURL, header } from './API-info';
 
 const GetDashboard = async () => {
   try {
-    const response = await fetch(`${BaseURL}/dashboard/`, {
+    const response = await fetch(`${BaseURL}dashboard/`, {
       method: 'GET',
       headers: header,
     });
