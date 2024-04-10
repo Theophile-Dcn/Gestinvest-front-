@@ -111,21 +111,40 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   }, []);
 
   return (
-    <div>
-      <dialog open>
-        <button type="button" onClick={closeAssetModal}>
+    <div className="flex content-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+      <dialog
+        open
+        className="bg-[#371b4b] flex flex-col content-center p-4 m-auto xl:w-2/6 md:w-8/12 rounded-2xl"
+      >
+        <button
+          type="button"
+          onClick={closeAssetModal}
+          className="text-white text-xl text-right"
+        >
           X
         </button>
-        <button type="button" onClick={() => setSwitchForm(true)}>
-          Achat
-        </button>
-        <button type="button" onClick={() => setSwitchForm(false)}>
-          Vente
-        </button>
+        <div className="text-white text-3xl flex justify-center gap-x-16">
+          <button
+            type="button"
+            onClick={() => setSwitchForm(true)}
+            className={`${switchForm ? 'underline' : ''}`}
+          >
+            Achat
+          </button>
+          <button
+            type="button"
+            onClick={() => setSwitchForm(false)}
+            className={`${!switchForm ? 'underline' : ''}`}
+          >
+            Vente
+          </button>
+        </div>
         {switchForm && ( // switchForm=true affichage du formulaire "achat"
           <form action="" onSubmit={handleSubmitBuy}>
-            <div>
-              <label htmlFor="assetName">Nom de l&apos;actif : </label>
+            <div className="flex flex-col">
+              <label htmlFor="assetName" className="text-white  pt-4 pb-0.5">
+                Actif
+              </label>
               <input
                 list="assetNameList"
                 id="assetName"
@@ -133,14 +152,19 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                placeholder="Veuillez entrer le nom de l'actif"
+                className="text-sm p-1"
               />
               <datalist id="assetNameList">
                 {assetDataList.map((asset) => (
-                  <option key={asset.id} value={asset.name}/>))}
+                  <option key={asset.id} value={asset.name} />
+                ))}
               </datalist>
             </div>
-            <div>
-              <label htmlFor="assetNumber">Nombre de parts achetées : </label>
+            <div className="flex flex-col">
+              <label htmlFor="assetNumber" className="text-white pt-4 pb-0.5">
+                Nombre de parts
+              </label>
               <input
                 type="number"
                 id="assetNumber"
@@ -148,10 +172,14 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 value={formData.assetNumber}
                 onChange={handleChange}
                 required
+                placeholder="Veuillez entrer le nombre de parts achetées"
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="price">Prix d&apos;achat (€): </label>
+            <div className="flex flex-col">
+              <label htmlFor="price" className="text-white pt-4 pb-0.5">
+                Prix d&apos;achat (€)
+              </label>
               <input
                 type="number"
                 id="price"
@@ -159,10 +187,14 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 value={formData.price}
                 onChange={handleChange}
                 required
+                placeholder="Veuiller entrer le prix d'achat"
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="date">Date de l&apos;achat : </label>
+            <div className="flex flex-col">
+              <label htmlFor="date" className="text-white pt-4 pb-0.5">
+                Date de l&apos;achat
+              </label>
               <input
                 type="date"
                 id="date"
@@ -170,66 +202,87 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 value={formData.date}
                 onChange={handleChange}
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="fees">Frais de transaction (€) : </label>
+            <div className="flex flex-col">
+              <label htmlFor="fees" className="text-white pt-4 pb-0.5">
+                Frais de la transaction (€)
+              </label>
               <input
                 type="number"
                 id="fees"
                 name="fees"
                 value={formData.fees}
                 onChange={handleChange}
+                placeholder="Veuillez entrer le montant des frais"
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
+            <div className="flex flex-col">
               <p>Montant total de l&apos;achat (€): </p>
             </div>
             <div>
-              <input type="submit" value="Ajouter à mes actifs" />
+              <input
+                type="submit"
+                value="Ajouter à mes actifs"
+                className="text-white bg-[#9747ff] w-full py-2 rounded hover:text-black hover:bg-white"
+              />
             </div>
           </form>
         )}
         {!switchForm && ( // switchForm=false affichage du formulaire "vente"
-          <form action="" onSubmit={handleSubmitSell}>
-            <div>
-              <label htmlFor="name">Nom de l&apos;actif : </label>
+          <form action="" onSubmit={handleSubmitSell} className="flex flex-col">
+            <div className="flex flex-col">
+              <label htmlFor="name" className="text-white  pt-4 pb-0.5">
+                Actif
+              </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Veuillez entrer le nom de l'actif"
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="asset_number">
-                Nombre de parts vendues (€) :{' '}
+            <div className="flex flex-col">
+              <label htmlFor="asset_number" className="text-white  pt-4 pb-0.5">
+                Nombre de parts
               </label>
               <input
                 type="number"
                 id="quantity"
                 name="asset_number"
-                value={formData.asset_number}
+                value={formData.assetNumber}
                 onChange={handleChange}
+                placeholder="Veuillez entrer le nombre de parts vendues"
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="price">Prix de vente (€): </label>
+            <div className="flex flex-col">
+              <label htmlFor="price" className="text-white  pt-4 pb-0.5">
+                Prix de vente (€)
+              </label>
               <input
                 type="number"
                 id="price"
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
+                placeholder="Veuillez entrer le prix de vente"
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="date">Date de la vente : </label>
+            <div className="flex flex-col">
+              <label htmlFor="date" className="text-white  pt-4 pb-0.5">
+                Date de la vente
+              </label>
               <input
                 type="date"
                 id="date"
@@ -237,24 +290,33 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 value={formData.date}
                 onChange={handleChange}
                 required
+                className="text-sm p-1"
               />
             </div>
-            <div>
-              <label htmlFor="fees">Frais de transaction (€) : </label>
+            <div className="flex flex-col">
+              <label htmlFor="fees" className="text-white  pt-4 pb-0.5">
+                Frais de la transaction (€)
+              </label>
               <input
                 type="number"
                 id="fees"
                 name="fees"
                 value={formData.fees}
                 onChange={handleChange}
+                placeholder="Veuillez entrer le montant des frais"
                 required
+                className="text-sm p-1"
               />
             </div>
             <div>
               <p>Montant total de la vente : </p>
             </div>
             <div>
-              <input type="submit" value="Retirer de mes actifs" />
+              <input
+                type="submit"
+                value="Retirer de mes actifs"
+                className="text-white bg-[#9747ff] w-full py-2 rounded hover:text-black hover:bg-white"
+              />
             </div>
           </form>
         )}
