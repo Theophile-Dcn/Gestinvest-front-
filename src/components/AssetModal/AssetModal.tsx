@@ -34,7 +34,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitBuy(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch('/api/routeBuy', {
+    await fetch('/api/dashboard/buy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,14 +57,14 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         }
       })
       .catch((error) => {
-        console.error('Erreur envoi des doonées:', error);
+        console.error('Erreur envoi des données:', error);
       });
   }
 
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitSell(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch('/api/routeBuy', {
+    await fetch('/api/dashboard/sell', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         }
       })
       .catch((error) => {
-        console.error('Erreur envoi des doonées:', error);
+        console.error('Erreur envoi des données:', error);
       });
   }
 
