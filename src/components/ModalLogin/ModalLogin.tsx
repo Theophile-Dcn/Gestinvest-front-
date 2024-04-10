@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './ModalLogin.scss';
-import Register from './modalsubcomponent/Register';
 import Login from './modalsubcomponent/Login';
+import Register from './modalsubcomponent/Register';
 
 interface ModalProps {
   closeModal: () => void;
@@ -43,7 +43,6 @@ function ModalLogin({ closeModal }: ModalProps) {
           closeModal={closeModal} // Passer la fonction de fermeture de la modal
           email=""
           password=""
-          error={null}
         />
       )}
       {/* Formulaire de connexion */}
