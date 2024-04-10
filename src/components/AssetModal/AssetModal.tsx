@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BaseURL, header } from '../API/API-info';
 
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
@@ -17,11 +17,14 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // State formData utilisé pour la transmission des données du formulaire (valeurs initiales vides) sous forme d'objet
   const [formData, setFormData] = useState({
     name: '',
-    asset_number: '',
+    assetNumber: '',
     price: '',
     date: '',
     fees: '',
   });
+
+  // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
+  const [assetDataList, setAssetDataList] = useState([]);
 
   // La fonction handleChange appliquée sur tous les inputs du formulaire met à jour le state formData lorsque
   // l'utilisateur remplit le champs d'un input.
@@ -38,7 +41,6 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
     await fetch(`${BaseURL}dashboard/buy`, {
       method: 'POST',
       headers: header,
-
       body: JSON.stringify(formData),
     })
       .then((response) => {
@@ -46,7 +48,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
             name: '',
-            asset_number: '',
+            assetNumber: '',
             price: '',
             date: '',
             fees: '',
@@ -64,7 +66,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitSell(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch('http://localhost:3000/api/dashboard/sell', {
+    await fetch(`${BaseURL}dashboard/sell`, {
       method: 'POST',
       headers: header,
       body: JSON.stringify(formData),
@@ -74,7 +76,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
             name: '',
-            asset_number: '',
+            assetNumber: '',
             price: '',
             date: '',
             fees: '',
@@ -88,6 +90,25 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         console.error('Erreur envoi des données:', error);
       });
   }
+
+  // La fonction getAssetList récupère la liste des actifs (asset de notre API)
+  async function getAssetList() {
+    try {
+      const response = await fetch(`${BaseURL}dashboard/modal`, {
+        method: 'GET',
+        headers: header,
+      });
+      const data = await response.json();
+      setAssetDataList(data);
+    } catch (error) {
+      console.error('la requete a échoué', error);
+    }
+  }
+
+  // useEffect appelle la fonction getAssetList à l'ouverture du composant AssetModal
+  useEffect(() => {
+    getAssetList();
+  }, []);
 
   return (
     <div>
@@ -104,23 +125,27 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         {switchForm && ( // switchForm=true affichage du formulaire "achat"
           <form action="" onSubmit={handleSubmitBuy}>
             <div>
-              <label htmlFor="name">Nom de l&apos;actif : </label>
+              <label htmlFor="assetName">Nom de l&apos;actif : </label>
               <input
-                type="text"
-                id="name"
+                list="assetNameList"
+                id="assetName"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
               />
+              <datalist id="assetNameList">
+                {assetDataList.map((asset) => (
+                  <option key={asset.id} value={asset.name}/>))}
+              </datalist>
             </div>
             <div>
-              <label htmlFor="asset_number">Nombre de parts achetées : </label>
+              <label htmlFor="assetNumber">Nombre de parts achetées : </label>
               <input
                 type="number"
-                id="asset_number"
-                name="asset_number"
-                value={formData.asset_number}
+                id="assetNumber"
+                name="assetNumber"
+                value={formData.assetNumber}
                 onChange={handleChange}
                 required
               />
