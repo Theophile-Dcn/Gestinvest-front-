@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BaseURL, header } from '../API/API-info';
 
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
@@ -34,11 +35,10 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitBuy(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch('/api/dashboard/buy', {
+    await fetch(`${BaseURL}/dashboard/buy`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: header,
+
       body: JSON.stringify(formData),
     })
       .then((response) => {
@@ -64,11 +64,9 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // La fonction handleSubmitBuy ajoute un actif/une transaction à la BDD du l'utilisateur
   async function handleSubmitSell(event: React.FormEvent) {
     event.preventDefault(); // Evite le rechargement de la page
-    await fetch('/api/dashboard/sell', {
+    await fetch('http://localhost:3000/api/dashboard/sell', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: header,
       body: JSON.stringify(formData),
     })
       .then((response) => {
@@ -111,7 +109,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="text"
                 id="name"
                 name="name"
-                value="{formData.name}"
+                value={formData.name}
                 onChange={handleChange}
                 required
               />
@@ -122,7 +120,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="asset_number"
                 name="asset_number"
-                value="{formData.asset_number}"
+                value={formData.asset_number}
                 onChange={handleChange}
                 required
               />
@@ -133,7 +131,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="price"
                 name="price"
-                value="{formData.price}"
+                value={formData.price}
                 onChange={handleChange}
                 required
               />
@@ -144,7 +142,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="date"
                 id="date"
                 name="date"
-                value="{formData.date}"
+                value={formData.date}
                 onChange={handleChange}
                 required
               />
@@ -155,7 +153,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="fees"
                 name="fees"
-                value="{formData.fees}"
+                value={formData.fees}
                 onChange={handleChange}
                 required
               />
@@ -176,7 +174,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="text"
                 id="name"
                 name="name"
-                value="{formData.name}"
+                value={formData.name}
                 onChange={handleChange}
                 required
               />
@@ -189,7 +187,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="quantity"
                 name="asset_number"
-                value="{formData.asset_number}"
+                value={formData.asset_number}
                 onChange={handleChange}
                 required
               />
@@ -200,7 +198,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="price"
                 name="price"
-                value="{formData.price}"
+                value={formData.price}
                 onChange={handleChange}
                 required
               />
@@ -211,7 +209,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="date"
                 id="date"
                 name="date"
-                value="{formData.date}"
+                value={formData.date}
                 onChange={handleChange}
                 required
               />
@@ -222,7 +220,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="fees"
                 name="fees"
-                value="{formData.fees}"
+                value={formData.fees}
                 onChange={handleChange}
                 required
               />
