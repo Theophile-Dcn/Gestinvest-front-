@@ -1,6 +1,6 @@
 function Condition() {
   return (
-    <div className="text-left m-auto w-3/4 border rounded-lg px-3 pb-5 mt-8 md:px-10 md:pb-10 md:mt-12 md:w-3/4 lg:w-1/2  text-sm lg:text-base">
+    <div className="text-left m-auto w-3/4 border rounded-lg px-3 pb-5 my-10 md:px-10 md:pb-10 md:my-12 md:w-3/4 lg:w-1/2  text-sm lg:text-base">
       <h1 className="text-center md:text-left my-5 text-xl sm:text-2xl lg:text-center lg:text-4xl lg:my-8 text-violet-300">
         Conditions d&apos;utilisation de Gestinvest
       </h1>

@@ -1,6 +1,5 @@
 // HomePage.tsx
 import deco from '../../assets/HomePage.png';
-import Footer from '../Footer/Footer';
 import './HomePage.scss';
 
 type HomePageProps = {
@@ -43,7 +42,6 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
           alt="Illustration du site web"
         />
       </div>
-      <Footer />
     </section>
   );
 }

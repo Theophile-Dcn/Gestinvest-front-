@@ -2,7 +2,7 @@ import './Footer.scss';
 
 function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full flex justify-around items-center h-12 bg-black opacity-100 text-xs sm:text-sm">
+    <footer className="w-full flex justify-around items-center h-[6vh] bg-black opacity-100 text-xs sm:text-sm opacity-70">
       <p className="text-center flex">
         © 2024 Gestinvest.
         <span className="hidden md:block">All rights reserved.</span>

@@ -1,8 +1,9 @@
 @use '../../styles/variables' as v;
 
 .app {
+  background: v.$background-color;
 }
 
 .main {
-  height: 85vh;
+  height: 100%;
 }
