@@ -1,9 +1,8 @@
-import { useParams } from 'react-router-dom';
 import { BaseURL, header } from './API-info';
 
-const GetDashboard = async (uuid: string) => {
+const GetDashboard = async () => {
   try {
-    const response = await fetch(`${BaseURL}/dashboard/${uuid}`, {
+    const response = await fetch(`${BaseURL}/dashboard/`, {
       method: 'GET',
       headers: header,
     });

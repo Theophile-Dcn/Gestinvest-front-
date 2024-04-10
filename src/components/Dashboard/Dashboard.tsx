@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import GetDashboard from '../API/dashboardAPI';
 import './Dashboard.scss';
@@ -25,24 +24,21 @@ function Dashboard() {
   const [dashboardData, setDashboardData] = useState<DashboardProps | null>(
     null
   );
-  const { uuid } = useParams();
-
+  // function pour recuperer les donnée
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        if (uuid) {
-          const data = await GetDashboard(uuid);
-          setDashboardData(data);
-        }
+        const data = await GetDashboard();
+        setDashboardData(data);
       } catch (error) {
         console.error('Error fetching dashboard:', error);
       }
     };
 
     fetchDashboardData();
-  }, [uuid]);
+  }, []);
+  // function pour afficher  les asset information par categorie
 
-  // Function to group assets by category
   const groupAssetsByCategory = () => {
     if (!dashboardData || !dashboardData.assetUserInformation) return {};
 
@@ -79,53 +75,44 @@ function Dashboard() {
           Vendre un actif
         </button>
       </section>
-      {dashboardData &&
-      dashboardData.assetUserInformation &&
-      Object.keys(groupAssetsByCategory()).length > 0 ? (
-        <div className="dashboard" id="dashboard">
-          {Object.entries(groupAssetsByCategory()).map(([category, assets]) => (
-            <section className="assetlist" key={category}>
-              <h2>{category}</h2>
-              <div className="assetlist__title">
-                <p>Symbole</p>
-                <p>Nom</p>
-                <p>Valeur de l'actif</p>
-                <p>Possédé</p>
-                <p>Valeur totale</p>
-              </div>
-              <ul>
-                {assets.map((asset, index) => (
-                  <li className="assetlist__item" key={index}>
-                    <p>{asset.symbol}</p>
-                    <p>{asset.assetName}</p>
-                    <p
-                      className={
-                        asset.assetPrice > 0 ? 'greenPrice' : 'redPrice'
-                      }
-                    >
-                      {asset.assetPrice} €
-                    </p>
-                    <p>{asset.quantity}</p>
-                    <p
-                      className={
-                        asset.totalEstimatedValueByAsset > 0
-                          ? 'greenPrice'
-                          : 'redPrice'
-                      }
-                    >
-                      {asset.totalEstimatedValueByAsset} €
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-      ) : (
-        <p className="no-data">Aucune donnée disponible pour le moment.</p>
-      )}{' '}
+      <div className="dashboard" id="dashboard">
+        {Object.entries(groupAssetsByCategory()).map(([category, assets]) => (
+          <section className="assetlist" key={category}>
+            <h2>{category}</h2>
+            <div className="assetlist__title">
+              <p>Symbole</p>
+              <p>Nom</p>
+              <p>Valeur de l'actif</p>
+              <p>Possédé</p>
+              <p>Valeur totale</p>
+            </div>
+            <ul>
+              {assets.map((asset, index) => (
+                <li className="assetlist__item" key={index}>
+                  <p>{asset.symbol}</p>
+                  <p>{asset.assetName}</p>
+                  <p
+                    className={asset.assetPrice > 0 ? 'greenPrice' : 'redPrice'}
+                  >
+                    {asset.assetPrice} €
+                  </p>
+                  <p>{asset.quantity}</p>
+                  <p
+                    className={
+                      asset.totalEstimatedValueByAsset > 0
+                        ? 'greenPrice'
+                        : 'redPrice'
+                    }
+                  >
+                    {asset.totalEstimatedValueByAsset} €
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
-
 export default Dashboard;

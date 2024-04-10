@@ -4,11 +4,11 @@ import logo from '../../assets/logo-gestinvest.svg';
 
 type HeaderProps = {
   isConnected: boolean;
-  uuid: string | null;
+
   openModal: () => void;
 };
 
-function Header({ isConnected, uuid, openModal }: HeaderProps) {
+function Header({ isConnected, openModal }: HeaderProps) {
   const [showLinks, setShowLinks] = useState(false);
 
   const handleShowLinks = () => {
@@ -17,7 +17,6 @@ function Header({ isConnected, uuid, openModal }: HeaderProps) {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
     window.location.href = '/';
   };
 
@@ -38,14 +37,14 @@ function Header({ isConnected, uuid, openModal }: HeaderProps) {
           </li>
           {isConnected && (
             <li className="navbar-item">
-              <a className="navbar-link" href={`/Dashboard/${uuid}`}>
+              <a className="navbar-link" href="/Dashboard">
                 Tableau de bord
               </a>
             </li>
           )}
           {isConnected && (
             <li className="navbar-item">
-              <a className="navbar-link" href={`/Account/${uuid}`}>
+              <a className="navbar-link" href="/Account">
                 Mon compte
               </a>
             </li>

@@ -14,7 +14,6 @@ import Account from '../Account/Account';
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [uuid, setUuid] = useState<string | null>(null);
 
   // Fonction pour ouvrir la modal
   const openModal = () => {
@@ -39,8 +38,6 @@ function App() {
     } else {
       // Si le jeton n'existe pas, mettre isConnected à false
       setIsConnected(false);
-      // et suppression du uuid
-      localStorage.removeItem('user');
       console.log('User is not connected');
     }
   };
@@ -48,14 +45,6 @@ function App() {
   // Appel de checkToken au chargement initial de l'application
   useEffect(() => {
     checkToken();
-  }, []);
-
-  // function pour recupérer l'id utilisateur
-  useEffect(() => {
-    const storedUuid = localStorage.getItem('user');
-    if (storedUuid) {
-      setUuid(storedUuid);
-    }
   }, []);
 
   // function pour proteger
@@ -77,7 +66,7 @@ function App() {
   };
   return (
     <div className="app">
-      <Header openModal={openModal} isConnected={isConnected} uuid={uuid} />
+      <Header openModal={openModal} isConnected={isConnected} />
 
       <main>
         <Routes>
@@ -90,7 +79,7 @@ function App() {
           />
           {/* route a proteger */}
           <Route
-            path="/Account/:uuid"
+            path="/Account"
             element={
               <PrivateRoute>
                 <Account />
@@ -98,7 +87,7 @@ function App() {
             }
           />
           <Route
-            path="/AssetDetail/:uuid"
+            path="/AssetDetail"
             element={
               <PrivateRoute>
                 <AssetDetail />
@@ -106,7 +95,7 @@ function App() {
             }
           />
           <Route
-            path="/Dashboard/:uuid"
+            path="/Dashboard"
             element={
               <PrivateRoute>
                 <Dashboard />
