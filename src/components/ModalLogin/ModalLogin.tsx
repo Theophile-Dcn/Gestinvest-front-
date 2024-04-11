@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './ModalLogin.scss';
-import Register from './modalsubcomponent/Register';
 import Login from './modalsubcomponent/Login';
+import Register from './modalsubcomponent/Register';
 
 interface ModalProps {
   closeModal: () => void;
