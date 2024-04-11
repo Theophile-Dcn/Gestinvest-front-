@@ -10,7 +10,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
   return (
     // Affichage du bouton "Connexion" si l'utilisateur n'est pas connecté (!isConnected)
 
-    <section className="flex h-[84vh] justify-center items-center relative ">
+    <section className="flex h-lvh justify-center items-center relative ">
       <div className="text-center absolute md:top-10 lg:w-3/4 lg:top-24 lg:left-8 lg:text-left">
         <h1 className="bg-gradient-to-r from-blue-400  to-red-400 inline-block text-transparent bg-clip-text text-center m-auto font-bold text-2xl md:text-4xl lg:text-4xl lg:text-left xl:text-5xl ">
           Suivez le rythme.
@@ -18,10 +18,10 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
           Optimisez vos rendements.
         </h1>
         <div className="m-auto w-3/4 lg:m-0">
-          <h2 className="my-2 font-semibold md:text-2xl lg:text-xl lg:my-4 xl:text-3xl">
+          <h2 className=" font-semibold py-6 md:text-2xl lg:text-xl lg:my-4 xl:text-3xl">
             Votre patrimoine, notre expertise.
           </h2>
-          <p className="lg:text-base lg:w-full xl:text-lg xl:w-5/6">
+          <p className="text-md lg:text-base lg:w-full xl:text-lg xl:w-5/6">
             GestInvest vous offre une plateforme complète pour suivre vos actifs
             et analyser leur performance. GestInvest vous donne les moyens de
             réaliser vos ambitions financières. Explorez de nouvelles
