@@ -5,6 +5,7 @@ import '../ModalLogin.scss';
 interface RegisterProps {
   email: string;
   password: string;
+
   closeModal: () => void;
 }
 
