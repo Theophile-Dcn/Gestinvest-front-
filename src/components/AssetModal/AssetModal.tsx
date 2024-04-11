@@ -248,6 +248,11 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 required
                 className="text-sm p-1"
               />
+              <datalist id="assetNameList">
+                {assetDataList.map((asset) => (
+                  <option key={asset.id} value={asset.name} />
+                ))}
+              </datalist>
             </div>
             <div className="flex flex-col">
               <label htmlFor="asset_number" className="text-white  pt-4 pb-0.5">
