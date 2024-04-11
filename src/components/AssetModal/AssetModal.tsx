@@ -5,11 +5,12 @@ import { BaseURL, header } from '../API/API-info';
 type AssetModalProps = {
   switchModalForm: boolean;
   closeAssetModal: () => void;
+  allAsset: Asset[];
 };
 
 interface Asset {
-  id: number;
-  name: string;
+  asset_name: string;
+  category_name: string;
 }
 
 function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
@@ -21,15 +22,34 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
 
   // State formData utilisé pour la transmission des données du formulaire (valeurs initiales vides) sous forme d'objet
   const [formData, setFormData] = useState({
-    name: '',
-    assetNumber: '',
+    asset_name: '',
+    asset_number: '',
     price: '',
     date: '',
     fees: '',
   });
-
   // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
-  const [assetDataList, setAssetDataList] = useState<Asset[]>([]);
+  const [assetDataList, setAssetDataList] = useState<Asset | unknown>(null);
+  // La fonction getAssetList récupère la liste des actifs (asset de notre API)
+  async function getAssetList() {
+    try {
+      const response = await fetch(`${BaseURL}dashboard/modal`, {
+        method: 'GET',
+        headers: header,
+      });
+      const data = await response.json();
+      setAssetDataList(data);
+      console.log(setAssetDataList);
+      console.log(data);
+    } catch (error) {
+      console.error('la requete a échoué', error);
+    }
+  }
+
+  // useEffect appelle la fonction getAssetList à l'ouverture du composant AssetModal
+  useEffect(() => {
+    getAssetList();
+  }, []);
 
   // La fonction handleChange appliquée sur tous les inputs du formulaire met à jour le state formData lorsque
   // l'utilisateur remplit le champs d'un input.
@@ -52,8 +72,8 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         if (response.ok) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
-            name: '',
-            assetNumber: '',
+            asset_name: '',
+            asset_number: '',
             price: '',
             date: '',
             fees: '',
@@ -80,8 +100,8 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         if (response.ok) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
-            name: '',
-            assetNumber: '',
+            asset_name: '',
+            asset_number: '',
             price: '',
             date: '',
             fees: '',
@@ -95,25 +115,6 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         console.error('Erreur envoi des données:', error);
       });
   }
-
-  // La fonction getAssetList récupère la liste des actifs (asset de notre API)
-  async function getAssetList() {
-    try {
-      const response = await fetch(`${BaseURL}dashboard/modal`, {
-        method: 'GET',
-        headers: header,
-      });
-      const data = await response.json();
-      setAssetDataList(data);
-    } catch (error) {
-      console.error('la requete a échoué', error);
-    }
-  }
-
-  // useEffect appelle la fonction getAssetList à l'ouverture du composant AssetModal
-  useEffect(() => {
-    getAssetList();
-  }, []);
 
   return (
     <div className="flex content-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
@@ -147,36 +148,40 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         {switchForm && ( // switchForm=true affichage du formulaire "achat"
           <form action="" onSubmit={handleSubmitBuy}>
             <div className="flex flex-col">
-              <label htmlFor="assetName" className="text-white  pt-4 pb-0.5">
+              <label htmlFor="asset_name" className="text-white  pt-4 pb-0.5">
                 Actif
               </label>
               <input
                 list="assetNameList"
-                id="assetName"
-                name="name"
-                value={formData.name}
+                id="asset_name"
+                name="asset_name"
+                value={formData.asset_name}
                 onChange={handleChange}
                 required
                 placeholder="Veuillez entrer le nom de l'actif"
                 className="text-sm p-1"
               />
               <datalist id="assetNameList">
-                {assetDataList.map((asset) => (
-                  <option key={asset.id} value={asset.name}>
-                    {}
-                  </option>
-                ))}
+                {assetDataList && assetDataList.allAsset && (
+                  <datalist id="assetNameList">
+                    {assetDataList.allAsset.map(
+                      (asset: { asset_name: string }, index: number) => (
+                        <option key={index} value={asset.asset_name}></option>
+                      )
+                    )}
+                  </datalist>
+                )}
               </datalist>
             </div>
             <div className="flex flex-col">
-              <label htmlFor="assetNumber" className="text-white pt-4 pb-0.5">
+              <label htmlFor="asset_number" className="text-white pt-4 pb-0.5">
                 Nombre de parts
               </label>
               <input
                 type="number"
-                id="assetNumber"
-                name="assetNumber"
-                value={formData.assetNumber}
+                id="asset_number"
+                name="asset_number"
+                value={formData.asset_number}
                 onChange={handleChange}
                 required
                 placeholder="Veuillez entrer le nombre de parts achetées"
@@ -242,25 +247,29 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
         {!switchForm && ( // switchForm=false affichage du formulaire "vente"
           <form action="" onSubmit={handleSubmitSell} className="flex flex-col">
             <div className="flex flex-col">
-              <label htmlFor="name" className="text-white  pt-4 pb-0.5">
+              <label htmlFor="asset_name" className="text-white  pt-4 pb-0.5">
                 Actif
               </label>
               <input
                 type="text"
                 id="name"
-                name="name"
-                value={formData.name}
+                name="asset_name"
+                value={formData.asset_name}
                 onChange={handleChange}
                 placeholder="Veuillez entrer le nom de l'actif"
                 required
                 className="text-sm p-1"
               />
               <datalist id="assetNameList">
-                {assetDataList.map((asset) => (
-                  <option key={asset.id} value={asset.name}>
-                    {}
-                  </option>
-                ))}
+                {assetDataList && assetDataList.allAsset && (
+                  <datalist id="assetNameList">
+                    {assetDataList.allAsset.map(
+                      (asset: { asset_name: string }, index: number) => (
+                        <option key={index} value={asset.asset_name}></option>
+                      )
+                    )}
+                  </datalist>
+                )}
               </datalist>
             </div>
             <div className="flex flex-col">
@@ -271,7 +280,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 type="number"
                 id="quantity"
                 name="asset_number"
-                value={formData.assetNumber}
+                value={formData.asset_number}
                 onChange={handleChange}
                 placeholder="Veuillez entrer le nombre de parts vendues"
                 required
