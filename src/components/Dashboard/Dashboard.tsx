@@ -20,7 +20,6 @@ interface AssetUserInformation {
   totalInvestByAsset: number;
   totalEstimatedValueByAsset: number;
   assetCategory: string;
-  assetName: string;
   assetPrice: number;
   gainOrLossTotalByAsset: string;
 }
@@ -92,33 +91,55 @@ function Dashboard() {
   };
 
   return (
-    <div className="dashboard" id="dashboard">
-      <section className="summary">
-        <h2>Mon Portefeuille</h2>
+    <div
+      className="flex flex-col justify-center m-auto p-4 sm:w-5/6 lg:w-3/5 min-h-screen"
+      id="dashboard"
+    >
+      <section className="items-center border border-cyan-50 rounded-3xl p-8 my-6  bg-[#ffffff0d]/5">
+        <h2 className="text-lg uppercase font-bold mb-6 sm:text-center sm:text-xl md:text-2xl md:mb-10 xl:text-3xl">
+          Mon Portefeuille
+        </h2>
 
-        <div className="summary__parts">
-          <div className="summary__part">
+        <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
+          <div>
             {/* Affichage des détails du résumé */}
 
-            <div>
-              <p>Total investi : {dashboardData?.totalInvestment} €</p>
-              <p>Valeur estimée : {dashboardData?.totalEstimatePortfolio} €</p>
+            <div className="flex flex-col sm:gap-2 md:gap-4">
+              <p className="flex gap-8 md:text-xl xl:text-2xl">
+                Total investi :{' '}
+                <span className="font-bold block">
+                  {dashboardData?.totalInvestment} €
+                </span>
+              </p>
+              <p className="flex gap-8 md:text-xl xl:text-2xl">
+                Valeur estimée :{' '}
+                <span className="font-bold block">
+                  {dashboardData?.totalEstimatePortfolio} €
+                </span>
+              </p>
 
               <p
+                className="flex gap-8 md:text-xl xl:text-2xl"
                 style={{
                   color: GetColorFolio(
                     dashboardData?.gainOrLossTotalPortfolio ?? ''
                   ),
                 }}
               >
-                Gain/Perte : {dashboardData?.gainOrLossMoney} €
+                Gain/Perte :{' '}
+                <span className="font-bold block">
+                  {dashboardData?.gainOrLossMoney} €
+                </span>
               </p>
-              <p>
-                Pourcentage de gain/perte : {dashboardData?.gainOrLossPourcent}%
+              <p className="flex gap-8 md:text-xl xl:text-2xl">
+                Pourcentage de gain/perte :{' '}
+                <span className="font-bold block">
+                  {dashboardData?.gainOrLossPourcent}%
+                </span>
               </p>
             </div>
           </div>
-          <div className="summary__part">
+          <div className="flex flex-col items-center justify-center">
             <p>
               Pourcentage d&apos;investissement en crypto :
               {dashboardData?.cryptoPourcent}%
@@ -132,7 +153,7 @@ function Dashboard() {
       </section>
 
       <section className="assetModal">
-        <div>
+        <div className="flex justify-center gap-4">
           <button
             type="button"
             className="button"
@@ -166,22 +187,26 @@ function Dashboard() {
 
       {/* rangement par categorie */}
       {getAssetCategories().map((category) => (
-        <section className="assetlist" key={category}>
-          <h2>{category}</h2>
-          <div className="assetlist__title">
-            <p>Symbole</p>
-            <p>Nom</p>
-            <p>Valeur de l&apos;actif</p>
-            <p>Possédé</p>
-            <p>Valeur total</p>
+        <section className="p-2 mt-10" key={category}>
+          <h2 className="text-sm uppercase font-bold mb-6 sm:text-base md:text-lg lg:text-xl">
+            {category}
+          </h2>
+          <div className="flex justify-around text-xs text-center p-2 sm:text-sm md:text-base">
+            <p className='className="w-1/4"'>Symbole</p>
+            <p className='className="w-1/4"'>Valeur de l&apos;actif</p>
+            <p className='className="w-1/4"'>Possédé</p>
+            <p className='className="w-1/4"'>Valeur total</p>
           </div>
           <ul>
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
-              <li className="assetlist__item" key={asset.symbol}>
-                <p>{asset.symbol}</p>
-                <p>{asset.assetName}</p>
+              <li
+                className="flex justify-around text-center  border-cyan-50 rounded-3xl p-2 my-2 border bg-[#ffffff0d]/10  text-xs md:text-sm lg:text-base"
+                key={asset.symbol}
+              >
+                <p className="w-1/4">{asset.symbol}</p>
                 <p
+                  className="w-1/4"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
@@ -189,8 +214,9 @@ function Dashboard() {
                   {asset.assetPrice} €
                 </p>
 
-                <p>{asset.quantity}</p>
+                <p className="w-1/4">{asset.quantity}</p>
                 <p
+                  className="w-1/4"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
