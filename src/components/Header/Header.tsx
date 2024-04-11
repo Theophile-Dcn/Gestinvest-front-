@@ -83,8 +83,9 @@ function Header({ isConnected, openModal }: HeaderProps) {
           )}
           <div />
         </div>
-        <div className="h-full flex justify-center">
+        <div className="h-full flex justify-center lg:hidden">
           <button
+            aria-label="hamburger menu"
             type="button"
             onClick={handleShowlinks}
             className="relative group"

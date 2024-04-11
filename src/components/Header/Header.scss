@@ -44,7 +44,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1215px) {
+@media screen and (max-width: 1024px) {
   .menu {
     padding: 1rem 4rem 1rem 2rem;
   }
@@ -58,7 +58,6 @@
     bottom: 0;
     width: 0;
     height: 100vh;
-    padding: 2rem;
     visibility: hidden;
     background-color: #141314;
     gap: 0;
@@ -84,7 +83,6 @@
   }
 
   .navbar-link {
-    display: block;
     font-size: 5vw;
     padding: 2rem;
   }
