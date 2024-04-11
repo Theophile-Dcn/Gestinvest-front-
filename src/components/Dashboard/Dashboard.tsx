@@ -78,7 +78,7 @@ function Dashboard() {
   return (
     <div className="dashboard" id="dashboard">
       <section className="summary">
-        <h2>Portefeuille : Bourso</h2>
+        <h2>Mon Portefeuille</h2>
         <div className="summary__parts">
           <div className="summary__part">
             {/* Affichage des détails du résumé */}
