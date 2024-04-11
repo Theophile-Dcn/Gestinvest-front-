@@ -7,6 +7,11 @@ type AssetModalProps = {
   closeAssetModal: () => void;
 };
 
+interface Asset {
+  id: number;
+  name: string;
+}
+
 function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   // State switchForm utilisé pour changer de formulaire à l'intérieur de la modale
   // sa valeur initiale est celle du switchModalForm fonction du choix de l'utilisateur dans le Dashboard (achat ou vente)
@@ -24,7 +29,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   });
 
   // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
-  const [assetDataList, setAssetDataList] = useState([]);
+  const [assetDataList, setAssetDataList] = useState<Asset[]>([]);
 
   // La fonction handleChange appliquée sur tous les inputs du formulaire met à jour le state formData lorsque
   // l'utilisateur remplit le champs d'un input.
@@ -157,7 +162,9 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
               />
               <datalist id="assetNameList">
                 {assetDataList.map((asset) => (
-                  <option key={asset.id} value={asset.name} />
+                  <option key={asset.id} value={asset.name}>
+                    {}
+                  </option>
                 ))}
               </datalist>
             </div>
@@ -250,7 +257,9 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
               />
               <datalist id="assetNameList">
                 {assetDataList.map((asset) => (
-                  <option key={asset.id} value={asset.name} />
+                  <option key={asset.id} value={asset.name}>
+                    {}
+                  </option>
                 ))}
               </datalist>
             </div>
