@@ -1,10 +1,7 @@
-
 import { useEffect, useState } from 'react';
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
-
-
 
 interface DashboardProps {
   totalInvestment: number;
@@ -32,7 +29,7 @@ function Dashboard() {
   const [dashboardData, setDashboardData] = useState<DashboardProps | null>(
     null
   );
- // State showModal utilisé pour ouvrir ou fermer la modale achat/vente
+  // State showModal utilisé pour ouvrir ou fermer la modale achat/vente
   // L'état du state change au click sur un des boutons "ajouter" ou "vendre un actif" du Dashboard
   // Le state est remis à false au click sur le bouton de fermeture de la modale par la fonction closeAssetModal
   const [showModal, setShowModal] = useState(false);
@@ -55,13 +52,13 @@ function Dashboard() {
     fetchDashboardData();
   }, []);
 
-   // Fonction closeAssetModal utilisée pour remettre les states showModal et switchModalForm à leur état initial
+  // Fonction closeAssetModal utilisée pour remettre les states showModal et switchModalForm à leur état initial
   // au click sur le bouton fermeture de la modale (voir composant AssetModal)
   const closeAssetModal = () => {
     setShowModal(false);
     setSwitchModalForm(false);
-     };
-    
+  };
+
   // Fonction pour récupérer les catégories d'actifs disponibles
   const getAssetCategories = () => {
     if (!dashboardData) return [];
@@ -92,12 +89,10 @@ function Dashboard() {
       return 'green';
     }
     return 'red';
-
- 
+  };
 
   return (
     <div className="dashboard" id="dashboard">
-
       <section className="summary">
         <h2>Mon Portefeuille</h2>
 
@@ -133,7 +128,6 @@ function Dashboard() {
               {dashboardData?.stockPourcent}%
             </p>
           </div>
-
         </div>
       </section>
 
@@ -168,7 +162,6 @@ function Dashboard() {
             </div>
           )}
         </div>
-
       </section>
 
       {/* rangement par categorie */}
@@ -189,14 +182,18 @@ function Dashboard() {
                 <p>{asset.symbol}</p>
                 <p>{asset.assetName}</p>
                 <p
-                  style={{ color: GetcolorAsset(asset.gainOrLossTotalByAsset) }}
+                  style={{
+                    color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                  }}
                 >
                   {asset.assetPrice} €
                 </p>
 
                 <p>{asset.quantity}</p>
                 <p
-                  style={{ color: GetcolorAsset(asset.gainOrLossTotalByAsset) }}
+                  style={{
+                    color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                  }}
                 >
                   {asset.totalEstimatedValueByAsset} €
                 </p>
@@ -208,4 +205,5 @@ function Dashboard() {
     </div>
   );
 }
+
 export default Dashboard;
