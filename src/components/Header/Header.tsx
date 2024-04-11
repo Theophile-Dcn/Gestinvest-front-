@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './Header.scss';
 import logo from '../../assets/logo-gestinvest.svg';
+import './Header.scss';
 import Hamburger from './HeaderSubComponent/Hamberger';
 
 type HeaderProps = {
