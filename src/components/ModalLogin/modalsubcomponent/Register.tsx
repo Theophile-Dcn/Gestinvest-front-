@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { register } from '../../API/authentification'; // Importer la fonction d'authentification
-import '../ModalLogin.scss';
+// import '../ModalLogin.scss';
 
 interface RegisterProps {
   email: string;
@@ -77,23 +77,29 @@ function Register({ email, password, closeModal }: RegisterProps) {
 
   return (
     <form onSubmit={handleRegisterSubmit} className="register">
-      <div className="center-element">
-        <label htmlFor="email">E-mail</label>
+      <div className="flex flex-col justify-center p-4">
+        <label className="pt-2 pb-2 text-white" htmlFor="email">
+          E-mail
+        </label>
         <input
+          className="rounded-md p-1"
           type="email"
           id="email"
           name="email"
-          placeholder="Veuillez entrer votre adresse e-mail"
+          placeholder="js4Life@gmail.com"
           required
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
         />
-        <label htmlFor="password">Mot de passe</label>
+        <label className="pt-4 pb-2 text-white" htmlFor="password">
+          Mot de passe
+        </label>
         <input
+          className="rounded-md p-1"
           type="password"
           id="password"
           name="password"
-          placeholder="Veuillez entrer le mot de passe"
+          placeholder="*********"
           required
           value={registerPassword}
           autoComplete="new-password"
@@ -102,9 +108,16 @@ function Register({ email, password, closeModal }: RegisterProps) {
             handlePasswordChange(e.target.value); // Valider le mot de passe par rapport à la regex
           }}
         />
-        {passwordError && <p className="error-message">{passwordError}</p>}
-        <label htmlFor="confirm-password">Confirmation du mot de passe</label>
+        {passwordError && (
+          <p className="error-message text-red-600 pt-4 text-xs xl:text-sm">
+            {passwordError}
+          </p>
+        )}
+        <label className="pt-4 pb-2 text-white " htmlFor="confirm-password">
+          Confirmation du mot de passe
+        </label>
         <input
+          className="rounded-md p-1"
           type="password"
           id="confirm-password"
           name="confirm-password"
@@ -112,16 +125,18 @@ function Register({ email, password, closeModal }: RegisterProps) {
             setInputconfirmation(e.target.value);
             handleConfirmPasswordChange(e.target.value); // Valider la correspondance des mots de passe
           }}
-          placeholder="Veuillez confirmer le mot de passe"
+          placeholder="*********"
           required
           autoComplete="new-password"
           value={inputconfirmation}
         />
         {confirmPasswordError && (
-          <p className="error-message">{confirmPasswordError}</p>
+          <p className="error-message  text-red-600 pt-4 text-xs xl:text-sm">
+            {confirmPasswordError}
+          </p>
         )}
         <button
-          className="valid-button"
+          className="valid-button pt-6 text-white "
           type="submit"
           disabled={isSubmitDisabled}
         >

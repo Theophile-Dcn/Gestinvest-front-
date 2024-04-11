@@ -5,6 +5,8 @@ export default {
     extend: {
       colors: {
         buttonColor: '#9747ff',
+        backgroundColorModal: '#371b4b',
+        
       },
     },
   },
