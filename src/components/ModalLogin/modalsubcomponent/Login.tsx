@@ -28,30 +28,49 @@ const Login = ({ closeModal }: LoginFormProps) => {
 
   return (
     <form onSubmit={handleLoginSubmit} className="login">
-      <div className="center-element">
-        <label htmlFor="login-email">E-mail</label>
+      <div className="flex flex-col justify-center items-center p-4">
+        <label
+          className="pt-4 pb-2 text-white w-full text-start"
+          htmlFor="login-email"
+        >
+          E-mail
+        </label>
         <input
+          className="rounded-md p-1 w-full"
           type="email"
           id="login-email"
           name="login-email"
-          placeholder="Veuillez entrer votre adresse e-mail"
+          placeholder="js4Life@gmail.com"
           required
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
         />
-        <label htmlFor="login-password">Mot de passe</label>
+        <label
+          className="pt-4 pb-2 text-white w-full text-start"
+          htmlFor="login-password"
+        >
+          Mot de passe
+        </label>
         <input
+          className="rounded-md p-1 w-full"
           type="password"
           id="login-password"
           name="login-password"
-          placeholder="Veuillez entrer le mot de passe"
+          placeholder="*********"
           required
           value={inputPassword}
           onChange={(e) => setInputPassword(e.target.value)}
         />
         {/* Affichage du message d'erreur de l'API */}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button className="valid-button" type="submit">
+        {errorMessage && (
+          <p className="error-message  text-red-600 font text-xs xl:text-sm">
+            {errorMessage}
+          </p>
+        )}
+        <button
+          className="w-2/4 valid-button p-2 mt-6 hover:border-[#64a4f7]   hover:bg-[#64a4f7] hover:text-black text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
+          type="submit"
+        >
           Se connecter
         </button>
       </div>

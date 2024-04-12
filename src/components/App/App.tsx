@@ -13,9 +13,11 @@ import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
 import './App.scss';
 
+
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Fonction pour ouvrir la modal
   const openModal = () => {
     setIsModalOpen(true);

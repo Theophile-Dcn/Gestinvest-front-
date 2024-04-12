@@ -3,6 +3,7 @@ export default {
   content: ['./index.html', './src/**/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+
       backgroundColor: {
         // Ajoute ton nouveau background color ici
         'custom-purple': '#9747ff',
@@ -11,4 +12,5 @@ export default {
     },
   },
   plugins: [],
+
 };

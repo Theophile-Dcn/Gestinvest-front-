@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // Authentication.tsx
 
 import { BaseURL } from './API-info';
@@ -48,8 +49,6 @@ export const login = async (email: string, password: string) => {
 
     // Stocker le token JWT dans le localStorage
     localStorage.setItem('token', data.token);
-
-    console.log(localStorage.getItem('token'));
 
     // Afficher une alerte pour le succès de la connexion
     alert('Login successful');
