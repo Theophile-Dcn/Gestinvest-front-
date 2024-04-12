@@ -1,5 +1,5 @@
 // HomePage.tsx
-import './HomePage.scss';
+// import './HomePage.scss';
 
 type HomePageProps = {
   isConnected: boolean;
@@ -10,18 +10,18 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
   return (
     // Affichage du bouton "Connexion" si l'utilisateur n'est pas connecté (!isConnected)
 
-    <section className="flex h-lvh justify-center items-center relative ">
-      <div className="text-center absolute md:top-10 lg:w-3/4 lg:top-24 lg:left-8 lg:text-left">
-        <h1 className="bg-gradient-to-r from-blue-400  to-red-400 inline-block text-transparent bg-clip-text text-center m-auto font-bold text-2xl md:text-4xl lg:text-4xl lg:text-left xl:text-5xl ">
+    <section className="flex m-auto h-[90vh] relative p-12 lg:w-5/6 2xl:w-4/5">
+      <div className="flex flex-col justify-center items-center sm:items-start md:w-5/6">
+        <h1 className="text-center bg-gradient-to-r from-blue-400  to-red-400 text-transparent bg-clip-text font-bold text-3xl sm:text-start md:text-4xl lg:text-4xl lg:text-left xl:text-5xl ">
           Suivez le rythme.
           <br />
           Optimisez vos rendements.
         </h1>
-        <div className="m-auto w-3/4 lg:m-0">
-          <h2 className=" font-semibold py-6 md:text-2xl lg:text-xl lg:my-4 xl:text-3xl">
+        <div className="lg:m-0 ">
+          <h2 className="text-center uppercase font-semibold py-6 sm:text-start md:text-2xl lg:text-xl lg:my-4 xl:text-3xl">
             Votre patrimoine, notre expertise.
           </h2>
-          <p className="text-md lg:text-base lg:w-full xl:text-lg xl:w-5/6">
+          <p className="text-center text-md lg:text-base lg:w-full sm:text-start xl:text-lg xl:w-5/6">
             GestInvest vous offre une plateforme complète pour suivre vos actifs
             et analyser leur performance. GestInvest vous donne les moyens de
             réaliser vos ambitions financières. Explorez de nouvelles
@@ -31,7 +31,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
 
         {!isConnected && (
           <button
-            className="hover:bg-gradient-to-r from-blue-500  to-red-400 hover:inline-block hover:text-transparent hover:bg-clip-text shadow-lg shadow-indigo-500/30 text-center m-8 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
+            className="hover:bg-indigo-400/80 hover:text-white hover:border-indigo-400 shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
             type="button"
             onClick={openModal}
           >
@@ -39,22 +39,13 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
           </button>
         )}
       </div>
-      {/* <div className="mockup-phone absolute right-48">
-        <div className="camera" />
-        <div className="display">
-          <div className="artboard artboard-demo phone-1">
-            <img
-              className=""
-              src="../src/assets/TableaudebordMobile.png"
-              alt="Illustration du site web"
-            />
-          </div>
-        </div>
-      </div> */}
-
-      {/* <div className="side-right-homepage">
-
-      </div> */}
+      <div className="hidden overflow-hidden md:flex w-3/6">
+        <img
+          className="w-5/6 opacity-80 m-auto"
+          src="../src/assets/Gestinvest-dashboard-image.png"
+          alt=""
+        />
+      </div>
     </section>
   );
 }
