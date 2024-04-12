@@ -5,6 +5,7 @@ import { register } from '../../API/authentification'; // Importer la fonction d
 interface RegisterProps {
   email: string;
   password: string;
+
   closeModal: () => void;
 }
 

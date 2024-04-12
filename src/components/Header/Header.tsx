@@ -1,6 +1,10 @@
 import { useState } from 'react';
+
 import { FaTimes, FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+
+import './Header.scss';
+
 import logo from '../../assets/logo-gestinvest.svg';
 
 type HeaderProps = {
@@ -9,14 +13,17 @@ type HeaderProps = {
   openModal: () => void;
 };
 
+
 function Nav({ isConnected, openModal }: HeaderProps) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.href = '/';
   };
+
 
   // Classes pour l'animation du menu mobile
   const mobileMenuAnimationClasses = click
