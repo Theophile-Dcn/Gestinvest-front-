@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { FaTimes, FaUser } from 'react-icons/fa';
+import { FaPowerOff, FaTimes, FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 // import './Header.scss';
@@ -24,8 +23,8 @@ function Nav({ isConnected, openModal }: HeaderProps) {
 
   // Classes pour l'animation du menu mobile
   const mobileMenuAnimationClasses = click
-    ? 'lg:hidden absolute top-0 w-full right-0 bg-black z-40 transition-transform transform translate-x-0 '
-    : 'lg:hidden hidden top-0 w-full bg-black transition-transform transform translate-x-full';
+    ? 'lg:hidden absolute top-0 w-full right-0 bg-[#101010] z-40 transition-transform transform translate-x-0 '
+    : 'lg:hidden hidden top-0 w-full bg-[#101010] transition-transform transform translate-x-full';
 
   // Contenu du menu mobile
   const content = (
@@ -34,25 +33,25 @@ function Nav({ isConnected, openModal }: HeaderProps) {
     >
       <ul className="text-center text-xl ">
         <a className="flex justify-center" href="/">
-          <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
+          <li className="w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
             Accueil
           </li>
         </a>
         <a className="flex justify-center" href="/Tendances">
-          <li className=" w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
+          <li className=" w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
             Tendances
           </li>
         </a>
         {isConnected && (
           <a className="flex justify-center" href="/Dashboard">
-            <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
+            <li className="w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
               Tableau de bord
             </li>
           </a>
         )}
         {isConnected && (
           <a className="flex justify-center" href="/Account">
-            <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
+            <li className="w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
               Mon compte
             </li>
           </a>
@@ -62,10 +61,13 @@ function Nav({ isConnected, openModal }: HeaderProps) {
   );
 
   return (
-    <nav className="bg-black/70 h-[10vh] fixed w-full z-50">
+    <nav className="bg-[#101010] h-[10vh] fixed w-full z-50">
       <div className="flex h-[10vh] justify-between z-40 text-white  px-10 sm:px-20">
         <div className="flex items-center lg:hidden">
-          <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
+          <a href="/">
+            <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
+          </a>
+          {/* <img className="w-20 z-50" src={logo} alt="logo Gestinvest" /> */}
         </div>
         <div className="lg:flex lg:flex-1 items-center justify-between font-normal hidden">
           <div className="flex items-center">
@@ -98,7 +100,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
                 </a>
               )}
             </ul>
-          </div>{' '}
+          </div>
           {!isConnected && (
             <button
               className="hover:bg-custom-purple hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
@@ -119,14 +121,26 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           )}
         </div>
         <div className="flex gap-8">
-          <button
-            className="z-50 lg:hidden"
-            onClick={openModal}
-            type="button"
-            aria-label="Open Modal"
-          >
-            <FaUser size={20} />
-          </button>
+          {!isConnected && (
+            <button
+              className="z-50 lg:hidden"
+              onClick={openModal}
+              type="button"
+              aria-label="connexion du compte"
+            >
+              <FaUser size={20} />
+            </button>
+          )}
+          {isConnected && (
+            <button
+              className="z-50 lg:hidden"
+              type="button"
+              onClick={handleLogout}
+              aria-label="déconnexion du compte"
+            >
+              <FaPowerOff size={20} />
+            </button>
+          )}
           {content}
           <button
             className="block lg:hidden transition z-50"

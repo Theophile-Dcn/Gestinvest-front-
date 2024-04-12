@@ -122,7 +122,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
         >
           X
         </button>
-        <div className="text-white text-3xl flex justify-center gap-x-16 mt-6">
+        <div className="text-white text-center text-3xl flex justify-center gap-x-16 mt-6">
           <p>Ajouter une transaction</p>
         </div>
         <form action="">

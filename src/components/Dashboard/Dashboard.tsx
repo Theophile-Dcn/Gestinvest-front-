@@ -87,7 +87,7 @@ function Dashboard() {
 
   return (
     <div
-      className="flex flex-col justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
+      className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
       id="dashboard"
     >
       <section className="items-center border border-cyan-50 rounded-3xl p-8 my-6  bg-[#ffffff0d]/5">
