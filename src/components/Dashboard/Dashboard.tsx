@@ -42,7 +42,7 @@ function Dashboard() {
               setSwitchModalForm(true); // switchModalForm = true affiche la vue "achat" de la modale
             }}
           >
-            Ajouter un actif
+            Ajouter une transaction
           </button>
           <button
             type="button"
