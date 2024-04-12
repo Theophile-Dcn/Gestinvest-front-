@@ -59,7 +59,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
 
   return (
     <nav className="bg-black/70 h-[10vh]">
-      <div className="flex h-[10vh] justify-between z-40 text-white  px-20">
+      <div className="flex h-[10vh] justify-between z-40 text-white  px-10 sm:px-20">
         <div className="flex items-center lg:hidden">
           <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
         </div>
