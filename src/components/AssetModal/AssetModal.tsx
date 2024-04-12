@@ -14,12 +14,6 @@ interface Asset {
 }
 
 function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
-  // State switchForm utilisé pour changer de formulaire à l'intérieur de la modale
-  // sa valeur initiale est celle du switchModalForm fonction du choix de l'utilisateur dans le Dashboard (achat ou vente)
-  // switchForm = true affichage du formulaire "achat" ; switchForm = false affichage du formulaire "vente"
-  // Etat du state switchForm changé au click sur les boutons "achat" ou "vente"
-  const [switchForm, setSwitchForm] = useState(switchModalForm);
-
   // State formData utilisé pour la transmission des données du formulaire (valeurs initiales vides) sous forme d'objet
   const [formData, setFormData] = useState({
     asset_name: '',
@@ -117,232 +111,142 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
   }
 
   return (
-    <div className="flex content-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm">
       <dialog
         open
-        className="bg-[#371b4b] flex flex-col content-center p-4 m-auto xl:w-2/6 md:w-8/12 rounded-2xl"
+        className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-white rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"
       >
         <button
           type="button"
           onClick={closeAssetModal}
-          className="text-white text-xl text-right"
+          className="text-white p-2 absolute right-5 top-2"
         >
           X
         </button>
-        <div className="text-white text-3xl flex justify-center gap-x-16">
-          <button
-            type="button"
-            onClick={() => setSwitchForm(true)}
-            className={`${switchForm ? 'underline' : ''}`}
-          >
-            Achat
-          </button>
-          <button
-            type="button"
-            onClick={() => setSwitchForm(false)}
-            className={`${!switchForm ? 'underline' : ''}`}
-          >
-            Vente
-          </button>
+        <div className="text-white text-3xl flex justify-center gap-x-16 mt-6">
+          <p>Ajouter une transaction</p>
         </div>
-        {switchForm && ( // switchForm=true affichage du formulaire "achat"
-          <form action="" onSubmit={handleSubmitBuy}>
-            <div className="flex flex-col">
-              <label htmlFor="asset_name" className="text-white  pt-4 pb-0.5">
-                Actif
-              </label>
-              <input
-                list="assetNameList"
-                id="asset_name"
-                name="asset_name"
-                value={formData.asset_name}
-                onChange={handleChange}
-                required
-                placeholder="Veuillez entrer le nom de l'actif"
-                className="text-sm p-1"
-              />
-              <datalist id="assetNameList">
-                {assetDataList && assetDataList.allAsset && (
-                  <datalist id="assetNameList">
-                    {assetDataList.allAsset.map(
-                      (asset: { asset_name: string }, index: number) => (
-                        <option key={index} value={asset.asset_name}></option>
-                      )
-                    )}
-                  </datalist>
-                )}
-              </datalist>
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="asset_number" className="text-white pt-4 pb-0.5">
-                Nombre de parts
-              </label>
-              <input
-                type="number"
-                id="asset_number"
-                name="asset_number"
-                value={formData.asset_number}
-                onChange={handleChange}
-                required
-                placeholder="Veuillez entrer le nombre de parts achetées"
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="price" className="text-white pt-4 pb-0.5">
-                Prix d&apos;achat (€)
-              </label>
-              <input
-                type="number"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                required
-                placeholder="Veuiller entrer le prix d'achat"
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="date" className="text-white pt-4 pb-0.5">
-                Date de l&apos;achat
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="fees" className="text-white pt-4 pb-0.5">
-                Frais de la transaction (€)
-              </label>
-              <input
-                type="number"
-                id="fees"
-                name="fees"
-                value={formData.fees}
-                onChange={handleChange}
-                placeholder="Veuillez entrer le montant des frais"
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <p>Montant total de l&apos;achat (€): </p>
-            </div>
-            <div>
-              <input
-                type="submit"
-                value="Ajouter à mes actifs"
-                className="text-white bg-[#9747ff] w-full py-2 rounded hover:text-black hover:bg-white"
-              />
-            </div>
-          </form>
-        )}
-        {!switchForm && ( // switchForm=false affichage du formulaire "vente"
-          <form action="" onSubmit={handleSubmitSell} className="flex flex-col">
-            <div className="flex flex-col">
-              <label htmlFor="asset_name" className="text-white  pt-4 pb-0.5">
-                Actif
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="asset_name"
-                value={formData.asset_name}
-                onChange={handleChange}
-                placeholder="Veuillez entrer le nom de l'actif"
-                required
-                className="text-sm p-1"
-              />
-              <datalist id="assetNameList">
-                {assetDataList && assetDataList.allAsset && (
-                  <datalist id="assetNameList">
-                    {assetDataList.allAsset.map(
-                      (asset: { asset_name: string }, index: number) => (
-                        <option key={index} value={asset.asset_name}></option>
-                      )
-                    )}
-                  </datalist>
-                )}
-              </datalist>
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="asset_number" className="text-white  pt-4 pb-0.5">
-                Nombre de parts
-              </label>
-              <input
-                type="number"
-                id="quantity"
-                name="asset_number"
-                value={formData.asset_number}
-                onChange={handleChange}
-                placeholder="Veuillez entrer le nombre de parts vendues"
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="price" className="text-white  pt-4 pb-0.5">
-                Prix de vente (€)
-              </label>
-              <input
-                type="number"
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                placeholder="Veuillez entrer le prix de vente"
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="date" className="text-white  pt-4 pb-0.5">
-                Date de la vente
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="fees" className="text-white  pt-4 pb-0.5">
-                Frais de la transaction (€)
-              </label>
-              <input
-                type="number"
-                id="fees"
-                name="fees"
-                value={formData.fees}
-                onChange={handleChange}
-                placeholder="Veuillez entrer le montant des frais"
-                required
-                className="text-sm p-1"
-              />
-            </div>
-            <div>
-              <p>Montant total de la vente : </p>
-            </div>
-            <div>
-              <input
-                type="submit"
-                value="Retirer de mes actifs"
-                className="text-white bg-[#9747ff] w-full py-2 rounded hover:text-black hover:bg-white"
-              />
-            </div>
-          </form>
-        )}
+        <form action="">
+          <div className="flex flex-col justify-center items-center p-4">
+            <label
+              htmlFor="asset_name"
+              className="pt-4 pb-2 text-white w-full text-start"
+            >
+              Actif
+            </label>
+            <input
+              list="assetNameList"
+              id="asset_name"
+              name="asset_name"
+              value={formData.asset_name}
+              onChange={handleChange}
+              required
+              placeholder="Veuillez entrer le nom de l'actif"
+              className="rounded-md p-1 w-full"
+            />
+            <datalist id="assetNameList">
+              {assetDataList && assetDataList.allAsset && (
+                <datalist id="assetNameList">
+                  {assetDataList.allAsset.map(
+                    (asset: { asset_name: string }, index: number) => (
+                      <option key={index} value={asset.asset_name}></option>
+                    )
+                  )}
+                </datalist>
+              )}
+            </datalist>
+            {/* </div> */}
+            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+            <label
+              htmlFor="asset_number"
+              className="pt-4 pb-2 text-white w-full text-start"
+            >
+              Nombre de parts
+            </label>
+            <input
+              type="number"
+              id="asset_number"
+              name="asset_number"
+              value={formData.asset_number}
+              onChange={handleChange}
+              required
+              placeholder="Veuillez entrer le nombre de parts"
+              className="rounded-md p-1 w-full"
+            />
+            {/* </div> */}
+            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+            <label
+              htmlFor="price"
+              className="pt-4 pb-2 text-white w-full text-start"
+            >
+              Prix unitaire de l&apos;actif (€)
+            </label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              required
+              placeholder="Veuiller entrer le prix"
+              className="rounded-md p-1 w-full"
+            />
+            {/* </div> */}
+            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+            <label
+              htmlFor="date"
+              className="pt-4 pb-2 text-white w-full text-start"
+            >
+              Date de l&apos;achat
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+              className="rounded-md p-1 w-full"
+            />
+            {/* </div> */}
+            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+            <label
+              htmlFor="fees"
+              className="pt-4 pb-2 text-white w-full text-start"
+            >
+              Frais de la transaction (%)
+            </label>
+            <input
+              type="number"
+              id="fees"
+              name="fees"
+              value={formData.fees}
+              onChange={handleChange}
+              placeholder="Veuillez entrer le pourcentage des frais"
+              required
+              className="rounded-md p-1 w-full"
+            />
+          </div>
+
+          <div className="flex items-center justify-center w-full gap-8">
+            {/* <div className="w-1/3"> */}
+            <input
+              type="button"
+              value="Achat"
+              className="w-1/3 p-2 my-6 hover:border-custom-purple font-bold hover:bg-green-600 hover:text-white text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
+              onClick={handleSubmitBuy}
+            />
+            {/* </div> */}
+            {/* <div className="w-1/3"> */}
+            <input
+              type="button"
+              value="Vente"
+              className="w-1/3 p-2 my-6 hover:border-custom-purple font-bold hover:bg-red-600 hover:text-white text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
+              onClick={handleSubmitSell}
+            />
+            {/* </div> */}
+          </div>
+        </form>
       </dialog>
     </div>
   );
