@@ -4,7 +4,6 @@ import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
 
 interface DashboardProps {
-  totalInvestment: number;
   totalEstimatePortfolio: number;
   gainOrLossPourcent: number;
   gainOrLossMoney: number;
@@ -32,10 +31,6 @@ function Dashboard() {
   // L'état du state change au click sur un des boutons "ajouter" ou "vendre un actif" du Dashboard
   // Le state est remis à false au click sur le bouton de fermeture de la modale par la fonction closeAssetModal
   const [showModal, setShowModal] = useState(false);
-  // State switchModalForm utilisé pour afficher le formulaire "achat" ou "vente" de la modale
-  // en fonction du bouton clické sur le Dashboard ou à l'intérieur de la modale
-  // Le state est remis à false au click sur le bouton de fermeture de la modale par la fonction closeAssetModal
-  const [switchModalForm, setSwitchModalForm] = useState(false);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -51,11 +46,11 @@ function Dashboard() {
     fetchDashboardData();
   }, []);
 
-  // Fonction closeAssetModal utilisée pour remettre les states showModal et switchModalForm à leur état initial
+  // Fonction closeAssetModal utilisée pour remettre les states showModal à leur état initial
   // au click sur le bouton fermeture de la modale (voir composant AssetModal)
   const closeAssetModal = () => {
     setShowModal(false);
-    setSwitchModalForm(false);
+    window.location.reload(); // recharge la page à la fermeture
   };
 
   // Fonction pour récupérer les catégories d'actifs disponibles
@@ -78,21 +73,21 @@ function Dashboard() {
   // fonction pour la couleur du portfolio
   const GetColorFolio = (gainOrLossTotalPortfolio: string) => {
     if (gainOrLossTotalPortfolio === 'positive') {
-      return 'green';
+      return '#05cb05';
     }
     return 'red';
   };
   // fonction pour la couleur du actif
   const GetcolorAsset = (gainOrLossTotalByAsset: string) => {
     if (gainOrLossTotalByAsset === 'positive') {
-      return 'green';
+      return '#05cb05';
     }
     return 'red';
   };
 
   return (
     <div
-      className="flex flex-col justify-center m-auto p-4 sm:w-5/6 lg:w-3/5 min-h-screen"
+      className="flex flex-col justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
       id="dashboard"
     >
       <section className="items-center border border-cyan-50 rounded-3xl p-8 my-6  bg-[#ffffff0d]/5">
@@ -106,15 +101,9 @@ function Dashboard() {
 
             <div className="flex flex-col sm:gap-2 md:gap-4">
               <p className="flex gap-8 md:text-xl xl:text-2xl">
-                Total investi :{' '}
-                <span className="font-bold block">
-                  {dashboardData?.totalInvestment} €
-                </span>
-              </p>
-              <p className="flex gap-8 md:text-xl xl:text-2xl">
                 Valeur estimée :{' '}
                 <span className="font-bold block">
-                  {dashboardData?.totalEstimatePortfolio} €
+                  {dashboardData?.totalEstimatePortfolio} $
                 </span>
               </p>
 
@@ -128,58 +117,39 @@ function Dashboard() {
               >
                 Gain/Perte :{' '}
                 <span className="font-bold block">
-                  {dashboardData?.gainOrLossMoney} €
+                  {dashboardData?.gainOrLossMoney} $
                 </span>
               </p>
-              <p className="flex gap-8 md:text-xl xl:text-2xl">
-                Pourcentage de gain/perte :{' '}
+              {/* <p className="flex gap-8 md:text-xl xl:text-2xl">
+                Gain/Perte :{' '}
                 <span className="font-bold block">
-                  {dashboardData?.gainOrLossPourcent}%
+                  {dashboardData?.gainOrLossPourcent ?? 0} %
                 </span>
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <p>
-              Pourcentage d&apos;investissement en crypto :
-              {dashboardData?.cryptoPourcent}%
-            </p>
-            <p>
-              Pourcentage dinvestissement en actions :
-              {dashboardData?.stockPourcent}%
-            </p>
+            <p>Investissement en crypto :{dashboardData?.cryptoPourcent}%</p>
+            <p>Investissement en actions :{dashboardData?.stockPourcent}%</p>
           </div>
         </div>
       </section>
 
       <section className="assetModal">
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center">
           <button
             type="button"
-            className="button"
+            className="w-3/4 md:w-2/4 valid-button p-2 mt-2 md:mt-6   hover:bg-custom-purple text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
             onClick={() => {
               setShowModal(true); // showModal = true ouvre la modale AssetModal
-              setSwitchModalForm(true); // switchModalForm = true affiche la vue "achat" de la modale
             }}
           >
             Ajouter une transaction
           </button>
-          <button
-            type="button"
-            className="button"
-            onClick={() => {
-              setShowModal(true); // showModal = true ouvre la modale AssetModal
-              setSwitchModalForm(false); // switchModalForm = false affiche la vue "vente" de la modale
-            }}
-          >
-            Vendre un actif
-          </button>
+
           {showModal && (
             <div>
-              <AssetModal
-                closeAssetModal={closeAssetModal}
-                switchModalForm={switchModalForm}
-              />
+              <AssetModal closeAssetModal={closeAssetModal} allAsset={[]} />
             </div>
           )}
         </div>
@@ -211,7 +181,7 @@ function Dashboard() {
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
                 >
-                  {asset.assetPrice} €
+                  {asset.assetPrice} $
                 </p>
 
                 <p className="w-1/4">{asset.quantity}</p>
@@ -221,7 +191,7 @@ function Dashboard() {
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
                 >
-                  {asset.totalEstimatedValueByAsset} €
+                  {asset.totalEstimatedValueByAsset} $
                 </p>
               </li>
             ))}

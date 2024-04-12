@@ -25,7 +25,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
   // Classes pour l'animation du menu mobile
   const mobileMenuAnimationClasses = click
     ? 'lg:hidden absolute top-0 w-full right-0 bg-black z-40 transition-transform transform translate-x-0 '
-    : 'lg:hidden hidden top-0 w-full bg-black z-40 transition-transform transform translate-x-full';
+    : 'lg:hidden hidden top-0 w-full bg-black transition-transform transform translate-x-full';
 
   // Contenu du menu mobile
   const content = (
@@ -62,7 +62,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
   );
 
   return (
-    <nav className="bg-black/70 h-[10vh]">
+    <nav className="bg-black/70 h-[10vh] fixed w-full z-50">
       <div className="flex h-[10vh] justify-between z-40 text-white  px-10 sm:px-20">
         <div className="flex items-center lg:hidden">
           <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
@@ -101,7 +101,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           </div>{' '}
           {!isConnected && (
             <button
-              className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+              className="hover:bg-custom-purple hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
               type="button"
               onClick={openModal}
             >
@@ -110,7 +110,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           )}
           {isConnected && (
             <button
-              className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+              className="hover:bg-custom-purple  hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
               type="button"
               onClick={handleLogout}
             >

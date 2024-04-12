@@ -146,7 +146,7 @@ function Register({ email, password, closeModal }: RegisterProps) {
           </p>
         )}
         <button
-          className="w-2/4 valid-button p-2 mt-6 hover:border-[#64a4f7]   hover:bg-[#64a4f7] hover:text-black text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
+          className="w-2/4 valid-button p-2 mt-6 hover:bg-custom-purple text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
           type="submit"
           disabled={isSubmitDisabled}
         >

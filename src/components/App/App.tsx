@@ -13,7 +13,6 @@ import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
 import './App.scss';
 
-
 function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,7 +69,7 @@ function App() {
   return (
     <div className="app">
       <Header openModal={openModal} isConnected={isConnected} />
-      <main>
+      <main className="min-h-[84vh] pt-[10vh]">
         <Routes>
           {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
           <Route

@@ -8,9 +8,7 @@ export const header = {
   Authorization: `Bearer ${token}`,
 };
 // Test sur local BDD
-// export const BaseURL = 'http://localhost:3000/api/';
+export const BaseURL = 'http://localhost:8080/api/';
 
 // Server deploy
-export const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/';
-
-
+// export const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/';

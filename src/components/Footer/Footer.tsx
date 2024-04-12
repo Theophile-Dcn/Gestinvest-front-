@@ -2,7 +2,7 @@
 
 function Footer() {
   return (
-    <footer className="w-full absolute bottom-0 flex justify-around items-center h-[6vh] bg-[#050505]/70  text-xs sm:text-sm">
+    <footer className="w-full bottom-0 flex justify-around items-center h-[6vh] bg-[#050505]/70  text-xs sm:text-sm">
       <p className="text-center flex">
         © 2024 Gestinvest.
         <span className="hidden md:block">All rights reserved.</span>

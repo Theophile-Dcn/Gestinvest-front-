@@ -3,7 +3,6 @@ import { BaseURL, header } from '../API/API-info';
 
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
-  switchModalForm: boolean;
   closeAssetModal: () => void;
   allAsset: Asset[];
 };
@@ -13,7 +12,7 @@ interface Asset {
   category_name: string;
 }
 
-function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
+function AssetModal({ closeAssetModal }: AssetModalProps) {
   // State formData utilisé pour la transmission des données du formulaire (valeurs initiales vides) sous forme d'objet
   const [formData, setFormData] = useState({
     asset_name: '',
@@ -149,7 +148,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
                 <datalist id="assetNameList">
                   {assetDataList.allAsset.map(
                     (asset: { asset_name: string }, index: number) => (
-                      <option key={index} value={asset.asset_name}></option>
+                      <option key={index} value={asset.asset_name} />
                     )
                   )}
                 </datalist>
@@ -179,7 +178,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
               htmlFor="price"
               className="pt-4 pb-2 text-white w-full text-start"
             >
-              Prix unitaire de l&apos;actif (€)
+              Prix unitaire de l&apos;actif ($)
             </label>
             <input
               type="number"
@@ -197,7 +196,7 @@ function AssetModal({ switchModalForm, closeAssetModal }: AssetModalProps) {
               htmlFor="date"
               className="pt-4 pb-2 text-white w-full text-start"
             >
-              Date de l&apos;achat
+              Date de la transaction
             </label>
             <input
               type="date"

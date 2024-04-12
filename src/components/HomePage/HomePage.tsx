@@ -10,7 +10,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
   return (
     // Affichage du bouton "Connexion" si l'utilisateur n'est pas connecté (!isConnected)
 
-    <section className="flex m-auto h-[90vh] relative p-12 lg:w-5/6 2xl:w-4/5">
+    <section className="flex m-auto h-[84vh] relative p-12 lg:w-5/6 2xl:w-4/5">
       <div className="flex flex-col justify-center items-center sm:items-start md:w-5/6">
         <h1 className="text-center bg-gradient-to-r from-blue-400  to-red-400 text-transparent bg-clip-text font-bold text-3xl sm:text-start md:text-4xl lg:text-4xl lg:text-left xl:text-5xl ">
           Suivez le rythme.
@@ -31,7 +31,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
 
         {!isConnected && (
           <button
-            className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
+            className="hover:bg-custom-purple hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
             type="button"
             onClick={openModal}
           >
