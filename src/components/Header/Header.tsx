@@ -115,7 +115,12 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           )}
         </div>
         <div className="flex gap-8">
-          <button className="z-50 lg:hidden" onClick={openModal} type="button">
+          <button
+            className="z-50 lg:hidden"
+            onClick={openModal}
+            type="button"
+            aria-label="Open Modal"
+          >
             <FaUser size={20} />
           </button>
           {content}
