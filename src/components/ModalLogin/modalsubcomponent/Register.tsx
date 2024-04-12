@@ -78,12 +78,15 @@ function Register({ email, password, closeModal }: RegisterProps) {
 
   return (
     <form onSubmit={handleRegisterSubmit} className="register">
-      <div className="flex flex-col justify-center p-4">
-        <label className="pt-2 pb-2 text-white" htmlFor="email">
+      <div className="flex flex-col justify-center items-center p-4">
+        <label
+          className="pt-2 pb-2 text-white w-full text-start"
+          htmlFor="email"
+        >
           E-mail
         </label>
         <input
-          className="rounded-md p-1"
+          className="rounded-md p-1 w-full"
           type="email"
           id="email"
           name="email"
@@ -92,11 +95,14 @@ function Register({ email, password, closeModal }: RegisterProps) {
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
         />
-        <label className="pt-4 pb-2 text-white" htmlFor="password">
+        <label
+          className="pt-4 pb-2 text-white w-full text-start"
+          htmlFor="password"
+        >
           Mot de passe
         </label>
         <input
-          className="rounded-md p-1"
+          className="rounded-md p-1 w-full"
           type="password"
           id="password"
           name="password"
@@ -114,11 +120,14 @@ function Register({ email, password, closeModal }: RegisterProps) {
             {passwordError}
           </p>
         )}
-        <label className="pt-4 pb-2 text-white " htmlFor="confirm-password">
+        <label
+          className="pt-4 pb-2 text-white w-full text-start "
+          htmlFor="confirm-password"
+        >
           Confirmation du mot de passe
         </label>
         <input
-          className="rounded-md p-1"
+          className="rounded-md p-1 w-full"
           type="password"
           id="confirm-password"
           name="confirm-password"
@@ -137,7 +146,7 @@ function Register({ email, password, closeModal }: RegisterProps) {
           </p>
         )}
         <button
-          className="valid-button pt-6 text-white "
+          className="w-2/4 valid-button p-2 mt-6 hover:border-[#64a4f7]   hover:bg-[#64a4f7] hover:text-black text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
           type="submit"
           disabled={isSubmitDisabled}
         >

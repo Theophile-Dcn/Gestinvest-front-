@@ -40,7 +40,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
         </a>
         <a className="flex justify-center" href="/Tendances">
           <li className=" w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
-            Tendance
+            Tendances
           </li>
         </a>
         {isConnected && (
@@ -74,25 +74,25 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           <div className="flex-10">
             <ul className="flex gap-8 text-[18px]">
               <a href="/">
-                <li className=" transition hover:border-b-2 border-slate-900 hover:border-white cursor pointer">
+                <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                   Accueil
                 </li>
               </a>
               <a href="/Tendances">
-                <li className=" transition hover:border-b-2 border-slate-900 hover:border-white cursor pointer">
-                  Tendance
+                <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
+                  Tendances
                 </li>
               </a>
               {isConnected && (
                 <a href="/Dashboard">
-                  <li className=" transition hover:border-b-2 border-slate-900 hover:border-white cursor pointer">
+                  <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                     Tableau de bord
                   </li>
                 </a>
               )}
               {isConnected && (
                 <a href="/Account">
-                  <li className=" transition hover:border-b-2 border-slate-900 hover:border-white cursor pointer">
+                  <li className=" transition  hover:underline hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                     Mon compte
                   </li>
                 </a>
@@ -101,7 +101,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           </div>{' '}
           {!isConnected && (
             <button
-              className="hover:bg-indigo-400/80 hover:text-white hover:border-indigo-400 shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+              className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
               type="button"
               onClick={openModal}
             >
@@ -110,7 +110,7 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           )}
           {isConnected && (
             <button
-              className="shadow-lg shadow-indigo-500/30 text-center m-8 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+              className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
               type="button"
               onClick={handleLogout}
             >

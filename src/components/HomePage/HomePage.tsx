@@ -31,7 +31,7 @@ function HomePage({ isConnected, openModal }: HomePageProps) {
 
         {!isConnected && (
           <button
-            className="hover:bg-indigo-400/80 hover:text-white hover:border-indigo-400 shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
+            className="hover:bg-[#64a4f7] hover:text-black hover:border-[#64a4f7] shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
             type="button"
             onClick={openModal}
           >
