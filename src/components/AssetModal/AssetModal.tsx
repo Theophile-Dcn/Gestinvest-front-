@@ -122,7 +122,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
         >
           X
         </button>
-        <div className="text-white text-center text-3xl flex justify-center gap-x-16 mt-6">
+        <div className="text-white text-centertext-3xl flex justify-center gap-x-16 mt-6">
           <p>Ajouter une transaction</p>
         </div>
         <form action="">
@@ -144,16 +144,17 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               className="rounded-md p-1 w-full"
             />
             <datalist id="assetNameList">
-              {assetDataList && assetDataList.allAsset && (
-                <datalist id="assetNameList">
-                  {assetDataList.allAsset.map(
-                    (asset: { asset_name: string }, index: number) => (
-                      <option key={index} value={asset.asset_name} />
-                    )
-                  )}
-                </datalist>
-              )}
+              {assetDataList &&
+                assetDataList.allAsset &&
+                assetDataList.allAsset.map(
+                  (asset: { asset_name: string }, index: number) => (
+                    <option key={index} value={asset.asset_name}>
+                      {asset.asset_name}
+                    </option>
+                  )
+                )}
             </datalist>
+
             {/* </div> */}
             {/* <div className="flex flex-col justify-center items-center p-4"> */}
             <label
