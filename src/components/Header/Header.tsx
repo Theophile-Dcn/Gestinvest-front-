@@ -30,25 +30,25 @@ function Nav({ isConnected, openModal }: HeaderProps) {
     >
       <ul className="text-center text-xl ">
         <a className="flex justify-center" href="/">
-          <li className="w-1/3 my-4 py-4 border-slate-800 hover:bg-slate-800 hover:rounded">
+          <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
             Accueil
           </li>
         </a>
         <a className="flex justify-center" href="/Tendances">
-          <li className=" w-1/3 my-4 py-4 border-slate-800 hover:bg-slate-800 hover:rounded">
+          <li className=" w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
             Tendance
           </li>
         </a>
         {isConnected && (
           <a className="flex justify-center" href="/Dashboard">
-            <li className="w-1/3 my-4 py-4 border-slate-800 hover:bg-slate-800 hover:rounded">
+            <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
               Tableau de bord
             </li>
           </a>
         )}
         {isConnected && (
           <a className="flex justify-center" href="/Account">
-            <li className="w-1/3 my-4 py-4 border-slate-800 hover:bg-slate-800 hover:rounded">
+            <li className="w-1/3 my-4 py-4 text-base border-slate-800 hover:bg-slate-800 hover:rounded">
               Mon compte
             </li>
           </a>
