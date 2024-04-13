@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="app">
       <Header openModal={openModal} isConnected={isConnected} />
-      <main className="min-h-[84vh] pt-[10vh]">
+      <main className="min-h-[84vh] ">
         <Routes>
           {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
           <Route
