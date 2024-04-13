@@ -1,22 +1,16 @@
 @use 'reset';
 @use 'variables' as v;
 
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 body {
   color: v.$color;
   font-family: v.$font-family;
-  background: v.$background-color;
-}
-
-.button {
-    color: v.$color;
-    background-color: v.$color-button;
-    padding: 0.3rem 0.6rem;
-    cursor: pointer;
-    border-radius: 3rem;
-    border: solid 1px black;
 }
 
 .button:hover {
-    color: v.$hover-text-color-button;
-    background-color: v.$hover-button;
+  color: v.$hover-text-color-button;
+  background-color: v.$hover-button;
 }

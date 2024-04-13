@@ -1,6 +1,7 @@
+/* eslint-disable no-alert */
 // Authentication.tsx
 
-const BaseURL = 'https://gestinvest-1-c6d9743eb2ea.herokuapp.com/api/auth';
+import { BaseURL } from './API-info';
 
 export const register = async (
   email: string,
@@ -8,7 +9,7 @@ export const register = async (
   confirmation: string
 ) => {
   try {
-    const response = await fetch(`${BaseURL}/signup`, {
+    const response = await fetch(`${BaseURL}auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,16 +24,18 @@ export const register = async (
     alert(data.successMessage);
     return data;
   } catch (error) {
-    console.error('Error registering:', error);
-    // Afficher une alerte pour l'erreur lors de l'inscription
-    alert(error.message);
+    if (error instanceof Error) {
+      console.error(error.message);
+      // Afficher une alerte pour l'erreur lors de la connexion
+      alert(error.message);
+    }
     throw error;
   }
 };
 
 export const login = async (email: string, password: string) => {
   try {
-    const response = await fetch(`${BaseURL}/login`, {
+    const response = await fetch(`${BaseURL}auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,15 +50,16 @@ export const login = async (email: string, password: string) => {
     // Stocker le token JWT dans le localStorage
     localStorage.setItem('token', data.token);
 
-    console.log(localStorage.getItem('token'));
-
     // Afficher une alerte pour le succès de la connexion
     alert('Login successful');
     return data;
   } catch (error) {
-    console.error('Error logging in:', error);
-    // Afficher une alerte pour l'erreur lors de la connexion
-    alert(error.message);
+    if (error instanceof Error) {
+      console.error(error.message);
+      // Afficher une alerte pour l'erreur lors de la connexion
+      alert(error.message);
+    }
+
     throw error;
   }
 };
