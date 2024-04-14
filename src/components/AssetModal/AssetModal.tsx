@@ -4,7 +4,7 @@ import { BaseURL, header } from '../API/API-info';
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
   closeAssetModal: () => void;
-  allAsset: Asset[];
+  allAsset: string[];
 };
 
 interface Asset {
@@ -21,9 +21,11 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
     date: '',
     fees: '',
   });
+
   // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
   const [assetDataList, setAssetDataList] = useState<Asset | unknown>(null);
   // La fonction getAssetList récupère la liste des actifs (asset de notre API)
+
   async function getAssetList() {
     try {
       const response = await fetch(`${BaseURL}dashboard/modal`, {
