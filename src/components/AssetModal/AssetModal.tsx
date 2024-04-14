@@ -4,7 +4,9 @@ import { BaseURL, header } from '../API/API-info';
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
   closeAssetModal: () => void;
-  allAsset: Asset[];
+  assetDataList: {
+    allAsset: Asset[];
+  };
 };
 
 interface Asset {
@@ -22,7 +24,8 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
     fees: '',
   });
   // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
-  const [assetDataList, setAssetDataList] = useState<Asset | unknown>(null);
+  const [assetDataList, setAssetDataList] = useState<Asset[]>([]);
+
   // La fonction getAssetList récupère la liste des actifs (asset de notre API)
   async function getAssetList() {
     try {
@@ -144,15 +147,11 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               className="rounded-md p-1 w-full"
             />
             <datalist id="assetNameList">
-              {assetDataList &&
-                assetDataList.allAsset &&
-                assetDataList.allAsset.map(
-                  (asset: { asset_name: string }, index: number) => (
-                    <option key={index} value={asset.asset_name}>
-                      {asset.asset_name}
-                    </option>
-                  )
-                )}
+              {assetDataList.map((asset: Asset, index: number) => (
+                <option key={index} value={asset.asset_name}>
+                  {asset.asset_name}
+                </option>
+              ))}
             </datalist>
 
             {/* </div> */}
