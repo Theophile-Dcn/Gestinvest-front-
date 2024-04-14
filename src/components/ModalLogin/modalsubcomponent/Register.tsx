@@ -9,8 +9,14 @@ interface RegisterProps {
   closeModal: () => void;
 }
 
-function Register({ email, password, closeModal }: RegisterProps) {
-  const [registerPassword, setRegisterPassword] = useState(password || '');
+function Register({
+  email,
+  password: initialPassword,
+  closeModal,
+}: RegisterProps) {
+  const [registerPassword, setRegisterPassword] = useState(
+    initialPassword || ''
+  );
   const [inputconfirmation, setInputconfirmation] = useState('');
   const [registerEmail, setRegisterEmail] = useState(email || '');
   const [passwordError, setPasswordError] = useState<string | null>(null);
