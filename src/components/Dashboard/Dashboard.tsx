@@ -16,6 +16,7 @@ interface DashboardProps {
 interface AssetUserInformation {
   symbol: string;
   quantity: number;
+  assetName: string;
   totalInvestByAsset: number;
   totalEstimatedValueByAsset: number;
   assetCategory: string;
@@ -161,7 +162,7 @@ function Dashboard() {
           <h2 className="text-sm uppercase font-bold mb-6 sm:text-base md:text-lg lg:text-xl">
             {category}
           </h2>
-          <div className="flex justify-around text-xs text-center p-2 sm:text-sm md:text-base">
+          <div className="hidden lg:flex justify-around text-xs text-center py-2 px-8 sm:text-sm md:text-base">
             <p className='className="w-1/4"'>Symbole</p>
             <p className='className="w-1/4"'>Valeur de l&apos;actif</p>
             <p className='className="w-1/4"'>Possédé</p>
@@ -171,12 +172,12 @@ function Dashboard() {
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
               <li
-                className="flex justify-around text-center  border-cyan-50 rounded-3xl p-2 my-2 border bg-[#ffffff0d]/10  text-xs md:text-sm lg:text-base"
+                className="flex justify-between text-center  border-cyan-50 rounded-3xl py-2 px-8 my-2 border bg-[#ffffff0d]/10  text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
-                <p className="w-1/4">{asset.symbol}</p>
+                <p className="w-1/4 hidden 2xl:inline">{asset.symbol}</p>
                 <p
-                  className="w-1/4"
+                  className="w-1/4 hidden 2xl:inline"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
@@ -184,15 +185,40 @@ function Dashboard() {
                   {asset.assetPrice} $
                 </p>
 
-                <p className="w-1/4">{asset.quantity}</p>
+                <p className="w-1/4 hidden 2xl:inline">{asset.quantity}</p>
                 <p
-                  className="w-1/4"
+                  className="w-1/4 hidden 2xl:inline"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
                 >
                   {asset.totalEstimatedValueByAsset} $
                 </p>
+                <div className="2xl:hidden flex flex-col text-start">
+                  <div className="flex gap-2">
+                    <p className="font-bold">{asset.symbol}</p>
+                    <p>{asset.assetName}</p>
+                  </div>
+                  <p
+                    className=""
+                    style={{
+                      color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                    }}
+                  >
+                    {asset.assetPrice} $
+                  </p>
+                </div>
+                <div className="flex flex-col text-end 2xl:hidden">
+                  <p className="">{asset.quantity}</p>
+                  <p
+                    className=""
+                    style={{
+                      color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                    }}
+                  >
+                    {asset.totalEstimatedValueByAsset} $
+                  </p>
+                </div>
               </li>
             ))}
           </ul>
