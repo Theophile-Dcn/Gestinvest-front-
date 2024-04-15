@@ -162,7 +162,7 @@ function Dashboard() {
           <h2 className="text-sm uppercase font-bold mb-6 sm:text-base md:text-lg lg:text-xl">
             {category}
           </h2>
-          <div className="hidden lg:flex justify-around text-xs text-center py-2 px-8 sm:text-sm md:text-base">
+          <div className="hidden 2xl:flex justify-around text-xs text-center py-2 px-8 sm:text-sm md:text-base">
             <p className='className="w-1/4"'>Symbole</p>
             <p className='className="w-1/4"'>Valeur de l&apos;actif</p>
             <p className='className="w-1/4"'>Possédé</p>
