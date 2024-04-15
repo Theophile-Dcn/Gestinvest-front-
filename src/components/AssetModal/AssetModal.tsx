@@ -24,11 +24,13 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
     date: '',
     fees: '',
   });
+
   // State asstDataList utilisé pour récupérer la liste des "asset" de la base de données
   const [assetDataList, setAssetDataList] = useState<AssetApiResponse | null>(
     null
   );
   // La fonction getAssetList récupère la liste des actifs (asset de notre API)
+
   async function getAssetList() {
     try {
       const response = await fetch(`${BaseURL}dashboard/modal`, {

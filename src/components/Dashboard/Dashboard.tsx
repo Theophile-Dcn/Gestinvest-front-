@@ -149,7 +149,7 @@ function Dashboard() {
 
           {showModal && (
             <div>
-              <AssetModal closeAssetModal={closeAssetModal} allAsset={[]} />
+              <AssetModal closeAssetModal={closeAssetModal} />
             </div>
           )}
         </div>
