@@ -27,7 +27,7 @@ export default function BackgroundBeamsDemo() {
           </p>
 
           <p className="my-4 text-lg">
-            Samir a mis à jour le serveur avec ca nouvelle modal
+            Samir a mis à jour le serveur avec sa nouvelle modale
           </p>
           <p className="my-4 text-lg">
             Ludo pense que c&apos;est Théo qui a lancé la fusée

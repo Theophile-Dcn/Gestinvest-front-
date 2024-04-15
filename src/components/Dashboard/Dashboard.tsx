@@ -1,8 +1,12 @@
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { useEffect, useState } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
 interface DashboardProps {
   totalEstimatePortfolio: number;
   gainOrLossPourcent: number;
@@ -86,6 +90,20 @@ function Dashboard() {
     return 'red';
   };
 
+  const data2 = {
+    labels: ['Crypto', 'Actions'],
+    datasets: [
+      {
+        label: 'Investissement en %',
+        data: [
+          dashboardData?.cryptoPourcent ?? 0,
+          dashboardData?.stockPourcent ?? 0,
+        ],
+        backgroundColor: ['#3e95cd', '#8e5ea2'],
+      },
+    ],
+  };
+
   return (
     <div
       className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
@@ -130,9 +148,14 @@ function Dashboard() {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
+            <Doughnut data={data2} />
+          </div>
+
+          {/* <div className="flex flex-col items-center justify-center">
             <p>Investissement en crypto :{dashboardData?.cryptoPourcent}%</p>
             <p>Investissement en actions :{dashboardData?.stockPourcent}%</p>
-          </div>
+            <Bar data={data1} />
+          </div> */}
         </div>
       </section>
 
