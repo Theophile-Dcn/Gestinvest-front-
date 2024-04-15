@@ -1,8 +1,12 @@
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { useEffect, useState } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
 interface DashboardProps {
   totalEstimatePortfolio: number;
   gainOrLossPourcent: number;
@@ -16,6 +20,7 @@ interface DashboardProps {
 interface AssetUserInformation {
   symbol: string;
   quantity: number;
+  assetName: string;
   totalInvestByAsset: number;
   totalEstimatedValueByAsset: number;
   assetCategory: string;
@@ -85,12 +90,26 @@ function Dashboard() {
     return 'red';
   };
 
+  const data2 = {
+    labels: ['Crypto', 'Actions'],
+    datasets: [
+      {
+        label: 'Investissement en %',
+        data: [
+          dashboardData?.cryptoPourcent ?? 0,
+          dashboardData?.stockPourcent ?? 0,
+        ],
+        backgroundColor: ['#3e95cd', '#8e5ea2'],
+      },
+    ],
+  };
+
   return (
     <div
       className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
       id="dashboard"
     >
-      <section className="items-center border border-cyan-50 rounded-3xl p-8 my-6  bg-[#ffffff0d]/5">
+      <section className="items-center border border-cyan-50 rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
         <h2 className="text-lg uppercase font-bold mb-6 sm:text-center sm:text-xl md:text-2xl md:mb-10 xl:text-3xl">
           Mon Portefeuille
         </h2>
@@ -129,9 +148,14 @@ function Dashboard() {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
+            <Doughnut data={data2} />
+          </div>
+
+          {/* <div className="flex flex-col items-center justify-center">
             <p>Investissement en crypto :{dashboardData?.cryptoPourcent}%</p>
             <p>Investissement en actions :{dashboardData?.stockPourcent}%</p>
-          </div>
+            <Bar data={data1} />
+          </div> */}
         </div>
       </section>
 
@@ -161,22 +185,28 @@ function Dashboard() {
           <h2 className="text-sm uppercase font-bold mb-6 sm:text-base md:text-lg lg:text-xl">
             {category}
           </h2>
-          <div className="flex justify-around text-xs text-center p-2 sm:text-sm md:text-base">
-            <p className='className="w-1/4"'>Symbole</p>
-            <p className='className="w-1/4"'>Valeur de l&apos;actif</p>
-            <p className='className="w-1/4"'>Possédé</p>
-            <p className='className="w-1/4"'>Valeur total</p>
+          <div className="hidden 2xl:grid grid-cols-4 text-xs text-center py-2 px-8 sm:text-sm md:text-base">
+            <p className="col-span-1 text-start">Symbole</p>
+            <p className="col-span-1">Valeur de l&apos;actif</p>
+            <p className="col-span-1">Possédé</p>
+            <p className="col-span-1 text-end">Valeur total</p>
           </div>
           <ul>
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
               <li
-                className="flex justify-around text-center  border-cyan-50 rounded-3xl p-2 my-2 border bg-[#ffffff0d]/10  text-xs md:text-sm lg:text-base"
+                className="grid grid-cols-4 justify-between items-center text-center border-cyan-50 rounded-3xl py-2 px-8 my-2 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
-                <p className="w-1/4">{asset.symbol}</p>
+                <a
+                  href={`/${asset.symbol}`}
+                  className="col-span-1 hidden 2xl:inline text-start"
+                >
+                  <span className="font-bold">{asset.symbol}</span> -{' '}
+                  {asset.assetName}
+                </a>
                 <p
-                  className="w-1/4"
+                  className="col-span-1 hidden 2xl:inline"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
@@ -184,15 +214,40 @@ function Dashboard() {
                   {asset.assetPrice} $
                 </p>
 
-                <p className="w-1/4">{asset.quantity}</p>
+                <p className="col-span-1 hidden 2xl:inline">{asset.quantity}</p>
                 <p
-                  className="w-1/4"
+                  className="col-span-1 hidden 2xl:inline text-end"
                   style={{
                     color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                   }}
                 >
                   {asset.totalEstimatedValueByAsset} $
                 </p>
+                <div className="2xl:hidden flex flex-col text-start col-span-2">
+                  <div className="flex gap-2">
+                    <p className="font-bold">{asset.symbol}</p>
+                    <p>{asset.assetName}</p>
+                  </div>
+                  <p
+                    className=""
+                    style={{
+                      color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                    }}
+                  >
+                    {asset.assetPrice} $
+                  </p>
+                </div>
+                <div className="flex flex-col text-end 2xl:hidden col-span-2">
+                  <p className="">{asset.quantity}</p>
+                  <p
+                    className=""
+                    style={{
+                      color: GetcolorAsset(asset.gainOrLossTotalByAsset),
+                    }}
+                  >
+                    {asset.totalEstimatedValueByAsset} $
+                  </p>
+                </div>
               </li>
             ))}
           </ul>
