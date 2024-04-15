@@ -91,7 +91,7 @@ function Dashboard() {
       className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
       id="dashboard"
     >
-      <section className="items-center border border-cyan-50 rounded-3xl p-8 my-6  bg-[#ffffff0d]/5">
+      <section className="items-center border border-cyan-50 rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
         <h2 className="text-lg uppercase font-bold mb-6 sm:text-center sm:text-xl md:text-2xl md:mb-10 xl:text-3xl">
           Mon Portefeuille
         </h2>
