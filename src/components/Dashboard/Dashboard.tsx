@@ -200,7 +200,7 @@ function Dashboard() {
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
               <li
-                className="grid grid-cols-4 justify-between items-center text-center border-cyan-50 rounded-3xl py-2 px-8 my-2 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
+                className="grid grid-cols-4 justify-between items-center text-center border-white rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
                 <a
@@ -229,10 +229,13 @@ function Dashboard() {
                   {asset.totalEstimatedValueByAsset} $
                 </p>
                 <div className="2xl:hidden flex flex-col text-start col-span-2">
-                  <div className="flex gap-2">
-                    <p className="font-bold">{asset.symbol}</p>
-                    <p>{asset.assetName}</p>
-                  </div>
+                  <a
+                    href={`/${asset.symbol}`}
+                    className="col-span-1  text-start"
+                  >
+                    <span className="font-bold">{asset.symbol}</span>{' '}
+                    {asset.assetName}
+                  </a>
                   <p
                     className=""
                     style={{
