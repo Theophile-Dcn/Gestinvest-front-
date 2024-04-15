@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import imgHome from '../../assets/img/home.png';
+import imgHome from '../../assets/Gestinvest-dashboard-image.png';
 
 type HomePageProps = {
   isConnected: boolean;
