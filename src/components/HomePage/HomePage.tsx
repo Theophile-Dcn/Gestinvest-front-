@@ -26,7 +26,7 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
         className="flex flex-col justify-center items-center sm:items-start md:w-5/6"
         initial={{ opacity: 0, x: -500 }} // Commence avec une opacité de 0 et défilement de -500 pixels vers la gauche
         animate={{ opacity: 1, x: 0 }} // Animer vers une opacité de 1 et une position d'origine
-        transition={{ duration: 1.5 }} // Durée de transition de 1.5 secondes
+        transition={{ duration: 0.8 }} // Durée de transition de 1.5 secondes
       >
         <h1 className="text-center bg-gradient-to-r from-blue-400 to-red-400 text-transparent bg-clip-text font-bold text-3xl sm:text-start md:text-4xl lg:text-4xl lg:text-left xl:text-5xl">
           Suivez le rythme.
@@ -58,7 +58,7 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
         className="flex-col justify-center items-center sm:items-start md:w-5/6 hidden md:flex"
         initial={{ opacity: 0, x: 500 }} // Commence avec une opacité de 0 et défilement de -500 pixels vers la gauche
         animate={{ opacity: 1, x: 0 }} // Animer vers une opacité de 1 et une position d'origine
-        transition={{ duration: 1.5 }} // Durée de transition de 1.5 secondes
+        transition={{ duration: 0.8 }} // Durée de transition de 1.5 secondes
       >
         <img
           className={`w-5/6 opacity-80 m-auto lg:w-4/6 ${animateImage ? 'animate-bounce' : ''}`}
