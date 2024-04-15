@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import imgHome from '../../assets/img/home.png';
 
 type HomePageProps = {
   isConnected: boolean;
@@ -61,7 +62,7 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
       >
         <img
           className={`w-5/6 opacity-80 m-auto lg:w-4/6 ${animateImage ? 'animate-bounce' : ''}`}
-          src="../src/assets/Gestinvest-dashboard-image.png"
+          src={imgHome}
           alt=""
         />
       </motion.div>
