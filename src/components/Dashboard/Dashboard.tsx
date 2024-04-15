@@ -224,6 +224,7 @@ function Dashboard() {
           </ul>
         </section>
       ))}
+      <a href="/AssetDetail">AssetDetail</a>
     </div>
   );
 }
