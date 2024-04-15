@@ -14,16 +14,16 @@ export default function BackgroundBeamsDemo() {
       <div className="max-w-2xl mx-auto p-4" />
       <div className=" bg-white/10 rounded-xl flex gap-16 p-6 w-3/6">
         <div className="">
-          <h1 className="text-center text-2xl">Plusieurs raison possible:</h1>
+          <h1 className="text-center text-2xl">Plusieurs raisons possibles:</h1>
           <p className="my-4 text-lg">
-            Théo pense qu&apos;une fusée c&apos;est écrasé sur le serveur
+            Théo pense qu&apos;une fusée s&apos;est écrasée sur le serveur
           </p>
           <p className="my-4 text-lg">
             Romain a encore fait une analyse{' '}
             <span className="line-through">raté</span> du pepecoin
           </p>
           <p className="my-4 text-lg">
-            Hugo pense que toute choses arrive pour une bonne raison
+            Hugo pense que toute chose arrive pour une bonne raison
           </p>
 
           <p className="my-4 text-lg">
