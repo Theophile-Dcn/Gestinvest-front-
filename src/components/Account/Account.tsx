@@ -71,18 +71,20 @@ function Account() {
   return (
     <div
       id="account"
-      className="flex flex-col items-center justify-center w-full p-6"
+      className="flex flex-col h-[84vh] m-auto items-center justify-center w-full p-6 sm:w-5/6 lg:w-3/6"
     >
-      <h2 className="text-xl uppercase font-bold p-10">Gestion du profil</h2>
+      <h2 className="text-lg uppercase font-bold p-10 sm:text-xl md:text-2xl xl:text-3xl">
+        Gestion du profil
+      </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
         <div className="flex border border-white rounded-xl bg-white/10 w-full">
           <div className="flex border-r w-2/5">
-            <label className="p-4" htmlFor="email">
+            <label className="p-4 text-xs md:text-sm font-bold" htmlFor="email">
               Prénom :
             </label>
           </div>
           <input
-            className=" pl-4 bg-transparent"
+            className=" pl-4 bg-transparent w-full rounded-r-lg"
             type="text"
             id="firstName"
             name="first_name"
@@ -92,12 +94,12 @@ function Account() {
         </div>
         <div className="flex border border-white rounded-xl bg-white/10 w-full">
           <div className="flex border-r w-2/5">
-            <label className="p-4" htmlFor="email">
+            <label className="p-4 text-xs font-bold md:text-sm" htmlFor="email">
               Nom :
             </label>
           </div>
           <input
-            className=" pl-4 bg-transparent"
+            className=" pl-4 bg-transparent w-full rounded-r-lg"
             type="text"
             id="lastName"
             name="last_name"
@@ -106,14 +108,14 @@ function Account() {
           />
         </div>
         <div className="flex border border-white rounded-xl bg-white/10 w-full">
-          <div className="flex border-r w-2/5">
-            <label className="p-4" htmlFor="email">
+          <div className="flex border-r w-2/5 ">
+            <label className="p-4 text-xs font-bold md:text-sm" htmlFor="email">
               E-mail :
             </label>
           </div>
 
           <input
-            className="pl-4 bg-transparent"
+            className="pl-4 bg-transparent w-full rounded-r-lg"
             type="email"
             id="email"
             name="email"
@@ -124,14 +126,14 @@ function Account() {
         </div>
         <div className="flex justify-center gap-10">
           <button
-            className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+            className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center text-sm mt-4 border text-white rounded-full px-3 py-2 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
             type="submit"
           >
             Sauvegarder
           </button>
           {/* Bouton pour supprimer le compte */}
           <button
-            className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+            className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center text-sm mt-4 border text-white rounded-full px-3 py-2 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
             type="button"
             onClick={handleDeleteAccount}
           >
