@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
@@ -175,7 +176,12 @@ function Dashboard() {
                 className="flex justify-between text-center  border-cyan-50 rounded-3xl py-2 px-8 my-2 border bg-[#ffffff0d]/10  text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
-                <p className="w-1/4 hidden 2xl:inline">{asset.symbol}</p>
+                <NavLink
+                  to={`/AssetDetail/${asset.symbol}`}
+                  className="w-1/4 hidden 2xl:inline"
+                >
+                  {asset.symbol}
+                </NavLink>
                 <p
                   className="w-1/4 hidden 2xl:inline"
                   style={{
@@ -224,7 +230,6 @@ function Dashboard() {
           </ul>
         </section>
       ))}
-      <a href="/AssetDetail">AssetDetail</a>
     </div>
   );
 }
