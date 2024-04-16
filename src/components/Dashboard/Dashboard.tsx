@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
-
+// import DonutChart from './DonutComposant';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface DashboardProps {
   totalEstimatePortfolio: number;
@@ -92,24 +96,24 @@ function Dashboard() {
       className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
       id="dashboard"
     >
-      <section className="items-center border border-cyan-50 rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
+      <section className="flex flex-col items-center border border-cyan-50 rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
         <h2 className="text-lg uppercase font-bold mb-6 sm:text-center sm:text-xl md:text-2xl md:mb-10 xl:text-3xl">
           Mon Portefeuille
         </h2>
 
-        <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
-          <div>
+        <div className="flex flex-col justify-around sm:flex-row sm:gap-8 lg:gap-12 2xl:gap-20">
+          <div className="flex items-center">
             {/* Affichage des détails du résumé */}
 
             <div className="flex flex-col sm:gap-2 md:gap-4">
-              <p className="flex gap-8 md:text-xl xl:text-2xl">
+              <p className="flex gap-2 md:text-xl xl:text-2xl flex-wrap">
                 Valeur estimée :{' '}
                 <span className="font-bold block">
                   {dashboardData?.totalEstimatePortfolio} $
                 </span>
               </p>
 
-              <p className="flex gap-8 md:text-xl xl:text-2xl">
+              <p className="flex gap-2 md:text-xl xl:text-2xl flex-wrap">
                 Gain/Perte :{' '}
                 <span
                   className="font-bold block"
@@ -122,20 +126,41 @@ function Dashboard() {
                   {dashboardData?.gainOrLossMoney} $
                 </span>
               </p>
-              {/* <p className="flex gap-8 md:text-xl xl:text-2xl">
-                Gain/Perte :{' '}
-                <span className="font-bold block">
-                  {dashboardData?.gainOrLossPourcent ?? 0} %
-                </span>
-              </p> */}
             </div>
           </div>
-
-          {/* <div className="flex flex-col items-center justify-center">
-            <p>Investissement en crypto :{dashboardData?.cryptoPourcent}%</p>
-            <p>Investissement en actions :{dashboardData?.stockPourcent}%</p>
-            <Bar data={data1} />
-          </div> */}
+          <div className="flex w-52 m-auto md:w-60 2xl:w-80 items-center">
+            <Doughnut
+              data={{
+                labels: [`crypto`, `stock `],
+                datasets: [
+                  {
+                    label: 'Portfolio Composition',
+                    data: [
+                      dashboardData?.cryptoPourcent,
+                      dashboardData?.stockPourcent,
+                    ],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              }}
+              options={{
+                plugins: {
+                  legend: {
+                    display: true,
+                    position: 'right',
+                  },
+                },
+              }}
+            />
+          </div>
         </div>
       </section>
 
@@ -175,7 +200,7 @@ function Dashboard() {
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
               <li
-                className="grid grid-cols-4 justify-between items-center text-center border-cyan-50 rounded-3xl py-2 px-8 my-2 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
+                className="grid grid-cols-4 justify-between items-center text-center border-white rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
                 <a
@@ -204,10 +229,13 @@ function Dashboard() {
                   {asset.totalEstimatedValueByAsset} $
                 </p>
                 <div className="2xl:hidden flex flex-col text-start col-span-2">
-                  <div className="flex gap-2">
-                    <p className="font-bold">{asset.symbol}</p>
-                    <p>{asset.assetName}</p>
-                  </div>
+                  <a
+                    href={`/${asset.symbol}`}
+                    className="col-span-1  text-start"
+                  >
+                    <span className="font-bold">{asset.symbol}</span>{' '}
+                    {asset.assetName}
+                  </a>
                   <p
                     className=""
                     style={{
