@@ -203,10 +203,13 @@ function Dashboard() {
                   {asset.totalEstimatedValueByAsset} $
                 </p>
                 <div className="2xl:hidden flex flex-col text-start">
-                  <div className="flex gap-2">
+                  <NavLink
+                    to={`/AssetDetail/${asset.symbol}`}
+                    className="flex gap-2"
+                  >
                     <p className="font-bold">{asset.symbol}</p>
                     <p>{asset.assetName}</p>
-                  </div>
+                  </NavLink>
                   <p
                     className=""
                     style={{
