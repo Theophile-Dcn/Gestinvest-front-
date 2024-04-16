@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-// useParams est un hook React Router permettant d'accéder aux paramètres de l'URL (ici le slug qui représentera le symbole de l'asset)
 import { useParams } from 'react-router-dom';
 import { BaseURL, header } from '../API/API-info';
+import TradingViewWidget from './TradingViewWidget';
 
 interface AssetDetailProps {
   totalEstimateAsset: number;
   totalAssetNumber: number;
   name: string;
   symbol: string;
+  local: string;
+  categoryName: string;
   assetId: number;
   assetLineDetail: AssetLineDetail[];
 }
@@ -23,13 +25,9 @@ interface AssetLineDetail {
 }
 
 function AssetDetail() {
-  // on utilise useParams pour extraire le slug de l'URL (slug est ici le symbole de l'asset, paramètre de notre URL)
   const { slug } = useParams();
-  // State assetDetailData utilisé pour stocker les valeurs
-  const [assetDetailData, setAssetDatailData] =
+  const [assetDetailData, setAssetDetailData] =
     useState<AssetDetailProps | null>(null);
-
-  // useEffect exécute la fonction getAssetDetailData à l'ouverture du composant et lorsque que la dépendance "slug" change.
 
   useEffect(() => {
     async function getAssetDetailData() {
@@ -42,7 +40,9 @@ function AssetDetail() {
           }
         );
         const data = await response.json();
-        setAssetDatailData(data.assetDetailsCalculated);
+        console.log(data);
+
+        setAssetDetailData(data.assetDetailsCalculated);
       } catch (error) {
         console.error('Erreur de récupération des données', error);
       }
@@ -51,23 +51,21 @@ function AssetDetail() {
     getAssetDetailData();
   }, [slug]);
 
-  console.log('ici', assetDetailData);
-
   return (
     <div id="assetDetail">
-      <h2>Détail de mes {assetDetailData?.name}</h2>
-      <div className="synthesis">
-        <p>Date du jour</p>
-        <p>{assetDetailData?.name}</p>
-        <p>{assetDetailData?.symbol}</p>
-        <p>
-          Valeur de mes {assetDetailData?.name} :
-          {assetDetailData?.totalEstimateAsset} $
-        </p>
-        <p>Quantité totale : {assetDetailData?.totalAssetNumber}</p>
-      </div>
+      {assetDetailData && (
+        <TradingViewWidget
+          symbol={
+            assetDetailData.categoryName === 'stock'
+              ? `${assetDetailData.local}:${assetDetailData.symbol}`
+              : `${assetDetailData.symbol}EUR`
+          }
+        />
+      )}
       <div className="history">
-        <h3 className="font-bold uppercase">Historique des transactions</h3>
+        <h3 className="text-center font-bold uppercase py-5">
+          Historique des transactions
+        </h3>
         <div>
           <div className="grid grid-cols-15 w-full padding-2 text-center mb-4">
             <p className=" col-span-2  color-white">date</p>
