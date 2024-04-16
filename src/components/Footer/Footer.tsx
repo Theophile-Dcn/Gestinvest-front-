@@ -11,7 +11,7 @@ function Footer() {
         href="/politique-de-confidentialité"
         className="my-auto text-white hover:underline underline-offset-4 cursor-pointer"
       >
-        politique de confidentialité
+        Politique de confidentialité
       </a>
       <a
         href="/condition-utilisation"
