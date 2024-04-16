@@ -42,7 +42,7 @@ function AssetDetail() {
           }
         );
         const data = await response.json();
-        setAssetDatailData(data);
+        setAssetDatailData(data.assetDetailsCalculated);
       } catch (error) {
         console.error('Erreur de récupération des données', error);
       }
@@ -50,6 +50,8 @@ function AssetDetail() {
 
     getAssetDetailData();
   }, [slug]);
+
+  console.log('ici', assetDetailData);
 
   return (
     <div id="assetDetail">
@@ -65,7 +67,7 @@ function AssetDetail() {
         <p>Quantité totale : {assetDetailData?.totalAssetNumber}</p>
       </div>
       <div className="history">
-        <h3>HISTORIQUE DES TRANSACTIONS</h3>
+        <h3 className="font-bold uppercase">Historique des transactions</h3>
         <div>
           <div className="grid grid-cols-15 w-full padding-2 text-center mb-4">
             <p className=" col-span-2  color-white">date</p>
