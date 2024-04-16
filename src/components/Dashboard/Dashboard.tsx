@@ -203,6 +203,7 @@ function Dashboard() {
                 className="grid grid-cols-4 justify-between items-center text-center border-white rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
+                {/* desktop view */}
                 <a
                   href={`/${asset.symbol}`}
                   className="col-span-1 hidden 2xl:inline text-start"
@@ -218,7 +219,6 @@ function Dashboard() {
                 >
                   {asset.assetPrice} $
                 </p>
-
                 <p className="col-span-1 hidden 2xl:inline">{asset.quantity}</p>
                 <p
                   className="col-span-1 hidden 2xl:inline text-end"
@@ -228,16 +228,14 @@ function Dashboard() {
                 >
                   {asset.totalEstimatedValueByAsset} $
                 </p>
+
+                {/* mobile view */}
                 <div className="2xl:hidden flex flex-col text-start col-span-2">
-                  <a
-                    href={`/${asset.symbol}`}
-                    className="col-span-1  text-start"
-                  >
+                  <a href={`/${asset.symbol}`} className="text-start">
                     <span className="font-bold">{asset.symbol}</span>{' '}
                     {asset.assetName}
                   </a>
                   <p
-                    className=""
                     style={{
                       color: GetcolorAsset(asset.gainOrLossTotalByAsset),
                     }}
