@@ -60,7 +60,7 @@ function AssetDetail() {
             symbol={
               assetDetailData.categoryName === 'stock'
                 ? `${assetDetailData.local}:${assetDetailData.symbol}`
-                : `${assetDetailData.symbol}EUR`
+                : `${assetDetailData.symbol}USD`
             }
           />
           <h1 className="text-center py-6 md:py-10 xl:py-16 text-2xl block md:text-3xl md:w-2/3 lg:w-3/6 mx-auto lg:text-4xl font-semibold">
@@ -70,7 +70,7 @@ function AssetDetail() {
             symbol={
               assetDetailData.categoryName === 'stock'
                 ? `${assetDetailData.local}:${assetDetailData.symbol}`
-                : `${assetDetailData.symbol}EUR`
+                : `${assetDetailData.symbol}USD`
             }
           />
         </>
