@@ -23,7 +23,7 @@ function TradingViewWidget({ symbol }) {
 
   return (
     <div
-      className="mt-2 w-[100%] lg:w-[85%] m-auto tradingview-widget-container"
+      className="mt-2 w-[95%] lg:w-[85%] m-auto hover:border-custom-purple shadow-lg shadow-indigo-500/30   border border-buttonColor rounded-3xl text-center py-2 my-2  bg-[#ffffff0d]/10 tradingview-widget-container"
       ref={container}
     >
       <div className="tradingview-widget-container__widget" />

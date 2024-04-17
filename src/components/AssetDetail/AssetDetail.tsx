@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BaseURL, header } from '../API/API-info';
 import TradingViewWidget from './TradingViewWidget';
+import TradingViewWidgetChart from './TradingViewWidgetChart';
 
 interface AssetDetailProps {
   totalEstimateAsset: number;
@@ -54,16 +55,41 @@ function AssetDetail() {
   return (
     <div id="assetDetail">
       {assetDetailData && (
-        <TradingViewWidget
-          symbol={
-            assetDetailData.categoryName === 'stock'
-              ? `${assetDetailData.local}:${assetDetailData.symbol}`
-              : `${assetDetailData.symbol}EUR`
-          }
-        />
+        <>
+          <TradingViewWidgetChart
+            symbol={
+              assetDetailData.categoryName === 'stock'
+                ? `${assetDetailData.local}:${assetDetailData.symbol}`
+                : `${assetDetailData.symbol}EUR`
+            }
+          />
+          <h1 className="text-center py-5 text-2xl block md:text-3xl md:w-2/3 lg:w-3/6 mx-auto lg:text-4xl font-semibold">
+            Détail de mon actif : {assetDetailData?.name}
+          </h1>
+          <TradingViewWidget
+            symbol={
+              assetDetailData.categoryName === 'stock'
+                ? `${assetDetailData.local}:${assetDetailData.symbol}`
+                : `${assetDetailData.symbol}EUR`
+            }
+          />
+        </>
       )}
+      <div className="flex text-center justify-center gap-5 py-8 md:text-xl">
+        <p className="">
+          Valeur de mes
+          <span className="font-bold pl-2">
+            {assetDetailData?.name} : {assetDetailData?.totalEstimateAsset}
+          </span>
+          $
+        </p>
+        <p>
+          Quantité totale :{' '}
+          <span className="font-bold">{assetDetailData?.totalAssetNumber}</span>
+        </p>
+      </div>
       <div className="history">
-        <h3 className="text-center font-bold uppercase pb-5">
+        <h3 className="text-center font-bold uppercase pb-8">
           Historique des transactions
         </h3>
         <div>
@@ -79,7 +105,7 @@ function AssetDetail() {
             {assetDetailData?.assetLineDetail.map((line) => (
               <li
                 key={line.lineId}
-                className="grid grid-cols-9 w-[95%] lg:w-[85%] m-auto text-sm border-white rounded-3xl text-center py-2 my-2 border bg-[#ffffff0d]/10"
+                className="grid grid-cols-9 w-[95%] lg:w-[85%] m-auto text-sm hover:border-custom-purple shadow-sm shadow-indigo-600/10 text-center mt-4 border border-buttonColor rounded-3xl  py-2 my-2  bg-[#ffffff0d]/10"
               >
                 <p className="col-span-2">{line.date}</p>
                 <p
