@@ -47,7 +47,6 @@ function Dashboard() {
       try {
         const data = await GetDashboard();
         setDashboardData(data.userInformation);
-
       } catch (error) {
         console.error('Error fetching dashboard:', error);
       }
@@ -97,10 +96,10 @@ function Dashboard() {
 
   return (
     <div
-      className="flex flex-col min-h-[84vh] justify-center m-auto p-4 sm:w-5/6 lg:w-3/5"
+      className="flex flex-col w-[95%] md:w-[80%] lg:w-[70%] m-auto justify-center"
       id="dashboard"
     >
-      <section className="flex flex-col items-center border border-cyan-50 rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
+      <section className="flex flex-col items-center border border-buttonColor rounded-3xl p-8 m-4  bg-[#ffffff0d]/5">
         <h2 className="text-lg uppercase font-bold mb-6 sm:text-center sm:text-xl md:text-2xl md:mb-10 xl:text-3xl">
           Mon Portefeuille
         </h2>
@@ -204,10 +203,9 @@ function Dashboard() {
             {/* affichage actif par categorie */}
             {filterAssetsByCategory(category).map((asset) => (
               <li
-                className="grid grid-cols-4 justify-between items-center text-center border-white rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
+                className="grid grid-cols-4 justify-between items-center text-center border-buttonColor rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
-
                 <NavLink
                   to={`/AssetDetail/${asset.symbol}`}
                   className="w-1/4 hidden 2xl:inline"
@@ -233,7 +231,7 @@ function Dashboard() {
                   {asset.totalEstimatedValueByAsset} $
                 </p>
 
-                <div className="2xl:hidden flex flex-col text-start">
+                <div className="2xl:hidden flex flex-col text-start col-span-2">
                   <NavLink
                     to={`/AssetDetail/${asset.symbol}`}
                     className="flex gap-2"
