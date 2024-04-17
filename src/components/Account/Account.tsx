@@ -61,13 +61,13 @@ function Account() {
       });
 
       const newData = await response.json();
+      console.log(newData);
       if (response.ok) {
         toast.success('Mise a jour reussi');
+        localStorage.setItem('token', newData.token);
         setUserData(newData.userUpdated); // Mettre à jour avec les données renvoyées par le backend
-        console.log('Données transmises avec succès');
       } else {
         toast.error(newData.errorMessage);
-        console.log(newData.errorMessage);
         console.error('Erreur de soumission des données');
       }
     } catch (error) {

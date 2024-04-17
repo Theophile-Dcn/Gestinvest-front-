@@ -31,9 +31,6 @@ export const register = async (
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
-      // Afficher une alerte pour l'erreur lors de la connexion
-      // alert(error.message);
-      // toast.error(error.message);
     }
     throw error;
   }
@@ -50,28 +47,16 @@ export const login = async (email: string, password: string) => {
     });
     const data = await response.json();
     if (response.ok) {
+      // Enregistrer le token dans le localStorage
       localStorage.setItem('token', data.token);
       toast.success('Vous êtes maintenant connecté');
-      // throw new Error(data.errorMessage);
-
-      // console.log(data.errorMessage);
-      // return toast.error(data.errorMessage);
-      // throw new Error(data.errorMessage);
-      // return;
     } else {
       toast.error(data.errorMessage);
       throw new Error(data.errorMessage);
     }
-
-    // Stocker le token JWT dans le localStorage
-    // Afficher une alerte pour le succès de la connexion
-    // alert('Login successful');
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
-      // Afficher une alerte pour l'erreur lors de la connexion
-      // alert(error.message);
-      // toast.error(error.message);
     }
 
     throw error;
