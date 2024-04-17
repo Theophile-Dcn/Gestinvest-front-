@@ -63,30 +63,34 @@ function AssetDetail() {
         />
       )}
       <div className="history">
-        <h3 className="text-center font-bold uppercase py-5">
+        <h3 className="text-center font-bold uppercase pb-5">
           Historique des transactions
         </h3>
         <div>
-          <div className="grid grid-cols-15 w-full padding-2 text-center mb-4">
+          <div className="grid grid-cols-9 w-[95%] lg:w-[85%] padding-2  text-center mb-4 m-auto">
             <p className=" col-span-2  color-white">date</p>
-            <p className=" col-span-2 color-white">type</p>
-            <p className=" col-span-3  color-white">Qté</p>
-            <p className=" col-span-3 color-white">Prix</p>
-            <p className=" col-span-2  color-white">Frais</p>
-            <p className=" col-span-3 color-white">Total</p>
+            <p className=" col-span-1 color-white">type</p>
+            <p className=" col-span-1  color-white">Qté</p>
+            <p className=" col-span-2 color-white">Prix</p>
+            <p className=" col-span-1  color-white">Frais</p>
+            <p className=" col-span-2 color-white">Total</p>
           </div>
           <ul>
             {assetDetailData?.assetLineDetail.map((line) => (
               <li
                 key={line.lineId}
-                className="grid grid-cols-15 w-full  border-white rounded-3xl text-center py-2 my-2 border bg-[#ffffff0d]/10"
+                className="grid grid-cols-9 w-[95%] lg:w-[85%] m-auto text-sm border-white rounded-3xl text-center py-2 my-2 border bg-[#ffffff0d]/10"
               >
-                <p className=" col-span-2  color-white">{line.date}</p>
-                <p className=" col-span-2 color-white">{line.operationType}</p>
-                <p className=" col-span-3  color-white">{line.buyQuantity}</p>
-                <p className=" col-span-3 color-white">{line.priceInvest} $</p>
-                <p className=" col-span-2  color-white">{line.fees}</p>
-                <p className=" col-span-3">{line.totalInvestLineWithFees} $</p>
+                <p className="col-span-2">{line.date}</p>
+                <p
+                  className={`col-span-1 ${line.operationType === 'buy' ? 'text-green-500' : 'text-red-500'}`}
+                >
+                  {line.operationType}
+                </p>
+                <p className="col-span-1 color-white">{line.buyQuantity}</p>
+                <p className="col-span-2 color-white">{line.priceInvest} $</p>
+                <p className="col-span-1 color-white">{line.fees}</p>
+                <p className="col-span-2">{line.totalInvestLineWithFees} $</p>
               </li>
             ))}
           </ul>

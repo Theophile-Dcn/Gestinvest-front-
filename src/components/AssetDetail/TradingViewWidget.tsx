@@ -13,7 +13,7 @@ function TradingViewWidget({ symbol }) {
     script.innerHTML = `
       {
         "symbol": "${symbol}",
-        "width": "95%",
+        
         "locale": "fr",
         "colorTheme": "dark",
         "isTransparent": true
@@ -22,7 +22,10 @@ function TradingViewWidget({ symbol }) {
   }, [symbol]);
 
   return (
-    <div className="mt-5 tradingview-widget-container" ref={container}>
+    <div
+      className="mt-2 w-[100%] lg:w-[85%] m-auto tradingview-widget-container"
+      ref={container}
+    >
       <div className="tradingview-widget-container__widget" />
       <div className="tradingview-widget-copyright">
         <a
