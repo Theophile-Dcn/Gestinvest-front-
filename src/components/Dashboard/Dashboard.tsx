@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 // import DonutChart from './DonutComposant';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
 import './Dashboard.scss';
@@ -43,6 +47,7 @@ function Dashboard() {
       try {
         const data = await GetDashboard();
         setDashboardData(data.userInformation);
+
       } catch (error) {
         console.error('Error fetching dashboard:', error);
       }
@@ -202,14 +207,14 @@ function Dashboard() {
                 className="grid grid-cols-4 justify-between items-center text-center border-white rounded-3xl py-2 px-8 my-2 xl:my-4 border bg-[#ffffff0d]/10 text-xs md:text-sm lg:text-base"
                 key={asset.symbol}
               >
-                {/* desktop view */}
-                <a
-                  href={`/${asset.symbol}`}
-                  className="col-span-1 hidden 2xl:inline text-start"
+
+                <NavLink
+                  to={`/AssetDetail/${asset.symbol}`}
+                  className="w-1/4 hidden 2xl:inline"
                 >
-                  <span className="font-bold">{asset.symbol}</span> -{' '}
-                  {asset.assetName}
-                </a>
+                  {asset.symbol}
+                </NavLink>
+
                 <p
                   className="col-span-1 hidden 2xl:inline"
                   style={{
@@ -228,12 +233,15 @@ function Dashboard() {
                   {asset.totalEstimatedValueByAsset} $
                 </p>
 
-                {/* mobile view */}
-                <div className="2xl:hidden flex flex-col text-start col-span-2">
-                  <a href={`/${asset.symbol}`} className="text-start">
-                    <span className="font-bold">{asset.symbol}</span>{' '}
-                    {asset.assetName}
-                  </a>
+                <div className="2xl:hidden flex flex-col text-start">
+                  <NavLink
+                    to={`/AssetDetail/${asset.symbol}`}
+                    className="flex gap-2"
+                  >
+                    <p className="font-bold">{asset.symbol}</p>
+                    <p>{asset.assetName}</p>
+                  </NavLink>
+
                   <p
                     style={{
                       color: GetcolorAsset(asset.gainOrLossTotalByAsset),

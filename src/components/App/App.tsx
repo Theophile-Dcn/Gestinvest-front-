@@ -87,7 +87,7 @@ function App() {
             }
           />
           <Route
-            path="/AssetDetail"
+            path="/AssetDetail/:slug"
             element={
               <PrivateRoute>
                 <AssetDetail />
