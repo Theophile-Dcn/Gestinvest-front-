@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import './ModalLogin.scss';
+
 import Login from './modalsubcomponent/Login';
 import Register from './modalsubcomponent/Register';
 
