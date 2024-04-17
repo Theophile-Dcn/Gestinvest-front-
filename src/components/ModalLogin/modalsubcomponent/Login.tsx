@@ -1,5 +1,6 @@
 // Login.tsx
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { login } from '../../API/authentification';
 
 interface LoginFormProps {
@@ -15,8 +16,11 @@ const Login = ({ closeModal }: LoginFormProps) => {
     event.preventDefault();
     try {
       await login(loginEmail, inputPassword);
-      closeModal();
-      window.location.href = '/dashboard';
+      toast.success('Vous êtes maintenant connecté');
+      setTimeout(() => {
+        closeModal();
+        window.location.href = '/dashboard';
+      }, 2000);
     } catch (error) {
       if (error instanceof Error) {
         console.error('Erreur lors de la connexion:', error);

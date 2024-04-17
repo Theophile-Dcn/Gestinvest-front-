@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { BaseURL, header } from '../API/API-info';
-
+import 'react-toastify/dist/ReactToastify.css';
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
   closeAssetModal: () => void;
@@ -66,7 +67,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
       headers: header,
       body: JSON.stringify(formData),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
@@ -76,9 +77,12 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
             date: '',
             fees: '',
           });
-          console.log('Données transmises avec succès');
+          // console.log('Données transmises avec succès');
+          toast.success('Ajout réalisé avec succès');
         } else {
           console.error('Erreur de soummission des données');
+          const { errorMessage } = await response.json();
+          toast.error(errorMessage);
         }
       })
       .catch((error) => {
@@ -94,7 +98,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
       headers: header,
       body: JSON.stringify(formData),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           // Si le POST a réussi on vide les inputs du formulaire
           setFormData({
@@ -105,8 +109,11 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
             fees: '',
           });
           console.log('Données transmises avec succès');
+          toast.success('Ajout réalisé avec succès');
         } else {
           console.error('Erreur de soummission des données');
+          const { errorMessage } = await response.json();
+          toast.error(errorMessage);
         }
       })
       .catch((error) => {
@@ -116,6 +123,8 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm">
+      {/* Votre application */}
+
       <dialog
         open
         className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-white rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"

@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 // Authentication.tsx
 
+import { toast } from 'react-toastify';
 import { BaseURL } from './API-info';
 
 export const register = async (
@@ -18,16 +19,20 @@ export const register = async (
     });
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.errorMessage);
+      toast.error(data.errorMessage);
+      // throw new Error(data.errorMessage);
     }
     // Afficher une alerte pour le succès de l'inscription
-    alert(data.successMessage);
+    toast.success(
+      'Inscription réussie, veuillez vous connecter pour continuer'
+    );
     return data;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
       // Afficher une alerte pour l'erreur lors de la connexion
-      alert(error.message);
+      // alert(error.message);
+      toast.error(error.message);
     }
     throw error;
   }
@@ -44,20 +49,22 @@ export const login = async (email: string, password: string) => {
     });
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.errorMessage);
+      // throw new Error(data.errorMessage);
+      toast.error(data.errorMessage);
     }
 
     // Stocker le token JWT dans le localStorage
     localStorage.setItem('token', data.token);
 
     // Afficher une alerte pour le succès de la connexion
-    alert('Login successful');
+    // alert('Login successful');
     return data;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
       // Afficher une alerte pour l'erreur lors de la connexion
-      alert(error.message);
+      // alert(error.message);
+      toast.error(error.message);
     }
 
     throw error;

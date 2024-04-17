@@ -11,7 +11,7 @@ const GetAccountInfo = async () => {
     if (!response.ok) {
       throw new Error(dataGetAccountInfo.errorMessage);
     }
-    // console.log(dataGetAccountInfo);
+    // console.log({ dataGetAccountInfo });
     return dataGetAccountInfo;
   } catch (error) {
     console.error('Error fetching account:', error);
