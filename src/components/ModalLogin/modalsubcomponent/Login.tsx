@@ -9,19 +9,18 @@ interface LoginFormProps {
 const Login = ({ closeModal }: LoginFormProps) => {
   const [loginEmail, setLoginEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleLoginSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       await login(loginEmail, inputPassword);
-      closeModal();
-      window.location.href = '/dashboard';
+      setTimeout(() => {
+        closeModal();
+        window.location.href = '/dashboard';
+      }, 2000);
     } catch (error) {
       if (error instanceof Error) {
         console.error('Erreur lors de la connexion:', error);
-        // Gérer les erreurs de connexion
-        setErrorMessage(error.message); // Mettre à jour l'état avec le message d'erreur de l'API
       }
     }
   };
@@ -61,12 +60,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
           value={inputPassword}
           onChange={(e) => setInputPassword(e.target.value)}
         />
-        {/* Affichage du message d'erreur de l'API */}
-        {errorMessage && (
-          <p className="error-message  text-red-600 font text-xs xl:text-sm">
-            {errorMessage}
-          </p>
-        )}
+
         <button
           className="w-2/4 valid-button p-2 mt-6   hover:bg-custom-purple text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
           type="submit"
