@@ -39,12 +39,6 @@ function Account() {
     });
   };
 
-  // const handleInputChange = (
-  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   setUserData({ ...userData, [event.target.name]: event.target.value });
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -64,7 +58,9 @@ function Account() {
 
       if (response.ok) {
         toast.success('Mise a jour reussi');
-        localStorage.setItem('token', newData.token);
+        if (newData.token) {
+          localStorage.setItem('token', newData.token);
+        }
         setUserData(newData.userUpdated); // Mettre à jour avec les données renvoyées par le backend
       } else {
         toast.error(newData.errorMessage);
@@ -195,13 +191,13 @@ function Account() {
             Sauvegarder
           </button>
           {/* Bouton pour supprimer le compte */}
-          <button
+          {/* <button
             className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center text-sm mt-4 border text-white rounded-full px-3 py-2 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
             type="button"
             // onClick={handleDeleteAccount}
           >
             Supprimer le compte
-          </button>
+          </button> */}
         </div>
       </form>
     </div>
