@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import './ModalLogin.scss';
+
 import Login from './modalsubcomponent/Login';
 import Register from './modalsubcomponent/Register';
 
@@ -17,7 +17,7 @@ function ModalLogin({ closeModal }: ModalProps) {
       <div className="absolute inset-0 bg-gray-800 bg-opacity-40" />
       <dialog
         open
-        className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-white rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"
+        className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-buttonColor rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"
       >
         {/* Gérer la fermeture de la modal */}
         <button
