@@ -108,7 +108,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
             date: '',
             fees: '',
           });
-          console.log('Données transmises avec succès');
+
           toast.success('Ajout réalisé avec succès');
         } else {
           console.error('Erreur de soummission des données');

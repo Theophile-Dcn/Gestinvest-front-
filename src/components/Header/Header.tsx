@@ -71,7 +71,9 @@ function Nav({ isConnected, openModal }: HeaderProps) {
         </div>
         <div className="lg:flex lg:flex-1 items-center justify-between font-normal hidden">
           <div className="flex items-center">
-            <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
+            <a href="/">
+              <img className="w-20 z-50" src={logo} alt="logo Gestinvest" />
+            </a>
           </div>
           <div className="flex-10">
             <ul className="flex gap-8 text-[18px]">
