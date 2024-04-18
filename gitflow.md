@@ -21,7 +21,8 @@ git checkout dev
 Avant de commencer à travailler sur une nouvelle fonctionnalité, créez une nouvelle branche de fonctionnalité à partir de la branche "dev". Utilisez la commande suivante :
 
 ```bash
-git checkout -b feature/nom-de-la-fonctionnalité dev
+git checkout -b feature/nom-de-la-fonctionnalité devgit branch
+
 ```
 
 ### 4. Travailler sur la fonctionnalité

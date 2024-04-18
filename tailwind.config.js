@@ -34,6 +34,9 @@ module.exports = {
           },
         },
       },
+      gridTemplateColumns : {
+        15: 'repeat(15, minmax(0, 1fr))'
+      }
     },
   },
 };

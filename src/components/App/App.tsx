@@ -1,6 +1,7 @@
 // app.tsx
 import { ReactNode, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Account from '../Account/Account';
 import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
@@ -12,6 +13,7 @@ import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
 import './App.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -30,17 +32,14 @@ function App() {
   const checkToken = () => {
     // Récupérer le jeton du stockage local
     const accessToken = localStorage.getItem('token');
-    console.log('Token from localStorage:', accessToken);
 
     // Vérifier si le jeton existe
     if (accessToken) {
       // Si le jeton existe, mettre isConnected à true
       setIsConnected(true);
-      console.log('User is connected');
     } else {
       // Si le jeton n'existe pas, mettre isConnected à false
       setIsConnected(false);
-      console.log('User is not connected');
     }
   };
 
@@ -88,7 +87,7 @@ function App() {
             }
           />
           <Route
-            path="/AssetDetail"
+            path="/AssetDetail/:slug"
             element={
               <PrivateRoute>
                 <AssetDetail />
@@ -112,6 +111,19 @@ function App() {
       {/* Conditionnellement afficher la modal */}
       {isModalOpen && <ModalLogin closeModal={closeModal} />}
       <Footer />
+      <ToastContainer
+        className="fixed top-[11vh]"
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

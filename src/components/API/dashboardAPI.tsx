@@ -11,7 +11,6 @@ const GetDashboard = async () => {
     if (!response.ok) {
       throw new Error(dataGetdashboard.errorMessage);
     }
-    console.log(dataGetdashboard);
     return dataGetdashboard;
   } catch (error) {
     console.error('Error fetching dashboard:', error);
