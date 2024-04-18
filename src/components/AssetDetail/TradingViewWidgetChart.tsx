@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
 
+// Déclaration de type pour window.TradingView
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    TradingView: any; // Remplacez `any` par le type correct si possible
+  }
+}
+
 interface TradingViewChartProps {
   symbol: string;
 }
@@ -12,6 +20,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) => {
     document.body.appendChild(script);
 
     script.onload = () => {
+      // eslint-disable-next-line no-new, new-cap
       new window.TradingView.widget({
         container_id: 'basic-area-chart-demo',
         width: '100%',
@@ -49,7 +58,9 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) => {
           href="https://www.tradingview.com/"
           rel="noopener nofollow noreferrer"
           target="_blank"
-        />
+        >
+          {' '}
+        </a>
       </div>
     </div>
   );
