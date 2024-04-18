@@ -51,16 +51,15 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({ symbol }) => {
       <div
         id="basic-area-chart-demo"
         style={{ height: '200px', width: '100%' }}
-      />{' '}
+      />
       {/* Ajustement de la hauteur à 600 pixels */}
       <div className="tradingview-widget-copyright">
         <a
           href="https://www.tradingview.com/"
           rel="noopener nofollow noreferrer"
           target="_blank"
-        >
-          {' '}
-        </a>
+          aria-label="tradingview widget chart"
+        />
       </div>
     </div>
   );

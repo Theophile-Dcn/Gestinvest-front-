@@ -37,6 +37,7 @@ function TradingViewWidget({ symbol }: TradingViewWidgetProps) {
           href="https://fr.tradingview.com/"
           rel="noopener nofollow noreferrer"
           target="_blank"
+          aria-label="trading view widget"
         />
       </div>
     </div>
