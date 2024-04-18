@@ -61,7 +61,7 @@ function Account() {
       });
 
       const newData = await response.json();
-      console.log(newData);
+
       if (response.ok) {
         toast.success('Mise a jour reussi');
         localStorage.setItem('token', newData.token);

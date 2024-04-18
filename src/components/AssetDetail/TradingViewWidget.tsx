@@ -1,9 +1,14 @@
 import { useEffect, useRef } from 'react';
 
-function TradingViewWidget({ symbol }) {
-  const container = useRef();
+interface TradingViewWidgetProps {
+  symbol: string;
+}
+
+function TradingViewWidget({ symbol }: TradingViewWidgetProps) {
+  const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!container.current) return;
     const script = document.createElement('script');
     script.src =
       'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
@@ -13,7 +18,7 @@ function TradingViewWidget({ symbol }) {
     script.innerHTML = `
       {
         "symbol": "${symbol}",
-        
+
         "locale": "fr",
         "colorTheme": "dark",
         "isTransparent": true
@@ -32,6 +37,7 @@ function TradingViewWidget({ symbol }) {
           href="https://fr.tradingview.com/"
           rel="noopener nofollow noreferrer"
           target="_blank"
+          aria-label="trading view widget"
         />
       </div>
     </div>

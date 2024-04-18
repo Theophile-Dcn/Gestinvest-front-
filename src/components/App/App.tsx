@@ -112,7 +112,7 @@ function App() {
       {isModalOpen && <ModalLogin closeModal={closeModal} />}
       <Footer />
       <ToastContainer
-        className="absolute top-[11vh]"
+        className="fixed top-[11vh]"
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}

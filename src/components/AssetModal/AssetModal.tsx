@@ -108,7 +108,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
             date: '',
             fees: '',
           });
-          console.log('Données transmises avec succès');
+
           toast.success('Ajout réalisé avec succès');
         } else {
           console.error('Erreur de soummission des données');
@@ -127,7 +127,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
 
       <dialog
         open
-        className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-white rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"
+        className="fixed top-2/4 left-2/4 bg-[#2a213c] border border-buttonColor rounded-xl shadow-lg p-4 w-5/6 md:w-2/4 xl:w-2/5 2xl:w-2/6 transform -translate-x-2/4 -translate-y-2/4"
       >
         <button
           type="button"
