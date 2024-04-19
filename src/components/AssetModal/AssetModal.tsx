@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { BaseURL, header } from '../API/API-info';
 import 'react-toastify/dist/ReactToastify.css';
+import { BaseURL, header } from '../API/API-info';
 // Typage des propriétés reçues du Dashboard et utilisées dans le composant AsseModal
 type AssetModalProps = {
   closeAssetModal: () => void;
@@ -169,8 +169,6 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
                 )}
             </datalist>
 
-            {/* </div> */}
-            {/* <div className="flex flex-col justify-center items-center p-4"> */}
             <label
               htmlFor="asset_number"
               className="pt-4 pb-2 text-white w-full text-start"
@@ -187,8 +185,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               placeholder="Veuillez entrer le nombre de parts"
               className="rounded-md p-1 w-full"
             />
-            {/* </div> */}
-            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+
             <label
               htmlFor="price"
               className="pt-4 pb-2 text-white w-full text-start"
@@ -205,8 +202,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               placeholder="Veuiller entrer le prix"
               className="rounded-md p-1 w-full"
             />
-            {/* </div> */}
-            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+
             <label
               htmlFor="date"
               className="pt-4 pb-2 text-white w-full text-start"
@@ -222,8 +218,7 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               required
               className="rounded-md p-1 w-full"
             />
-            {/* </div> */}
-            {/* <div className="flex flex-col justify-center items-center p-4"> */}
+
             <label
               htmlFor="fees"
               className="pt-4 pb-2 text-white w-full text-start"
@@ -243,22 +238,19 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
           </div>
 
           <div className="flex items-center justify-center w-full gap-8">
-            {/* <div className="w-1/3"> */}
             <input
               type="button"
               value="Achat"
               className="w-1/3 p-2 my-6 hover:border-custom-purple font-bold hover:bg-green-600 hover:text-white text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
               onClick={handleSubmitBuy}
             />
-            {/* </div> */}
-            {/* <div className="w-1/3"> */}
+
             <input
               type="button"
               value="Vente"
               className="w-1/3 p-2 my-6 hover:border-custom-purple font-bold hover:bg-red-600 hover:text-white text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
               onClick={handleSubmitSell}
             />
-            {/* </div> */}
           </div>
         </form>
       </dialog>
