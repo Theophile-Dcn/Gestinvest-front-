@@ -35,7 +35,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
           E-mail
         </label>
         <input
-          className="rounded-md p-1 w-full"
+          className="rounded-md p-1 w-full bg-violet-300 focus:outline-none focus:ring-2 focus:ring-buttonColor placeholder-gray-900 placeholder-opacity-60"
           type="email"
           id="login-email"
           name="login-email"
@@ -51,7 +51,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
           Mot de passe
         </label>
         <input
-          className="rounded-md p-1 w-full"
+          className="rounded-md p-1 w-full bg-violet-300 focus:outline-none focus:ring-2 focus:ring-buttonColor placeholder-gray-900 placeholder-opacity-60"
           type="password"
           id="login-password"
           name="login-password"
@@ -62,7 +62,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
         />
 
         <button
-          className="w-2/4 valid-button p-2 mt-6   hover:bg-custom-purple text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
+          className="w-2/4 valid-button p-2 mt-6 hover:bg-custom-purple text-white rounded-xl shadow-lg shadow-indigo-500/30 border border-buttonColor"
           type="submit"
         >
           Se connecter
