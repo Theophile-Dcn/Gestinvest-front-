@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { register } from '../../API/authentification'; // Importer la fonction d'authentification
 // import '../ModalLogin.scss';
 
@@ -92,7 +92,7 @@ function Register({
           E-mail
         </label>
         <input
-          className="rounded-md p-1 w-full"
+          className="appearance-none rounded-md p-1 w-full bg-violet-300 focus:outline-none focus:ring-2 focus:ring-buttonColor placeholder-gray-900 placeholder-opacity-60"
           type="email"
           id="email"
           name="email"
@@ -108,7 +108,7 @@ function Register({
           Mot de passe
         </label>
         <input
-          className="rounded-md p-1 w-full"
+          className="rounded-md p-1 w-full bg-violet-300 focus:outline-none focus:ring-2 focus:ring-buttonColor placeholder-gray-900 placeholder-opacity-60"
           type="password"
           id="password"
           name="password"
@@ -133,7 +133,7 @@ function Register({
           Confirmation du mot de passe
         </label>
         <input
-          className="rounded-md p-1 w-full"
+          className="rounded-md p-1 w-full bg-violet-300 focus:outline-none focus:ring-2 focus:ring-buttonColor placeholder-gray-900 placeholder-opacity-60"
           type="password"
           id="confirm-password"
           name="confirm-password"

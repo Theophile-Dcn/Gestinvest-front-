@@ -1,6 +1,9 @@
 module.exports = {
   content: ['./index.html', './src/**/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      roboto: ['Roboto', 'sans-serif'],
+    },
     extend: {
       backgroundColor: {
         'custom-purple': '#9747ff',
@@ -8,7 +11,19 @@ module.exports = {
       colors: {
         buttonColor: '#9747ff',
         backgroundColorModal: '#371b4b',
+        customGradient: {
+          start: '#141314',
+          end: '#371b4b',
+        },
       },
+      backgroundImage: (theme) => ({
+        gradient:
+          'linear-gradient(70deg, ' +
+          theme('colors.customGradient.start') +
+          ' 1%, ' +
+          theme('colors.customGradient.end') +
+          ' 100%)',
+      }),
       animation: {
         // Ajout des deux animations
         bounce: 'bounceVariant 2s infinite',
@@ -34,9 +49,9 @@ module.exports = {
           },
         },
       },
-      gridTemplateColumns : {
-        15: 'repeat(15, minmax(0, 1fr))'
-      }
+      gridTemplateColumns: {
+        15: 'repeat(15, minmax(0, 1fr))',
+      },
     },
   },
 };

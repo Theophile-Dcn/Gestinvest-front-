@@ -109,7 +109,7 @@ function AssetDetail() {
               >
                 <p className="col-span-2">{line.date}</p>
                 <p
-                  className={`col-span-1 ${line.operationType === 'buy' ? 'text-green-500' : 'text-red-500'}`}
+                  className={`col-span-1 ${line.operationType === 'Achat' ? 'text-green-500' : 'text-red-500'}`}
                 >
                   {line.operationType}
                 </p>
