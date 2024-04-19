@@ -104,7 +104,7 @@ function App() {
       case '/AssetDetail':
         return "La page de détail d'actif vous fournit des informations détaillées sur un actif spécifique, y compris son historique, ses performances et ses caractéristiques.";
       case '/Dashboard':
-        return 'Le tableau de bord est votre centre de contrôle, vous offrant une vue d'ensemble de vos actifs, de leurs performances et des tendances du marché.';
+        return "Le tableau de bord est votre centre de contrôle, vous offrant une vue d'ensemble de vos actifs, de leurs performances et des tendances du marché.";
       case '/politique-de-confidentialité':
         return 'Consultez notre politique de confidentialité pour comprendre comment nous recueillons, utilisons et protégeons vos données personnelles.';
       case '/condition-utilisation':
