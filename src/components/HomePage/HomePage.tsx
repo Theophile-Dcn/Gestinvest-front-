@@ -54,7 +54,8 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
             </motion.button>
           )}
         </div>
-      </motion.div>
+      </motion.div>{' '}
+      {/* Fin de la première div motion */}
       <motion.div
         className="flex-col justify-center items-center sm:items-start md:w-5/6 hidden md:flex"
         initial={{ opacity: 0, x: 500 }} // Commence avec une opacité de 0 et défilement de -500 pixels vers la gauche
