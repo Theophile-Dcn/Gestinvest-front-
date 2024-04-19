@@ -1,8 +1,7 @@
 // app.tsx
 import { ReactNode, useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Account from '../Account/Account';
 import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
@@ -13,6 +12,7 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -64,10 +64,40 @@ function App() {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>; // Utilisez <>{children}</> pour afficher les enfants
   };
+
+  const location = useLocation();
+
+  const getPageTitle = (pathname: string) => {
+    switch (pathname) {
+      case '/':
+        return 'Accueil';
+      case '/Account':
+        return 'Compte';
+      case '/AssetDetail':
+        return "Détail d'actif";
+      case '/Dashboard':
+        return 'Tableau de bord';
+      case '/politique-de-confidentialité':
+        return 'Politique de confidentialité';
+      case '/condition-utilisation':
+        return "Condition d'utilisation";
+      default:
+        // Si le chemin commence par '/AssetDetail/', considérez-le comme une page de détail d'actif
+        if (pathname.startsWith('/AssetDetail/')) {
+          return "Détail d'actif";
+        }
+
+        return 'Page 404';
+    }
+  };
+  useEffect(() => {
+    document.title = `GestInvest - ${getPageTitle(location.pathname)}`;
+  }, [location]);
+
   return (
     <div className="bg-gradient text-white font-roboto">
       <Header openModal={openModal} isConnected={isConnected} />
-      <main className="min-h-[84vh] font-roboto">
+      <main className="min-h-[84vh] font-roboto ">
         <Routes>
           {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
           <Route
