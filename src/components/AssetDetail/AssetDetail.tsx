@@ -41,7 +41,6 @@ function AssetDetail() {
           }
         );
         const data = await response.json();
-        console.log(data);
 
         setAssetDetailData(data.assetDetailsCalculated);
       } catch (error) {

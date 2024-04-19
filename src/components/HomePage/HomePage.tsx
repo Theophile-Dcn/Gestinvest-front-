@@ -45,7 +45,7 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
           </p>
           {!isConnected && (
             <motion.button
-              className="w-2/4 lg:w-1/3 m-auto hover:bg-custom-purple  hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-xl lg:px-6 lg:py-2"
+              className="w-2/4 lg:w-1/3 m-auto hover:bg-custom-purple  hover:border-custom-purple shadow-lg shadow-indigo-500/30 text-center mt-4 border border-buttonColor text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 xl:text-xl lg:px-6 lg:py-2"
               type="button"
               onClick={openModal}
             >

@@ -11,7 +11,6 @@ export default function BackgroundBeamsDemo() {
           <img className="w-[15%] z-20 animate-spin" src={astronaute} alt="" />
           <img className="w-1/6 z-20" src={quatre} alt="" />
         </div>
-
         <div>
           <p className="uppercase text-xl font-bold text-center">
             🚀 Oups ! Il semblerait que vous soyez égaré. 🚀
