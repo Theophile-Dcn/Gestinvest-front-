@@ -93,8 +93,8 @@ function Account() {
         Gestion du profil
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
-        <div className="flex border border-white rounded-xl bg-white/10 w-full">
-          <div className="flex border-r w-2/5">
+        <div className="flex border border-buttonColor rounded-xl bg-white/10 w-full">
+          <div className="flex border-r border-buttonColor w-2/5">
             <label
               className="p-4 text-xs md:text-sm font-bold"
               htmlFor="first_name"
@@ -111,8 +111,8 @@ function Account() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex border border-white rounded-xl bg-white/10 w-full">
-          <div className="flex border-r w-2/5">
+        <div className="flex border border-buttonColor rounded-xl bg-white/10 w-full">
+          <div className="flex border-r border-buttonColor w-2/5">
             <label
               className="p-4 text-xs font-bold md:text-sm"
               htmlFor="last_name"
@@ -129,8 +129,8 @@ function Account() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex border border-white rounded-xl bg-white/10 w-full">
-          <div className="flex border-r w-2/5 ">
+        <div className="flex border border-buttonColor rounded-xl bg-white/10 w-full">
+          <div className="flex border-r border-buttonColor w-2/5 ">
             <label className="p-4 text-xs font-bold md:text-sm" htmlFor="email">
               E-mail :
             </label>
@@ -145,8 +145,8 @@ function Account() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex border border-white rounded-xl bg-white/10 w-full">
-          <div className="flex border-r w-2/5 ">
+        <div className="flex border border-buttonColor rounded-xl bg-white/10 w-full">
+          <div className="flex border-r border-buttonColor w-2/5 ">
             <label
               className="p-4 text-xs font-bold md:text-sm"
               htmlFor="password"

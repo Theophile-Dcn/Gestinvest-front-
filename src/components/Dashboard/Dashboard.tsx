@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // import DonutChart from './DonutComposant';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 import GetDashboard from '../API/dashboardAPI';
 import AssetModal from '../AssetModal/AssetModal';
-import './Dashboard.scss';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

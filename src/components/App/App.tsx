@@ -2,6 +2,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Account from '../Account/Account';
 import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
@@ -12,8 +13,6 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
-import './App.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -66,9 +65,9 @@ function App() {
     return <>{children}</>; // Utilisez <>{children}</> pour afficher les enfants
   };
   return (
-    <div className="app">
+    <div className="bg-gradient text-white font-roboto">
       <Header openModal={openModal} isConnected={isConnected} />
-      <main className="min-h-[84vh] ">
+      <main className="min-h-[84vh] font-roboto">
         <Routes>
           {/* Composant de la page d'accueil avec la fonction openModal passée en tant que prop */}
           <Route
