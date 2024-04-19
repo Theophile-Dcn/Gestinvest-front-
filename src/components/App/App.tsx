@@ -94,6 +94,50 @@ function App() {
     document.title = `GestInvest - ${getPageTitle(location.pathname)}`;
   }, [location]);
 
+  // Ajoutez une fonction pour obtenir la description de chaque page
+  const getPageDescription = (pathname: string): string => {
+    switch (pathname) {
+      case '/':
+        return 'GestInvest vous offre une plateforme complète pour suivre vos actifs et analyser leur performance. ';
+      case '/Account':
+        return 'Sur la page de compte, vous pouvez gérer vos informations personnelles, vos paramètres et vos préférences';
+      case '/AssetDetail':
+        return "La page de détail d'actif vous fournit des informations détaillées sur un actif spécifique, y compris son historique, ses performances et ses caractéristiques.";
+      case '/Dashboard':
+        return 'Le tableau de bord est votre centre de contrôle, vous offrant une vue d'ensemble de vos actifs, de leurs performances et des tendances du marché.';
+      case '/politique-de-confidentialité':
+        return 'Consultez notre politique de confidentialité pour comprendre comment nous recueillons, utilisons et protégeons vos données personnelles.';
+      case '/condition-utilisation':
+        return "Les conditions d'utilisation définissent les règles et les obligations pour utiliser notre plateforme. Veuillez les lire attentivement.";
+      default:
+        // Si le chemin commence par '/AssetDetail/', considérez-le comme une page de détail d'actif
+        if (pathname.startsWith('/AssetDetail/')) {
+          return "Désolé, la page que vous recherchez est introuvable. Veuillez vérifier l'URL ou retourner à la page d'accueil.";
+        }
+
+        return 'La page erreur 404';
+    }
+  };
+
+  // Mettez à jour la balise meta description à chaque changement d'URL
+  useEffect(() => {
+    // Récupère la description de la page en fonction du chemin d'accès actuel
+    const description = getPageDescription(location.pathname);
+    // Récupère l'élément meta avec le nom "description"
+    const metaDescription = document.querySelector('meta[name="description"]');
+    // Vérifie si l'élément meta existe
+    if (metaDescription) {
+      // Met à jour le contenu de l'attribut "content" de l'élément meta
+      metaDescription.setAttribute('content', description);
+    } else {
+      // Si l'élément meta n'existe pas, crée-le et ajoute-le à la balise head
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = description;
+      document.head.appendChild(newMeta);
+    }
+  }, [location.pathname]);
+
   return (
     <div className="bg-gradient text-white font-roboto">
       <Header openModal={openModal} isConnected={isConnected} />
