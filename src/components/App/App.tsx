@@ -13,7 +13,6 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
-import Tendances from '../Tendances/Tendances';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -151,7 +150,7 @@ function App() {
               <HomePage openModal={openModal} isConnected={isConnected} />
             }
           />
-          <Route path="/Tendances" element={<Tendances />} />
+          {/* <Route path="/Tendances" element={<Tendances />} /> */}
           {/* route a proteger */}
           <Route
             path="/Account"
