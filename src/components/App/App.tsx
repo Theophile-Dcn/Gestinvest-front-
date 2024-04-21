@@ -2,6 +2,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Account from '../Account/Account';
 import AssetDetail from '../AssetDetail/AssetDetail';
 import Dashboard from '../Dashboard/Dashboard';
@@ -12,7 +13,7 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import ModalLogin from '../ModalLogin/ModalLogin';
 import Page404 from '../Page404/Page404';
-import 'react-toastify/dist/ReactToastify.css';
+import Tendances from '../Tendances/Tendances';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -150,6 +151,7 @@ function App() {
               <HomePage openModal={openModal} isConnected={isConnected} />
             }
           />
+          <Route path="/Tendances" element={<Tendances />} />
           {/* route a proteger */}
           <Route
             path="/Account"
