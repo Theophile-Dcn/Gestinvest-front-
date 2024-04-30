@@ -8,7 +8,7 @@ function Footer() {
         <span className="hidden md:block">All rights reserved.</span>
       </p>
       <a
-        href="/politique-de-confidentialité"
+        href="/politique-de-confidentialite"
         className="my-auto text-white hover:underline underline-offset-4 cursor-pointer"
       >
         Politique de confidentialité
