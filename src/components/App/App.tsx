@@ -77,7 +77,7 @@ function App() {
         return "Détail d'actif";
       case '/Dashboard':
         return 'Tableau de bord';
-      case '/politique-de-confidentialité':
+      case '/politique-de-confidentialite':
         return 'Politique de confidentialité';
       case '/condition-utilisation':
         return "Condition d'utilisation";
@@ -105,7 +105,7 @@ function App() {
         return "La page de détail d'actif vous fournit des informations détaillées sur un actif spécifique, y compris son historique, ses performances et ses caractéristiques.";
       case '/Dashboard':
         return "Le tableau de bord est votre centre de contrôle, vous offrant une vue d'ensemble de vos actifs, de leurs performances et des tendances du marché.";
-      case '/politique-de-confidentialité':
+      case '/politique-de-confidentialite':
         return 'Consultez notre politique de confidentialité pour comprendre comment nous recueillons, utilisons et protégeons vos données personnelles.';
       case '/condition-utilisation':
         return "Les conditions d'utilisation définissent les règles et les obligations pour utiliser notre plateforme. Veuillez les lire attentivement.";
@@ -178,7 +178,7 @@ function App() {
           />
           {/* fin des route a proteger */}
           <Route path="*" element={<Page404 />} />
-          <Route path="/politique-de-confidentialité" element={<Politique />} />
+          <Route path="/politique-de-confidentialite" element={<Politique />} />
           <Route path="/condition-utilisation" element={<Condition />} />
         </Routes>
       </main>
