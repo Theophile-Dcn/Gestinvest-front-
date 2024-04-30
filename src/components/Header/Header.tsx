@@ -37,11 +37,11 @@ function Nav({ isConnected, openModal }: HeaderProps) {
             Accueil
           </li>
         </a>
-        <a className="flex justify-center" href="/Tendances">
+        {/* <a className="flex justify-center" href="/Tendances">
           <li className=" w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
             Tendances
           </li>
-        </a>
+        </a> */}
         {isConnected && (
           <a className="flex justify-center" href="/Dashboard">
             <li className="w-2/3 my-4 py-4 text-md border-slate-800 hover:bg-slate-800 hover:rounded">
@@ -82,11 +82,11 @@ function Nav({ isConnected, openModal }: HeaderProps) {
                   Accueil
                 </li>
               </a>
-              <a href="/Tendances">
+              {/* <a href="/Tendances">
                 <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                   Tendances
                 </li>
-              </a>
+              </a> */}
               {isConnected && (
                 <a href="/Dashboard">
                   <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">

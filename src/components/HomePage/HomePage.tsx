@@ -70,7 +70,9 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
           />
         </motion.div>
       </section>
-      <TradingViewTicker />
+      <div className="hidden sm:flex">
+        <TradingViewTicker />
+      </div>
     </>
   );
 };
