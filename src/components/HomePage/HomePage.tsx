@@ -31,8 +31,7 @@ const HomePage = ({ isConnected, openModal }: HomePageProps) => {
           transition={{ duration: 0.8 }} // Durée de transition de 1.5 secondes
         >
           <h1 className="text-center bg-gradient-to-r from-blue-400 to-red-400 text-transparent bg-clip-text font-bold text-3xl sm:text-start md:text-4xl lg:text-4xl lg:text-left xl:text-5xl">
-            Suivez le rythme.
-            <br />
+            <span className="block">Suivez le rythme.</span>
             Optimisez vos rendements.
           </h1>
           <div className="lg:m-0 justify-center flex flex-col sm:block">
