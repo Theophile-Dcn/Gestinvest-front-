@@ -155,18 +155,18 @@ function AssetModal({ closeAssetModal }: AssetModalProps) {
               onChange={handleChange}
               required
               placeholder="Veuillez entrer le nom de l'actif"
-              className="rounded-md p-1 w-full"
+              className="rounded-md p-1 w-full "
             />
+            {/* Ajoute de nos actifs dans une liste déroulante */}
             <datalist id="assetNameList">
-              console.log(assetDataList.allAsset);
               {assetDataList &&
-                assetDataList.allAsset.map(
-                  (asset: { asset_name: string }, index: number) => (
+                assetDataList.allAsset
+                  .sort((a, b) => a.asset_name.localeCompare(b.asset_name))
+                  .map((asset: { asset_name: string }, index: number) => (
                     <option key={index} value={asset.asset_name}>
                       {asset.asset_name}
                     </option>
-                  )
-                )}
+                  ))}
             </datalist>
 
             <label
