@@ -1,6 +1,5 @@
 import quatre from '../../assets/404-4.png';
 import astronaute from '../../assets/astronaute.png';
-import BackgroundBeams from '../ui/BackgroundBeams';
 
 export default function BackgroundBeamsDemo() {
   return (
@@ -16,7 +15,6 @@ export default function BackgroundBeamsDemo() {
             🚀 Oups ! Il semblerait que vous soyez égaré. 🚀
           </p>
         </div>
-        <BackgroundBeams />
       </div>
     </div>
   );
