@@ -112,7 +112,7 @@ function App() {
       default:
         // Si le chemin commence par '/AssetDetail/', considérez-le comme une page de détail d'actif
         if (pathname.startsWith('/AssetDetail/')) {
-          return "Désolé, la page que vous recherchez est introuvable. Veuillez vérifier l'URL ou retourner à la page d'accueil.";
+          return "La page de détail d'actif vous fournit des informations détaillées sur un actif spécifique, y compris son historique, ses performances et ses caractéristiques.";
         }
 
         return 'La page erreur 404';

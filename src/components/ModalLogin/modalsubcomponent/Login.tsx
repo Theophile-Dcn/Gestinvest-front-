@@ -16,7 +16,7 @@ const Login = ({ closeModal }: LoginFormProps) => {
       await login(loginEmail, inputPassword);
       setTimeout(() => {
         closeModal();
-        window.location.href = '/dashboard';
+        window.location.href = '/Dashboard';
       }, 2000);
     } catch (error) {
       if (error instanceof Error) {
