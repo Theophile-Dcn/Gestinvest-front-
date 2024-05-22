@@ -27,12 +27,16 @@ interface AssetLineDetail {
 
 function AssetDetail() {
   const { slug } = useParams();
+  // Déclaration d'un état local "assetDetailData" et de sa fonction de mise à jour "setAssetDetailData"
   const [assetDetailData, setAssetDetailData] =
     useState<AssetDetailProps | null>(null);
 
+  // Utilisation de useEffect pour exécuter une fonction asynchrone au chargement initial du composant ou lorsque ses dépendances changent
   useEffect(() => {
+    // Définition d'une fonction asynchrone pour récupérer les données des détails de l'actif
     async function getAssetDetailData() {
       try {
+        // Appel asynchrone à l'API pour récupérer les détails de l'actif
         const response = await fetch(
           `${BaseURL}dashboard/assetdetails/${slug}`,
           {
@@ -40,11 +44,22 @@ function AssetDetail() {
             headers: header,
           }
         );
+
+        // Vérification si la réponse du serveur est ok (status 200-299)
+        if (!response.ok) {
+          throw new Error(
+            "Erreur lors de la récupération des détails de l'actif"
+          );
+        }
+
+        // Extraction des données JSON de la réponse
         const data = await response.json();
 
+        // Mise à jour de l'état local "assetDetailData" avec les données récupérées
         setAssetDetailData(data.assetDetailsCalculated);
       } catch (error) {
-        console.error('Erreur de récupération des données', error);
+        // Gestion des erreurs : affichage de l'erreur dans la console
+        console.error('Error:', error);
       }
     }
 
