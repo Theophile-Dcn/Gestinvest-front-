@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaPowerOff, FaTimes, FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
 
 // import './Header.scss';
 
@@ -12,7 +13,7 @@ type HeaderProps = {
   openModal: () => void;
 };
 
-function Nav({ isConnected, openModal }: HeaderProps) {
+function Header({ isConnected, openModal }: HeaderProps) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
@@ -77,35 +78,52 @@ function Nav({ isConnected, openModal }: HeaderProps) {
           </div>
           <div className="flex-10">
             <ul className="flex gap-8 text-[18px]">
-              <a href="/">
-                <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
-                  Accueil
-                </li>
-              </a>
+              {isConnected && (
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? 'underline underline-offset-8' : ''
+                  }
+                >
+                  <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
+                    Accueil
+                  </li>
+                </NavLink>
+              )}
               {/* <a href="/Tendances">
                 <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                   Tendances
                 </li>
               </a> */}
               {isConnected && (
-                <a href="/Dashboard">
+                <NavLink
+                  to="/Dashboard"
+                  className={({ isActive }) =>
+                    isActive ? 'underline underline-offset-8' : ''
+                  }
+                >
                   <li className=" transition hover:underline  hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                     Tableau de bord
                   </li>
-                </a>
+                </NavLink>
               )}
               {isConnected && (
-                <a href="/Account">
+                <NavLink
+                  to="/Account"
+                  className={({ isActive }) =>
+                    isActive ? 'underline underline-offset-8' : ''
+                  }
+                >
                   <li className=" transition  hover:underline hover:underline-offset-8 border-slate-900 hover:border-white cursor pointer">
                     Mon compte
                   </li>
-                </a>
+                </NavLink>
               )}
             </ul>
           </div>
           {!isConnected && (
             <button
-              className="hover:bg-custom-purple border-buttonColor shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
+              className="hover:bg-custom-purple  border-buttonColor shadow-lg shadow-indigo-500/30 text-center mt-4 border text-white rounded-full px-2 py-1 lg:m-0 lg:my-8 lg:text-base lg:px-6 lg:py-2"
               type="button"
               onClick={openModal}
             >
@@ -157,4 +175,4 @@ function Nav({ isConnected, openModal }: HeaderProps) {
   );
 }
 
-export default Nav;
+export default Header;
